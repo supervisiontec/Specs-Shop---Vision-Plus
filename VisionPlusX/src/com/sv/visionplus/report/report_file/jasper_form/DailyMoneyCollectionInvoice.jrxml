@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2016-12-16T16:21:02 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DailyMoneyCollectionInvoice" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e857488a-c407-4b75-a17d-66d5e18bf38c">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<queryString>
+		<![CDATA[select 
+	customer_payment.invoice,
+	t_payment.cash_amount,
+	t_payment.cheque_amount,
+	t_payment.card_amount,
+	t_payment.total_amount
+from
+	customer_payment,
+	t_payment
+WHERE
+	customer_payment.payment=t_payment.index_no
+	and customer_payment.date=now()]]>
+	</queryString>
+	<field name="invoice" class="java.lang.Integer"/>
+	<field name="cash_amount" class="java.lang.Double"/>
+	<field name="cheque_amount" class="java.lang.Double"/>
+	<field name="card_amount" class="java.lang.Double"/>
+	<field name="total_amount" class="java.lang.Double"/>
+	<variable name="cash_amount1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{cash_amount}]]></variableExpression>
+	</variable>
+	<variable name="cheque_amount1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{cheque_amount}]]></variableExpression>
+	</variable>
+	<variable name="card_amount1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{card_amount}]]></variableExpression>
+	</variable>
+	<variable name="total_amount1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{total_amount}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="38" splitType="Stretch">
+			<staticText>
+				<reportElement x="-20" y="8" width="595" height="30" uuid="3d81a3e2-a8c2-4a64-9274-c1d1a3ccde8a"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Daily Invoice Report]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="18" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<staticText>
+				<reportElement x="20" y="0" width="100" height="18" uuid="f3b0295e-a3a5-478a-a93b-800e23b7dc5f">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<text><![CDATA[invoice]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="122" y="0" width="100" height="18" uuid="0e95c4e1-b722-4813-84f8-755c05255335"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[cash_amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="224" y="0" width="100" height="18" uuid="32002a64-6c1c-438a-8cf8-993bc28d1f91"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[cheque_amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="326" y="0" width="100" height="18" uuid="c6a7fced-ee6a-4689-abde-2dfa6585dbf9"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[card_amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="428" y="0" width="112" height="18" uuid="d26d9008-410b-4341-9093-b61c68603f04"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[total_amount]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<textField>
+				<reportElement x="20" y="0" width="100" height="18" uuid="d5bbf225-ccd6-4c9f-8c1a-ad8e62557fa8"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{invoice}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="122" y="0" width="100" height="18" uuid="9f00f3c1-482a-4b7e-ab46-6c01a4027d53"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{cash_amount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="224" y="0" width="100" height="18" uuid="d3ee0e1c-6001-4771-8d03-c0d06b34acb5"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{cheque_amount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="326" y="0" width="100" height="18" uuid="820db694-f02d-4322-9278-974a0bd0a220"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{card_amount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="428" y="0" width="112" height="18" uuid="f6d207a4-04a9-4b2a-9aea-9aecf464c6eb">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{total_amount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="18" splitType="Stretch">
+			<textField>
+				<reportElement x="123" y="0" width="100" height="18" uuid="210b3822-eda6-4a14-85e0-3286664fde53">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Double"/>
+					<bottomPen lineWidth="1.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{cash_amount1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="223" y="0" width="100" height="18" uuid="07235e10-b251-4dea-8cec-796ff97160c8"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Double"/>
+					<bottomPen lineWidth="1.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{cheque_amount1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="324" y="0" width="103" height="18" uuid="148963dc-ebc5-4ff6-ab38-141332fcf1e7"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Double"/>
+					<bottomPen lineWidth="1.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{card_amount1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="426" y="0" width="114" height="18" uuid="7d0b9a03-e63e-4554-987a-d4c6599fddc6"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Double"/>
+					<bottomPen lineWidth="1.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{total_amount1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2017-01-06T12:24:18 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cfe759b0-9728-4589-8f90-a11ce6614510">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="channelDate" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[select
+	*
+ from 
+ 	channel
+ where channel.channel_date= $P{channelDate} 
+ ORDER BY channel.channel_id]]>
+	</queryString>
+	<field name="index_no" class="java.lang.Integer"/>
+	<field name="doctor_id" class="java.lang.Integer"/>
+	<field name="date" class="java.sql.Date"/>
+	<field name="channel_date" class="java.sql.Date"/>
+	<field name="channel_id" class="java.lang.String"/>
+	<field name="time" class="java.lang.String"/>
+	<field name="amount" class="java.lang.Double"/>
+	<field name="patient_name" class="java.lang.String"/>
+	<field name="mobile" class="java.lang.String"/>
+	<variable name="amount1" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{amount}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="143" splitType="Stretch">
+			<staticText>
+				<reportElement x="-20" y="0" width="595" height="40" uuid="e77448cd-3972-4d2f-8264-5c63f9b9ae30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VISION PLUS EYE CLINIC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="51" width="98" height="18" uuid="6ac7e9d1-41b5-490b-9c50-f404cda3384f">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Tel: 034-2247466]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="69" width="78" height="18" uuid="a2ffa664-6dfb-4856-b90f-fa05ec1f2bbc"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[071-7513639]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="430" y="50" width="110" height="19" uuid="49b14958-6d04-4680-9b73-f2b8820581c2"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[24, Naboda Road,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="430" y="69" width="110" height="19" uuid="35f2c1db-254d-48ff-bd17-d29c05a88239"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Mathugama,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="430" y="88" width="110" height="19" uuid="b094e18f-d5c6-4dc6-8155-2c467f8dd799"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Sri Lanka.]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="430" y="107" width="100" height="23" uuid="1038b83a-3abe-4fb8-80c6-104dc8abbbd1"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="23" y="105" width="127" height="30" uuid="e38e8d3d-2935-471d-b8c3-7f5d6e958cd4">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Channel List for]]></text>
+			</staticText>
+			<textField pattern="dd-MM-yyyy">
+				<reportElement x="150" y="105" width="151" height="30" uuid="5845a910-ca81-4532-a883-eefe2e99a7d1"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{channel_date}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="-1" y="0" width="41" height="19" uuid="2950e4ce-9b41-4591-afcd-6a3f93e4b6cc">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[#]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="112" y="0" width="100" height="19" uuid="ce16a6d3-a148-4aed-b164-be5a61264a21"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="0" width="72" height="19" uuid="8f0bbc39-5708-42ad-8181-60b9c2d11965"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[C. NO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="212" y="0" width="158" height="19" uuid="48aa5259-65af-42d8-a0d9-e64bbfdb063a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PATIENT NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="370" y="0" width="100" height="19" uuid="487459fa-e1c4-4528-9340-f858c6a05b29"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TIME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="472" y="0" width="63" height="19" uuid="dcfc3391-8df2-4c93-81a2-58e5f9a3835d"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[AMOUNT]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="20" width="541" height="1" uuid="4bb16e34-17cd-414a-82a1-7dd1847e4913">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="19" splitType="Stretch">
+			<textField>
+				<reportElement x="1" y="0" width="39" height="19" uuid="775a6f7e-a582-4c3a-9f31-f7c874ceaafc">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{index_no}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MM-yyyy">
+				<reportElement x="112" y="0" width="100" height="19" uuid="334658b2-c6eb-46e1-a5d6-504d02346cd6"/>
+				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="40" y="0" width="72" height="19" uuid="eff351c2-632f-4320-8f4b-c53355081b29"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{channel_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="212" y="0" width="158" height="19" uuid="a796260e-076d-406e-b4e0-449a07bf0500"/>
+				<textFieldExpression><![CDATA[$F{patient_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="370" y="0" width="100" height="19" uuid="aca337df-4e83-4a65-8bf9-00f4afcab971"/>
+				<textFieldExpression><![CDATA[$F{time}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="470" y="0" width="51" height="19" uuid="b67c00b1-929b-4bdb-ad62-aef7a45504ea"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<line>
+				<reportElement x="2" y="0" width="558" height="1" uuid="c656c763-52a9-45df-9f3e-9f3ba6fb2cbf">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+			</line>
+			<textField>
+				<reportElement x="472" y="3" width="49" height="18" uuid="64bfe053-01ff-48ad-aa12-c99c6fb346be"/>
+				<box>
+					<bottomPen lineWidth="1.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{amount1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="420" y="3" width="52" height="18" uuid="58c2fd62-8db7-40d8-acef-b5b2ff01171f">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<bottomPen lineWidth="0.0" lineStyle="Double"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

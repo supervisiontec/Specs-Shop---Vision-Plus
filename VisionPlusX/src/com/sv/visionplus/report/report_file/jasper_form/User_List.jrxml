@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="User_List" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="360909e0-853b-4b4e-bf1c-3fa5de4a485a">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="type" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select 
+	* 
+from 
+	log_file
+where transaction_type =  $P{type}]]>
+	</queryString>
+	<field name="index_no" class="java.lang.Integer"/>
+	<field name="date" class="java.sql.Date"/>
+	<field name="time" class="java.lang.String"/>
+	<field name="user" class="java.lang.Integer"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="form_name" class="java.lang.String"/>
+	<field name="transaction_type" class="java.lang.String"/>
+	<field name="value" class="java.lang.Double"/>
+	<field name="remarks" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<textField>
+				<reportElement x="380" y="14" width="100" height="30" uuid="9c938114-7fa9-4d7f-91d5-2b9bfa8ff946"/>
+				<textFieldExpression><![CDATA[$P{type}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="-1" y="0" width="51" height="30" uuid="5bd2201f-f1f5-42a5-9716-823d2854e68c">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<text><![CDATA[index_no]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="0" width="60" height="30" uuid="a0b6bc8e-1133-4c03-8ae6-e8ec371a8820"/>
+				<text><![CDATA[date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="0" width="100" height="30" uuid="0d9d8ebe-0f65-428a-83d0-b2c17d09ffba"/>
+				<text><![CDATA[time]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="210" y="0" width="100" height="30" uuid="1392c3a5-7d2d-4089-93f8-69b15ecc867c"/>
+				<text><![CDATA[user]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="0" width="90" height="30" uuid="2d0f0513-81ec-4d77-ba87-c23cfdf51045"/>
+				<text><![CDATA[form_name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="0" width="100" height="30" uuid="7ac47a52-72d9-4359-b982-467b465d215b"/>
+				<text><![CDATA[transaction_type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="500" y="0" width="50" height="30" uuid="3edf373d-c8a3-46ad-ab44-ecda47a885a6"/>
+				<text><![CDATA[value]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="38" splitType="Stretch">
+			<textField>
+				<reportElement x="-1" y="0" width="51" height="30" uuid="d613e126-35c1-45e8-8bd9-badec367e94a">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{index_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="50" y="0" width="60" height="30" uuid="97020d61-c460-46d3-af88-3a881a4467fb"/>
+				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="0" width="100" height="30" uuid="6a63aed6-0077-42cd-bddf-4c194d857fa4"/>
+				<textFieldExpression><![CDATA[$F{time}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="210" y="0" width="100" height="30" uuid="116ca9e1-8ce4-4c02-8110-5aaa741190bd"/>
+				<textFieldExpression><![CDATA[$F{user}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="310" y="0" width="90" height="30" uuid="dbb70727-1b3d-48a7-aea4-831dce2ea472"/>
+				<textFieldExpression><![CDATA[$F{form_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="0" width="100" height="30" uuid="28e9d089-9212-40d0-b36d-bc03f5c238fb"/>
+				<textFieldExpression><![CDATA[$F{transaction_type}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="500" y="0" width="50" height="30" uuid="69fa92f8-5496-46cb-98d7-5b7ef50acc3f"/>
+				<textFieldExpression><![CDATA[$F{value}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="53" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
