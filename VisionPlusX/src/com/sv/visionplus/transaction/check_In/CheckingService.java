@@ -7,7 +7,6 @@ package com.sv.visionplus.transaction.check_In;
 
 import com.sv.visionplus.base.transaction.AbstractTransactionFormService;
 import com.sv.visionplus.system.exception.VPException;
-import com.sv.visionplus.transaction.check_In.model.InvoiceMix;
 import com.sv.visionplus.transaction.check_In.model.TInvoice;
 import com.sv.visionplus.util.database.DatabaseUtil;
 import java.sql.Connection;

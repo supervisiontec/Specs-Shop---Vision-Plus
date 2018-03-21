@@ -120,7 +120,7 @@ public class SmsSender {
     }
 
     public static int messageSendForChecking(String name, String mobile) {
-        String message = name + "...The order you placed with Visipn Plus Poticians,Mathugama is ready for cillection.Thanks";
+        String message = name + "...The Order you Placed with Vision Plus Opticians Matugama, is ready for Collection.Thanks";
 //            String APIKEY = "585bc4616167e";
         String correctMessage = message.replace(" ", "%20");
         if (mobile.length() == 11) {
