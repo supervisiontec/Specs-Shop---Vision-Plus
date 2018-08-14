@@ -34,6 +34,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import visionplusx.model.MUser;
 
 /**
@@ -53,7 +54,7 @@ public class Home extends DefaultMainframe {
     }
     private static MUser user;
 
-    private Home() {
+    public Home() {
     }
 
     @Override
@@ -67,6 +68,8 @@ public class Home extends DefaultMainframe {
     protected void createGUI() {
         createMaster();
         setTitle("Vision Plus Management System");
+        ImageIcon imageIcon = new ImageIcon(getImageUrl(TASK)); 
+        setIconImage(imageIcon.getImage());
     }
 
     public ActionListener getActionListener(final Class<? extends JPanel> panelClass) {
@@ -161,12 +164,12 @@ public class Home extends DefaultMainframe {
         addBand("Logout", getImageUrl(LOG_OUT));
         addButton("Logout", getImageUrl(LOG_OUT), DefaultMainframe.ElementPriority.TOP, getActionListener(LogOutForm.class));
 
-        if ("Admin".equals(Login.getInstance().user.getType())) {
+//        if ("Admin".equals(Login.getInstance().user.getType())) {
             addTask("Reports");
 
             addBand("Reports", getImageUrl(REPORT_VIEWER));
             addButton("reports", getImageUrl(REPORT_VIEWER), DefaultMainframe.ElementPriority.TOP, getActionListener(report_panel.class));
-        }
+//        }
 
         addTask("Messanger");
 

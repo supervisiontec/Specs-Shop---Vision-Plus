@@ -31,11 +31,23 @@ public class ClaimModel {
     private String invoiceIndex;
     private String invoiceNumber;
     private String amount;
+    private String lensName1;
+    private String lensBrand1;
+    private String lensBarcode;
+    private String lensCategory;
+    private String lensPrice;
+    private String frameName;
+    private String frameBrand;
+    private String frameBarcode;
+    private String frameCategory;
+    private String framePrice;
+    private String date;
+    
 
     public ClaimModel() {
     }
 
-    public ClaimModel(String sphDistLeft, String sphDistReght, String sphNearReght, String sphNearLeft, String cylNearLeft, String cylNearRight, String cylDistRight, String cylDistLeft, String axisDistLeft, String axisDistRight, String axisNearRight, String axisNearLeft, String name, String contact, String address, String lensType, String lensName, String lensBrand, String invoiceIndex, String invoiceNumber, String amount) {
+    public ClaimModel(String sphDistLeft, String sphDistReght, String sphNearReght, String sphNearLeft, String cylNearLeft, String cylNearRight, String cylDistRight, String cylDistLeft, String axisDistLeft, String axisDistRight, String axisNearRight, String axisNearLeft, String name, String contact, String address, String lensType, String lensName, String lensBrand, String invoiceIndex, String invoiceNumber, String amount, String lensName1, String lensBrand1, String lensBarcode, String lensCategory, String lensPrice, String frameName, String frameBrand, String frameBarcode, String frameCategory, String framePrice, String date) {
         this.sphDistLeft = sphDistLeft;
         this.sphDistReght = sphDistReght;
         this.sphNearReght = sphNearReght;
@@ -57,7 +69,108 @@ public class ClaimModel {
         this.invoiceIndex = invoiceIndex;
         this.invoiceNumber = invoiceNumber;
         this.amount = amount;
+        this.lensName1 = lensName1;
+        this.lensBrand1 = lensBrand1;
+        this.lensBarcode = lensBarcode;
+        this.lensCategory = lensCategory;
+        this.lensPrice = lensPrice;
+        this.frameName = frameName;
+        this.frameBrand = frameBrand;
+        this.frameBarcode = frameBarcode;
+        this.frameCategory = frameCategory;
+        this.framePrice = framePrice;
+        this.date = date;
     }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getLensName1() {
+        return lensName1;
+    }
+
+    public void setLensName1(String lensName1) {
+        this.lensName1 = lensName1;
+    }
+
+    public String getLensBrand1() {
+        return lensBrand1;
+    }
+
+    public void setLensBrand1(String lensBrand1) {
+        this.lensBrand1 = lensBrand1;
+    }
+
+    public String getLensBarcode() {
+        return lensBarcode;
+    }
+
+    public void setLensBarcode(String lensBarcode) {
+        this.lensBarcode = lensBarcode;
+    }
+
+    public String getLensCategory() {
+        return lensCategory;
+    }
+
+    public void setLensCategory(String lensCategory) {
+        this.lensCategory = lensCategory;
+    }
+
+    public String getLensPrice() {
+        return lensPrice;
+    }
+
+    public void setLensPrice(String lensPrice) {
+        this.lensPrice = lensPrice;
+    }
+
+    public String getFrameName() {
+        return frameName;
+    }
+
+    public void setFrameName(String frameName) {
+        this.frameName = frameName;
+    }
+
+    public String getFrameBrand() {
+        return frameBrand;
+    }
+
+    public void setFrameBrand(String frameBrand) {
+        this.frameBrand = frameBrand;
+    }
+
+    public String getFrameBarcode() {
+        return frameBarcode;
+    }
+
+    public void setFrameBarcode(String frameBarcode) {
+        this.frameBarcode = frameBarcode;
+    }
+
+    public String getFrameCategory() {
+        return frameCategory;
+    }
+
+    public void setFrameCategory(String frameCategory) {
+        this.frameCategory = frameCategory;
+    }
+
+    public String getFramePrice() {
+        return framePrice;
+    }
+
+    public void setFramePrice(String framePrice) {
+        this.framePrice = framePrice;
+    }
+
+    
 
     public String getSphDistLeft() {
         return sphDistLeft;

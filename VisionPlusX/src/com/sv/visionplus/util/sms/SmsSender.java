@@ -85,14 +85,17 @@ public class SmsSender {
     public static int sender(String mobile, String message) {
         try {
             String apikey = "2380250890";
-
-            String URL = "http://smsserver.svisiontec.com/send_sms.php?api_key="+apikey+"&number="+mobile+"&message="+message;
+//            String URL = "http://smsserver.svisiontec.com/send_sms.php?api_key="+apikey+"&number="+mobile+"&message="+message;
+            String URL = "http://139.99.148.38/supervision-sms-server/send_sms.php?api_key=" + apikey + "&number=" + mobile + "&message=" + message;
             URL url = new URL(URL);
 
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.connect();
             int code = connection.getResponseCode();
+            if (code==0) {
+                return 200;
+            }
             return code;
 
         } catch (MalformedURLException ex) {

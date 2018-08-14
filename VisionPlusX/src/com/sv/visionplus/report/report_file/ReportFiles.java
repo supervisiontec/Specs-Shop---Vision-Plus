@@ -21,6 +21,7 @@ public class ReportFiles {
      public static final String INVOICE_STATUS = "jasper_form/invoice_status.jasper";
      public static final String ISSUE_FRAME_LENS = "jasper_form/issue_frame_lense.jasper";
      public static final String CLAIM = "jasper_form/claim.jasper";
+     public static final String CLAIM1 = "jasper_form/claim_1.jasper";
      public static final String CHANNEL_LIST = "jasper_form/channel-list.jasper";
      public static final String INVOICE_LIST = "jasper_form/invoice_list.jasper";
      

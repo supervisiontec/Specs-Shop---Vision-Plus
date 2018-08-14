@@ -1,5 +1,7 @@
 package visionplusx;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;

@@ -65,6 +65,7 @@ public class InvoiceDAO {
         }
         return null;
     }
+
     List<TInvoice> searchInvoiceByDate(String status, String date) {
         try {
             List<TInvoice> invoices = Query.executeSelect(connection, "status=? AND invoice_date=?", status, date);
@@ -74,6 +75,7 @@ public class InvoiceDAO {
         }
         return null;
     }
+
     List<TInvoice> searchInvoiceByStatus(String status, String status2) {
         try {
             List<TInvoice> invoices = Query.executeSelect(connection, "status=? AND status2=?", status, status2);
@@ -95,9 +97,13 @@ public class InvoiceDAO {
                     if (unicUpdate > 0) {
                         TInvoice searchInvoice = InvoiceDAO.getInstance().searchInvoice(connection, Integer.parseInt(invoiceNo));
                         MCustomer searchCustomer = CustomerDAO.getInstance().searchCustomer(searchInvoice.getCustomer());
-                        int code = SmsSender.messageSendForChecking(searchCustomer.getName(),searchCustomer.getContactNo());
+                        if ("Reserved From Factory".equals(invoice.getStatus())) {
+                            int code = SmsSender.messageSendForChecking(searchCustomer.getName(), searchCustomer.getContactNo());
+                            if (code==200) {
+                                JOptionPane.showMessageDialog(null,"Msg send successfully. ("+searchCustomer.getName()+" - "+searchCustomer.getContactNo()+")");
+                            }
+                        }
 
-                        
                         int statusId = StatusDAO.getInstance().addStatus(connection, invoice);
                         if (statusId > 0) {
                             count += 1;
@@ -127,13 +133,13 @@ public class InvoiceDAO {
 
     private int updateUniqueInvoice(Connection connection, TInvoice invoice) {
 //        TInvoice tInvoice = invoice;
-        TInvoice searchInvoice=new TInvoice();
+        TInvoice searchInvoice = new TInvoice();
         int id = 0;
         searchInvoice = InvoiceDAO.getInstance().searchInvoice(connection, invoice.getIndexNo());
-        
-        System.out.println(invoice.getIndexNo()+" Index");
-        System.out.println(invoice.getStatus()+" status");
-        System.out.println(invoice.getFactory()+" factory");
+
+        System.out.println(invoice.getIndexNo() + " Index");
+        System.out.println(invoice.getStatus() + " status");
+        System.out.println(invoice.getFactory() + " factory");
         searchInvoice.setStatus(invoice.getStatus());
         searchInvoice.setFactory(invoice.getFactory());
 

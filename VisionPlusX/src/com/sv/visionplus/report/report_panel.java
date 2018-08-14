@@ -19,7 +19,6 @@ import com.sv.visionplus.report.report_file.dialog.InvoiceStatus;
 import com.sv.visionplus.report.report_file.dialog.IssueFrameLens;
 import com.sv.visionplus.report.report_file.dialog.model.ClaimModel;
 import com.sv.visionplus.util.database.DatabaseUtil;
-import java.io.File;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Date;
@@ -33,6 +32,8 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.swing.JRViewer;
+import visionplusx.Home;
+import visionplusx.model.MUser;
 
 /**
  *
@@ -42,6 +43,7 @@ public class report_panel extends javax.swing.JPanel {
 
    
     private Connection openConnection;
+    private MUser user;
 
     public report_panel() {
         initComponents();
@@ -50,6 +52,18 @@ public class report_panel extends javax.swing.JPanel {
         } catch (SQLException ex) {
             Logger.getLogger(report_panel.class.getName()).log(Level.SEVERE, null, ex);
         }
+        user = new Home().getUser();
+        if ("User".equals(user.getType())) {
+            btnBestCustomer.setVisible(false);
+            btnBestUser.setVisible(false);
+            btnChannel.setVisible(false);
+            btnChannelList.setVisible(false);
+            btnGrnSummary.setVisible(false);
+            btnInvList.setVisible(false);
+            btnInvStatus.setVisible(false);
+            btnIssueFrame.setVisible(false);
+        }
+
     }
 
     /**
@@ -63,16 +77,17 @@ public class report_panel extends javax.swing.JPanel {
 
         pnlReport = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
+        btnChannel = new javax.swing.JButton();
+        btnInvStatus = new javax.swing.JButton();
+        btnBestCustomer = new javax.swing.JButton();
+        btnIssueFrame = new javax.swing.JButton();
+        btnGrnSummary = new javax.swing.JButton();
+        btnBestUser = new javax.swing.JButton();
+        btnClaim = new javax.swing.JButton();
+        btnChannelList = new javax.swing.JButton();
+        btnInvList = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         pnlReport.setBackground(new java.awt.Color(230, 230, 238));
         pnlReport.setLayout(new javax.swing.BoxLayout(pnlReport, javax.swing.BoxLayout.LINE_AXIS));
@@ -84,66 +99,66 @@ public class report_panel extends javax.swing.JPanel {
             }
         });
 
-        jButton3.setText("Channel");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnChannel.setText("Channel");
+        btnChannel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnChannelActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Invoice Status");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnInvStatus.setText("Invoice Status");
+        btnInvStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnInvStatusActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Best Customer");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnBestCustomer.setText("Best Customer");
+        btnBestCustomer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnBestCustomerActionPerformed(evt);
             }
         });
 
-        jButton6.setText("Issue Frame /  Lens");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnIssueFrame.setText("Issue Frame /  Lens");
+        btnIssueFrame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnIssueFrameActionPerformed(evt);
             }
         });
 
-        jButton1.setText("GRN Symmary");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnGrnSummary.setText("GRN Symmary");
+        btnGrnSummary.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnGrnSummaryActionPerformed(evt);
             }
         });
 
-        jButton7.setText("Best User");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        btnBestUser.setText("Best User");
+        btnBestUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                btnBestUserActionPerformed(evt);
             }
         });
 
-        jButton8.setText("Claim");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        btnClaim.setText("Claim");
+        btnClaim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                btnClaimActionPerformed(evt);
             }
         });
 
-        jButton9.setText("Channel List");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        btnChannelList.setText("Channel List");
+        btnChannelList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                btnChannelListActionPerformed(evt);
             }
         });
 
-        jButton10.setText("Invoice List");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
+        btnInvList.setText("Invoice List");
+        btnInvList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+                btnInvListActionPerformed(evt);
             }
         });
 
@@ -154,6 +169,13 @@ public class report_panel extends javax.swing.JPanel {
             }
         });
 
+        jButton1.setText("Clear");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -161,16 +183,17 @@ public class report_panel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnChannel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnInvStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnBestCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnIssueFrame, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+                    .addComponent(btnGrnSummary, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnBestUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnClaim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnChannelList, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnInvList, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnlReport, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE))
         );
@@ -183,24 +206,25 @@ public class report_panel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnChannel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnChannelList, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnInvStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnInvList, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnBestCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnBestUser, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnIssueFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnGrnSummary, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(btnClaim, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -210,63 +234,63 @@ public class report_panel extends javax.swing.JPanel {
         invoiceReceipt.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnChannelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChannelActionPerformed
         Channel channel = new Channel(null, true);
         channel.setFrame(this);
         channel.setVisible(true);
 
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnChannelActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnInvStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvStatusActionPerformed
         InvoiceStatus invoiceStatus = new InvoiceStatus(null, true);
         invoiceStatus.setFrame(this);
         invoiceStatus.setVisible(true);
 
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnInvStatusActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btnBestCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBestCustomerActionPerformed
         BestCustomer bestCustomer = new BestCustomer(null, true);
         bestCustomer.setFrame(this);
         bestCustomer.setVisible(true);
 
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_btnBestCustomerActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void btnIssueFrameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIssueFrameActionPerformed
         IssueFrameLens ifl = new IssueFrameLens(null, true);
         ifl.setFrame(this);
         ifl.setVisible(true);
 
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_btnIssueFrameActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void btnBestUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBestUserActionPerformed
         BestUser bestUser = new BestUser(null, true);
         bestUser.setFrame(this);
         bestUser.setVisible(true);
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_btnBestUserActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnGrnSummaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrnSummaryActionPerformed
         GrnSummary gs = new GrnSummary(null, true);
         gs.setFrame(this);
         gs.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnGrnSummaryActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void btnClaimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClaimActionPerformed
         Claim claim = new Claim(null, true);
         claim.setFrame(this);
         claim.setVisible(true);
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_btnClaimActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    private void btnChannelListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChannelListActionPerformed
         ChannelList list=new ChannelList(null, true);
         list.setFrame(this);
         list.setVisible(true);
-    }//GEN-LAST:event_jButton9ActionPerformed
+    }//GEN-LAST:event_btnChannelListActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+    private void btnInvListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvListActionPerformed
         InvoiceList list=new InvoiceList(null, true);
         list.setFrame(this);
         list.setVisible(true);
-    }//GEN-LAST:event_jButton10ActionPerformed
+    }//GEN-LAST:event_btnInvListActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         FactoryReport report=new FactoryReport(null, true);
@@ -274,19 +298,26 @@ public class report_panel extends javax.swing.JPanel {
         report.setVisible(true);
     }//GEN-LAST:event_jButton11ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        pnlReport.removeAll();
+        pnlReport.repaint();
+        pnlReport.revalidate();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBestCustomer;
+    private javax.swing.JButton btnBestUser;
+    private javax.swing.JButton btnChannel;
+    private javax.swing.JButton btnChannelList;
+    private javax.swing.JButton btnClaim;
+    private javax.swing.JButton btnGrnSummary;
+    private javax.swing.JButton btnInvList;
+    private javax.swing.JButton btnInvStatus;
+    private javax.swing.JButton btnIssueFrame;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JPanel pnlReport;
     // End of variables declaration//GEN-END:variables
 
@@ -427,7 +458,7 @@ public class report_panel extends javax.swing.JPanel {
 
     public void setClaim(ClaimModel claimModel) {
         try {
-            JasperReport jasperReport = (JasperReport) JRLoader.loadObject(getReportUrl(CLAIM));
+            JasperReport jasperReport = (JasperReport) JRLoader.loadObject(getReportUrl(CLAIM1));
             HashMap<String, Object> dataMap = new HashMap<>();
             dataMap.put("address", claimModel.getAddress());
             dataMap.put("amount", claimModel.getAmount());
@@ -450,6 +481,18 @@ public class report_panel extends javax.swing.JPanel {
             dataMap.put("sph_dist_right", claimModel.getSphDistReght());
             dataMap.put("sph_near_left", claimModel.getSphNearLeft());
             dataMap.put("sph_near_right", claimModel.getSphNearReght());
+            
+            dataMap.put("row_lens_name", claimModel.getLensName1());
+            dataMap.put("row_lens_barcode", claimModel.getLensBarcode());
+            dataMap.put("row_lens_category", claimModel.getLensCategory());
+            dataMap.put("row_lens_brand", claimModel.getLensBrand1());
+            dataMap.put("row_lens_unitprice", claimModel.getLensPrice());
+            dataMap.put("row_frame_name", claimModel.getFrameName());
+            dataMap.put("row_frame_barcode", claimModel.getFrameBarcode());
+            dataMap.put("row_frame_category", claimModel.getFrameCategory());
+            dataMap.put("row_frame_brand", claimModel.getFrameBrand());
+            dataMap.put("row_frame_unitprice", claimModel.getFramePrice());
+            dataMap.put("date", claimModel.getDate());
             
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, dataMap, openConnection);
 

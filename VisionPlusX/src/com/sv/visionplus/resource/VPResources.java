@@ -46,6 +46,7 @@ public class VPResources {
     public static final String REPORT_VIEWER = "icons/report/report.png";
     
     public static final String MESSANGER = "icons/message/message.png";
+    public static final String TASK = "icons/login/task.png";
     
     public static URL getImageUrl(String path) {
         return VPResources.class.getResource(path);
