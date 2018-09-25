@@ -13,26 +13,29 @@ public class CreateBirthday {
 
     String id = "";
     int month[] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    int mainYear=0;
 
     public CreateBirthday() {
-//        Scanner input = new Scanner(System.in);
-//        System.out.println("Enter Your NIC Number \nLike : 000000000V");
-//        id = input.next();
     }
 
     public CreateBirthday(String id) {
-//        Scanner input = new Scanner(System.in);
-//        System.out.println("Enter Your NIC Number \nLike : 000000000V");
-//        id = input.next();
-        this.id = id;
+        if (id.length()>10) {
+            this.id=id.substring(2);
+            mainYear=2000;
+        }else{
+            this.id = id;
+            mainYear=1900;
+            
+        }
+  
     }
 
     public int getYear() {
-        return (1900 + Integer.parseInt(id.substring(0, 2)));
+        return (mainYear + Integer.parseInt(id.substring(0, 2)));
     }
 
     public void setNIC(String id) {
-        id = id;
+        this.id = id;
     }
 
     public int getDays() {
@@ -72,12 +75,9 @@ public class CreateBirthday {
     }
 
     public boolean isBirthDay() {
-
-        
         if (getMonthDate()) {
             return true;
         }
-
         return false;
     }
 
@@ -92,7 +92,7 @@ public class CreateBirthday {
     }
 
     public static void main(String[] args) {
-        CreateBirthday N = new CreateBirthday("933013650V");
+        CreateBirthday N = new CreateBirthday("19933013650V");
 //        N.setNIC("933013650V");
         System.out.println("Your Deatials of Date of Birth from NIC Number");
         System.out.println("Year : " + N.getYear());
