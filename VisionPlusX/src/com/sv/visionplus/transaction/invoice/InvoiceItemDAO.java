@@ -10,62 +10,71 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+public class InvoiceItemDAO {
 
+    private static InvoiceItemDAO INSTANCE;
+    private final QueryUtil<TInvoiceItem> Query;
+    private Connection connection;
 
+    public static InvoiceItemDAO getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new InvoiceItemDAO();
+        }
 
-
-
-
-
-
-public class InvoiceItemDAO
-{
-  private static InvoiceItemDAO INSTANCE;
-  private final QueryUtil<TInvoiceItem> Query;
-  private Connection connection;
-  
-  public static InvoiceItemDAO getInstance()
-  {
-    if (INSTANCE == null) {
-      INSTANCE = new InvoiceItemDAO();
+        return INSTANCE;
     }
-    
-    return INSTANCE;
-  }
-  
-  public InvoiceItemDAO() {
-    Query = QueryUtil.getInstance(TInvoiceItem.class);
-    try {
-      connection = DatabaseUtil.getInstance().openConnection();
-    } catch (SQLException ex) {
-      Logger.getLogger(InvoiceItemDAO.class.getName()).log(Level.SEVERE, null, ex);
+
+    public InvoiceItemDAO() {
+        Query = QueryUtil.getInstance(TInvoiceItem.class);
+        try {
+            connection = DatabaseUtil.getInstance().openConnection();
+        } catch (SQLException ex) {
+            Logger.getLogger(InvoiceItemDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-  }
-  
-  boolean saveItems(Connection connection, List<TInvoiceItem> list, int invoiceId) {
-    int val = 0;
-    for (TInvoiceItem item : list) {
-      item.setInvoice(Integer.valueOf(invoiceId));
-      try {
-        Query.executeInsert(connection, item);
-      } catch (SQLException ex) {
-        Logger.getLogger(InvoiceItemDAO.class.getName()).log(Level.SEVERE, null, ex);
-      }
-      val++;
+
+    public boolean saveItems(Connection connection, List<TInvoiceItem> list, int invoiceId) {
+        int val = 0;
+        for (TInvoiceItem item : list) {
+            TInvoiceItem invItem = new TInvoiceItem();
+            invItem.setDiscount(item.getDiscount());
+            invItem.setItem(item.getItem());
+            invItem.setInvoice(invoiceId);
+            invItem.setNetValue(item.getNetValue());
+            invItem.setQty(item.getQty());
+            invItem.setUnitPrice(item.getUnitPrice());
+            invItem.setValue(item.getValue());
+            
+//            item.setInvoice(Integer.valueOf(invoiceId));
+            try {
+                Query.executeInsert(connection, invItem);
+            } catch (SQLException ex) {
+                Logger.getLogger(InvoiceItemDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            val++;
+        }
+        if (val == list.size()) {
+            return true;
+        }
+        return false;
     }
-    if (val == list.size()) {
-      return true;
+
+    public List<TInvoiceItem> searchItems(Integer indexNo) {
+        List<TInvoiceItem> list = new ArrayList();
+        try {
+            list = Query.executeSelect(connection, "invoice=?", new Object[]{indexNo});
+        } catch (SQLException ex) {
+            Logger.getLogger(InvoiceItemDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
     }
-    return false;
-  }
-  
-  List<TInvoiceItem> searchItems(Integer indexNo) {
-    List<TInvoiceItem> list = new ArrayList();
-    try {
-      list = Query.executeSelect(connection, "invoice=?", new Object[] { indexNo });
-    } catch (SQLException ex) {
-      Logger.getLogger(InvoiceItemDAO.class.getName()).log(Level.SEVERE, null, ex);
+
+    public int delete(Connection connection, Integer indexNo) {
+        try {
+            return Query.executeDelete(connection, "invoice=?", indexNo);
+        } catch (SQLException ex) {
+            Logger.getLogger(InvoiceItemDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
     }
-    return list;
-  }
 }

@@ -50,6 +50,15 @@ public class PatientInformationDAO {
         }
         return info;
     }
+    public TPatientInformation searchInvoiceByIndex(Integer indexNo) {
+        TPatientInformation info = new TPatientInformation();
+        try {
+            info = (TPatientInformation) Query.executeUniqueSelect(connection, "index_no=?", new Object[]{indexNo});
+        } catch (SQLException ex) {
+            Logger.getLogger(PatientInformationDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return info;
+    }
 
     int editPatientInformation(Connection connection,TPatientInformation patientInformation, int invoiceNo) {
         System.out.println("patient info dao"+invoiceNo);

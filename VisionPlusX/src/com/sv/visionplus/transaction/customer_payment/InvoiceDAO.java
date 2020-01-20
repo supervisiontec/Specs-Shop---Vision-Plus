@@ -58,6 +58,16 @@ public class InvoiceDAO {
         return invoice;
 
     }
+    public TInvoice searchInvoiceByBarcode(String barcode) {
+        TInvoice invoice = null;
+        try {
+            invoice = Query.executeUniqueSelect(connection, "barcode = ?", barcode);
+        } catch (SQLException ex) {
+            Logger.getLogger(InvoiceDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return invoice;
+
+    }
 
     int updateStatus(Connection connection, TInvoice invoice) {
         int InvoiceId = 0;

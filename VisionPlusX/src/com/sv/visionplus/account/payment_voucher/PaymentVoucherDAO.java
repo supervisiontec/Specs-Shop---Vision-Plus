@@ -8,10 +8,14 @@ package com.sv.visionplus.account.payment_voucher;
 import com.sv.visionplus.account.payment_voucher.model.PaymentVoucherMix;
 import com.sv.visionplus.util.database.DatabaseUtil;
 import com.sv.visionplus.util.database.QueryUtil;
+import com.sv.visionplus.util.formatter.FormatterUtil;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import visionplusx.logFile.LogFileDAO;
+import visionplusx.logFile.LogFileModel;
 
 /**
  *
@@ -64,6 +68,7 @@ public class PaymentVoucherDAO {
                         mix.getAccountTransaction().setAccount(accId);
                         int transactionId = AccountTransactionDAO.getInstance().saveTransaction(connection, mix.getAccountTransaction());
                         if (transactionId > 0) {
+                            LogFileDAO.getInstance().saveLog(connection, mix.getFileModel());
                             connection.commit();
                             return transactionId;
                         } else {

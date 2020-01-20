@@ -30,6 +30,7 @@
                   <Component id="btnInvList" alignment="1" max="32767" attributes="0"/>
                   <Component id="jButton11" alignment="1" max="32767" attributes="0"/>
                   <Component id="jButton1" max="32767" attributes="0"/>
+                  <Component id="btnStock" alignment="1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="pnlReport" pref="194" max="32767" attributes="0"/>
@@ -54,15 +55,17 @@
               <Component id="btnInvList" min="-2" pref="33" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnBestCustomer" min="-2" pref="36" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="btnBestUser" min="-2" pref="32" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="btnIssueFrame" min="-2" pref="31" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnGrnSummary" min="-2" pref="34" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnClaim" min="-2" pref="33" max="-2" attributes="0"/>
-              <EmptySpace pref="30" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnStock" min="-2" pref="33" max="-2" attributes="0"/>
+              <EmptySpace pref="31" max="32767" attributes="0"/>
               <Component id="jButton1" min="-2" pref="32" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -172,6 +175,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnStock">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Stock"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnStockActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

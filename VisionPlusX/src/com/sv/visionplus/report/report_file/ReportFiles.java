@@ -24,6 +24,7 @@ public class ReportFiles {
      public static final String CLAIM1 = "jasper_form/claim_1.jasper";
      public static final String CHANNEL_LIST = "jasper_form/channel-list.jasper";
      public static final String INVOICE_LIST = "jasper_form/invoice_list.jasper";
+     public static final String STOCK = "jasper_form/stock.jasper";
      
      public static URL getReportUrl(String path) {
         return ReportFiles.class.getResource(path);

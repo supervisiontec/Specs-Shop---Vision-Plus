@@ -60,7 +60,6 @@ public class PCChecking extends AbstractObjectCreator<TInvoice> {
         btnStatus = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        txtInvoiceNo = new com.sv.visionplus.util.component.textfield.CIntegerField();
         jButton1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         lblCount = new javax.swing.JLabel();
@@ -69,6 +68,7 @@ public class PCChecking extends AbstractObjectCreator<TInvoice> {
         tblItem = new javax.swing.JTable();
         jButton5 = new javax.swing.JButton();
         txtCount = new com.sv.visionplus.util.component.textfield.CIntegerField();
+        txtInvoiceNo = new com.sv.visionplus.util.component.textfield.CStringField();
 
         cmboChangeStatus.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -168,7 +168,7 @@ public class PCChecking extends AbstractObjectCreator<TInvoice> {
             }
         });
 
-        jLabel3.setText("Invoice No :");
+        jLabel3.setText("Invoice No /  Barcode ");
 
         jButton1.setText("Select");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -193,14 +193,14 @@ public class PCChecking extends AbstractObjectCreator<TInvoice> {
 
             },
             new String [] {
-                "#", "InvoiceNo", "Customer Name", "Status", "No of Items", "Invoice Amount", "Pay Amount", "Balance", "Date", " ", "Factory", "invoice No"
+                "#", "InvoiceNo", "Customer Name", "Status", "No of Items", "Invoice Amount", "Pay Amount", "Balance", "Date", " ", "Factory", "invoice No", "Barcode"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, true, false, false
+                false, false, false, false, false, false, false, false, false, true, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -237,48 +237,52 @@ public class PCChecking extends AbstractObjectCreator<TInvoice> {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jScrollPane1)
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(txtInvoiceNo, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
-                .addGap(33, 33, 33)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblCount, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtCount, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(chxBoxAllSelect)
-                .addGap(22, 22, 22))
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(txtInvoiceNo, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)
+                        .addGap(33, 33, 33)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCount, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblCount, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(125, 125, 125)
+                        .addComponent(chxBoxAllSelect)
+                        .addGap(22, 22, 22))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(txtInvoiceNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5)
-                    .addComponent(txtCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(lblCount, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jButton5)
+                            .addComponent(txtCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)
+                            .addComponent(lblCount, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1)
+                            .addComponent(txtInvoiceNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(chxBoxAllSelect)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(chxBoxAllSelect)
-                .addGap(399, 399, 399))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -306,13 +310,10 @@ public class PCChecking extends AbstractObjectCreator<TInvoice> {
 
     private void chxBoxAllSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chxBoxAllSelectActionPerformed
         if (value == 2) {
-
             if (chxBoxAllSelect.isSelected()) {
                 setCheckBox(true);
-
             } else {
                 setCheckBox(false);
-
             }
         }
     }//GEN-LAST:event_chxBoxAllSelectActionPerformed
@@ -321,7 +322,6 @@ public class PCChecking extends AbstractObjectCreator<TInvoice> {
         if (value == 2) {
             Object selectedItem = cmboChangeStatus.getSelectedItem();
             if (selectedItem == null) {
-
             } else {
                 String status = cmboChangeStatus.getSelectedItem().toString();
                 if ("Reserved From Customer".equals(status)) {
@@ -360,13 +360,13 @@ public class PCChecking extends AbstractObjectCreator<TInvoice> {
             }
             int updateCount = setUpdate(idList);
             if (updateCount > 0) {
-                JOptionPane.showMessageDialog(this, updateCount + " invoices done");
+                JOptionPane.showMessageDialog(this, updateCount + " invoices done","Success Message",JOptionPane.INFORMATION_MESSAGE);
                 resetFields();
             } else {
-                JOptionPane.showMessageDialog(this, "No invoice Selected");
+                JOptionPane.showMessageDialog(this, "No invoice Selected","Error Message",JOptionPane.ERROR_MESSAGE);
             }
         } else {
-            JOptionPane.showMessageDialog(this, "No invoice Selected");
+            JOptionPane.showMessageDialog(this, "No invoice Selected","Error Message",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnStatusActionPerformed
 
@@ -385,17 +385,30 @@ public class PCChecking extends AbstractObjectCreator<TInvoice> {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String invoiceNo = txtInvoiceNo.getText();
-        boolean find=false;
-        if (model.getRowCount() > 0) {
-            for (int i = 0; i < model.getRowCount(); i++) {
-                if (model.getValueAt(i, 1).toString().equals(invoiceNo)) {
-                    JOptionPane.showMessageDialog(null, "The Invoice is Selected ("+invoiceNo+")");
-                    model.setValueAt(true, i, 9);
-                    find=true;
+        Boolean check=false;
+        
+        if (!"".equals(invoiceNo)) {
+            if (model.getRowCount() > 0) {
+                for (int i = 0; i < model.getRowCount(); i++) {
+                    if (model.getValueAt(i, 1).toString().equals(invoiceNo) || model.getValueAt(i, 12).toString().equals(invoiceNo)) {
+                        JOptionPane.showMessageDialog(null, "The Invoice is Selected (" + invoiceNo + ")","Success Message",JOptionPane.INFORMATION_MESSAGE);
+                        model.setValueAt(true, i, 9);
+                        txtInvoiceNo.requestFocus();
+                        check=true;
+                        return;
+                    }
                 }
+                if (!check) {
+                    JOptionPane.showMessageDialog(null, "Cant find invoice from "+invoiceNo,"Error Message",JOptionPane.ERROR_MESSAGE);
+                    txtInvoiceNo.requestFocus();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Empty Rows !","Error Message",JOptionPane.ERROR_MESSAGE);
+                txtInvoiceNo.requestFocus();
             }
-            if (!find) {
-            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Empty Invoice no or Barcode !","Error Message",JOptionPane.ERROR_MESSAGE);
+            txtInvoiceNo.requestFocus();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -515,7 +528,7 @@ public class PCChecking extends AbstractObjectCreator<TInvoice> {
     private javax.swing.JTable tblItem;
     private com.sv.visionplus.util.component.textfield.CIntegerField txtCount;
     private com.sv.visionplus.util.component.textfield.CDateField txtDate;
-    private com.sv.visionplus.util.component.textfield.CIntegerField txtInvoiceNo;
+    private com.sv.visionplus.util.component.textfield.CStringField txtInvoiceNo;
     // End of variables declaration//GEN-END:variables
     private AbstractTransactionForm<TInvoice> transactionForm;
     private DefaultTableModel model;
@@ -593,11 +606,11 @@ public class PCChecking extends AbstractObjectCreator<TInvoice> {
                         return updateInvoice(idList, fac, "Reserved From Customer", txtDate.getCValue());
                     }
 
-                    JOptionPane.showMessageDialog(this, "Some Error... Refersh the App");
+                    JOptionPane.showMessageDialog(this, "Some Error... Refersh the App","Error Message",JOptionPane.ERROR_MESSAGE);
                 }
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Select a Factory..");
+            JOptionPane.showMessageDialog(this, "Select a Factory..","Error Message",JOptionPane.ERROR_MESSAGE);
         }
         return 0;
     }
@@ -624,7 +637,8 @@ public class PCChecking extends AbstractObjectCreator<TInvoice> {
             invoice.getInvoiceDate(),
             false,
             invoice.getFactory(),
-            invoice.getIndexNo()
+            invoice.getIndexNo(),
+            invoice.getBarcode()
         };
         model.addRow(rowdata);
 

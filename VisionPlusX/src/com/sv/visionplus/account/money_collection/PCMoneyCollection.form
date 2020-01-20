@@ -17,11 +17,9 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                      <Component id="jPanel5" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="jPanel5" max="32767" attributes="0"/>
                   <Component id="jPanel2" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -54,7 +52,7 @@
                       <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               <Component id="jPanel6" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -117,8 +115,8 @@
             <Component class="javax.swing.JTable" name="tblGrnPayment">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="5" rowCount="4">
-                    <Column editable="false" title=" #" type="java.lang.Object"/>
+                  <Table columnCount="5" rowCount="0">
+                    <Column editable="false" title=" Inv Index" type="java.lang.Object"/>
                     <Column editable="false" title="Date" type="java.lang.Object"/>
                     <Column editable="false" title="Cash" type="java.lang.Object"/>
                     <Column editable="false" title="Cheque" type="java.lang.Object"/>
@@ -201,7 +199,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" pref="68" max="32767" attributes="0"/>
                   <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                   <Component id="txtvoucherAmount" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -290,7 +288,7 @@
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="txtCustomerPayment" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="86" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="94" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -316,14 +314,15 @@
             <Component class="javax.swing.JTable" name="tblInvoicePayment">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="7" rowCount="4">
-                    <Column editable="true" title="#" type="java.lang.Object"/>
+                  <Table columnCount="8" rowCount="0">
+                    <Column editable="false" title="Inv Index" type="java.lang.Object"/>
+                    <Column editable="true" title="Number" type="java.lang.Object"/>
                     <Column editable="false" title="Date" type="java.lang.Object"/>
                     <Column editable="false" title="Cash" type="java.lang.Object"/>
                     <Column editable="false" title="Card" type="java.lang.Object"/>
                     <Column editable="false" title="Cheque" type="java.lang.Object"/>
-                    <Column editable="true" title="Total Amount" type="java.lang.Object"/>
-                    <Column editable="true" title="Is Advance" type="java.lang.Object"/>
+                    <Column editable="false" title="Total Amount" type="java.lang.Object"/>
+                    <Column editable="false" title="Is Advance" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -408,60 +407,61 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="140" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel12" alignment="1" min="-2" pref="144" max="-2" attributes="0"/>
                       <Component id="jLabel14" alignment="1" min="-2" pref="144" max="-2" attributes="0"/>
                       <Component id="jLabel11" alignment="1" min="-2" pref="142" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="txtChannelAmount" alignment="1" min="-2" pref="101" max="-2" attributes="0"/>
-                      <Component id="txtTotalReserved" alignment="1" min="-2" pref="101" max="-2" attributes="0"/>
-                      <Component id="txtTotalInvoicePayment" alignment="1" min="-2" pref="101" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="txtTotalInvoicePayment" max="32767" attributes="0"/>
+                      <Component id="txtChannelAmount" alignment="1" max="32767" attributes="0"/>
+                      <Component id="txtTotalReserved" alignment="1" min="-2" pref="96" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel15" min="-2" pref="146" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="jLabel16" max="32767" attributes="0"/>
-                              <Component id="jLabel13" pref="146" max="32767" attributes="0"/>
+                              <Component id="jLabel13" min="-2" pref="146" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="txtGrnPaymentAmount" min="-2" pref="91" max="-2" attributes="0"/>
-                      <Component id="txtVoucherAmount" min="-2" pref="91" max="-2" attributes="0"/>
+                      <Component id="txtVoucherAmount" alignment="0" min="-2" pref="91" max="-2" attributes="0"/>
                       <Component id="txtTotalReleaseValue" alignment="0" min="-2" pref="91" max="-2" attributes="0"/>
+                      <Component id="txtGrnPaymentAmount" alignment="0" min="-2" pref="91" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jLabel6" max="32767" attributes="0"/>
+                          <Component id="jLabel1" max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="lblCashInHand" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="169" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="lblBefore" max="32767" attributes="0"/>
+                      <Component id="lblTodayBalance" alignment="0" max="32767" attributes="0"/>
+                      <Component id="lblCashInHand" alignment="0" pref="158" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="lblCashInHand" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel1" alignment="0" min="-2" pref="29" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <Component id="txtGrnPaymentAmount" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -472,6 +472,23 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="txtTotalReleaseValue" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="lblBefore" max="32767" attributes="0"/>
+                              <Component id="jLabel5" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblTodayBalance" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCashInHand" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
@@ -491,7 +508,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -550,11 +567,40 @@
             <Property name="text" type="java.lang.String" value="Cash In Hand :"/>
           </Properties>
         </Component>
+        <Component class="javax.swing.JLabel" name="lblBefore">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="0"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="text" type="java.lang.String" value="0.00"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel5">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Before Balance :"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel6">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Today Balance :"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblTodayBalance">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="0"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="text" type="java.lang.String" value="0.00"/>
+          </Properties>
+        </Component>
         <Component class="javax.swing.JLabel" name="lblCashInHand">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="24" style="1"/>
+              <Font name="Tahoma" size="14" style="1"/>
             </Property>
+            <Property name="horizontalAlignment" type="int" value="4"/>
             <Property name="text" type="java.lang.String" value="0.00"/>
           </Properties>
         </Component>
@@ -589,7 +635,7 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="193" max="32767" attributes="0"/>
                   <Component id="txtChanelAmount" min="-2" pref="18" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -614,7 +660,7 @@
             <Component class="javax.swing.JTable" name="tblChannel">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="4" rowCount="4">
+                  <Table columnCount="4" rowCount="0">
                     <Column editable="false" title=" #" type="java.lang.Object"/>
                     <Column editable="false" title="Date" type="java.lang.Object"/>
                     <Column editable="false" title="Channel Date" type="java.lang.Object"/>

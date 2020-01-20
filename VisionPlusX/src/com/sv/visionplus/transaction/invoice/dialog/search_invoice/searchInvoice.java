@@ -15,6 +15,7 @@ import com.sv.visionplus.transaction.invoice.model.TInvoice;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -76,18 +77,25 @@ public class searchInvoice extends javax.swing.JDialog {
 
         tblInvoice.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "#", "Invoice No", "Date", "Name", "NIC", "Address", "Mobile", "indexNo", "Invoice Amount", "payAmount", "balance"
+                "#", "Invoice No", "Date", "Name", "NIC", "Address", "Mobile", "indexNo", "Invoice Amount", "Pay Amount", "Balance ", "Is Delete"
             }
         ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -212,11 +220,11 @@ public class searchInvoice extends javax.swing.JDialog {
             customer.setContactNo(model.getValueAt(tblInvoice.getSelectedRow(), 6).toString());
             customer.setIndexNo(Integer.parseInt(model.getValueAt(tblInvoice.getSelectedRow(), 7).toString()));
             invoice.setAmount(Double.parseDouble(model.getValueAt(tblInvoice.getSelectedRow(), 8).toString()));
-
+            invoice.setIsdelete(Boolean.valueOf(model.getValueAt(tblInvoice.getSelectedRow(), 11).toString()));
             pcInvoice.setValue(invoice, customer);
             dispose();
         } else {
-            javax.swing.JOptionPane.showMessageDialog(this, "Select a row");
+            javax.swing.JOptionPane.showMessageDialog(this, "Select a row","Error Message",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnSelectActionPerformed
 
@@ -349,7 +357,8 @@ public class searchInvoice extends javax.swing.JDialog {
             customer.getIndexNo(),
             invoice.getAmount(),
             payValue,
-            invoice.getAmount()- payValue
+            invoice.getAmount()- payValue,
+            invoice.getIsdelete()
         };
         if (chxNormal.isSelected()) {
             if ("NORMAL INVOICE".equals(invoice.getStatus2())) {

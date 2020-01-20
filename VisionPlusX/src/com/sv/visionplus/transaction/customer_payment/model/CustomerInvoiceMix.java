@@ -14,7 +14,7 @@ import java.util.Date;
  */
 @VPTable("customer_invoice")
 public class CustomerInvoiceMix {
-    
+
     private Integer invoice_no;
     private Date invoice_date;
     private String status;
@@ -23,6 +23,24 @@ public class CustomerInvoiceMix {
     private String contact_no;
     private String nic;
     private double amount;
+    private String barcode;
+    private Boolean isdelete;
+
+    public String getBarcode() {
+        return barcode;
+    }
+
+    public void setBarcode(String barcode) {
+        this.barcode = barcode;
+    }
+
+    public Boolean getIsdelete() {
+        return isdelete;
+    }
+
+    public void setIsdelete(Boolean isdelete) {
+        this.isdelete = isdelete;
+    }
 
     public double getAmount() {
         return amount;
@@ -88,5 +106,4 @@ public class CustomerInvoiceMix {
         this.nic = nic;
     }
 
-   
 }

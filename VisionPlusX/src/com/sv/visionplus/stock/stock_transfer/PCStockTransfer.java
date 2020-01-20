@@ -251,11 +251,11 @@ public class PCStockTransfer extends AbstractObjectCreator<StockTransferModelMix
         if (txtQty.getCValue() > 0) {
             if (mix.getQtyOnHand() >= txtQty.getCValue()) {
                 addData(mix);
-            }else{
-            JOptionPane.showMessageDialog(null, "Out of Range Qty");
+            } else {
+                JOptionPane.showMessageDialog(null, "Out of Range Qty","Error Message",JOptionPane.ERROR_MESSAGE);
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Insert Qty..");
+            JOptionPane.showMessageDialog(null, "Insert Qty..","Error Message",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -274,9 +274,9 @@ public class PCStockTransfer extends AbstractObjectCreator<StockTransferModelMix
 
     @Override
     public void setNewMode() {
-        mix=new StockTransferMix();
-        mix1=new StockTransferModelMix();
-        
+        mix = new StockTransferMix();
+        mix1 = new StockTransferModelMix();
+
         cmboFrom.setEnabled(true);
         cmboTo.setEnabled(true);
 
@@ -365,9 +365,8 @@ public class PCStockTransfer extends AbstractObjectCreator<StockTransferModelMix
 
     @Override
     protected void setValueAbstract(StockTransferModelMix mix) {
-    this.mix1=mix;
+        this.mix1 = mix;
     }
-    
 
     @Override
     protected StockTransferModelMix getValueAbstract() {

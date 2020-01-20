@@ -43,21 +43,26 @@ public class PCLogFile extends AbstractObjectCreator<LogFileModel> {
         txtUserName = new com.sv.visionplus.util.component.textfield.CStringField();
         jLabel4 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        chkIsPpecial = new javax.swing.JRadioButton();
 
         tblLog.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "Date", "Time", "User Name", "Form Name", "Remarks", "Type", "Value "
+                "Date", "Time", "User Name", "Form Name", "Remarks", "Type", "Is Special", "Value "
             }
         ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class, java.lang.Object.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -83,6 +88,8 @@ public class PCLogFile extends AbstractObjectCreator<LogFileModel> {
             }
         });
 
+        chkIsPpecial.setText("Is Special");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -100,6 +107,8 @@ public class PCLogFile extends AbstractObjectCreator<LogFileModel> {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(chkIsPpecial, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSearch)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -121,9 +130,10 @@ public class PCLogFile extends AbstractObjectCreator<LogFileModel> {
                     .addComponent(btnSearch)
                     .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addComponent(chkIsPpecial))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -131,12 +141,16 @@ public class PCLogFile extends AbstractObjectCreator<LogFileModel> {
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         String date = com.sv.visionplus.util.formatter.FormatterUtil.getInstance().formatDate(txtDate.getDate());
         String user = txtUserName.getCValue();
-        java.util.List<LogFileModel> searchUser = LogFileDAO.getInstance().searchUser(date, user);
+        boolean special=false;
+        if (chkIsPpecial.isSelected()) {
+            special=true;
+        }
+        java.util.List<LogFileModel> searchUser = LogFileDAO.getInstance().searchUser(date, user,special);
         setDate(searchUser);
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      setLog();
+        setLog();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     @Override
@@ -146,7 +160,7 @@ public class PCLogFile extends AbstractObjectCreator<LogFileModel> {
 
     @Override
     public void setNewMode() {
-         logFile = new LogFileModel();
+        logFile = new LogFileModel();
     }
 
     @Override
@@ -182,6 +196,7 @@ public class PCLogFile extends AbstractObjectCreator<LogFileModel> {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSearch;
+    private javax.swing.JRadioButton chkIsPpecial;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -200,7 +215,11 @@ public class PCLogFile extends AbstractObjectCreator<LogFileModel> {
 
     private void setDate(List<LogFileModel> logs) {
         model.setRowCount(0);
-        for (LogFileModel log : logs) {
+        logs.stream().map((log) -> {
+            Boolean is_special = false;
+            if ("SPECIAL".equals(log.getType())) {
+                is_special = true;
+            }
             Object[] rowData = {
                 log.getDate(),
                 log.getTime(),
@@ -208,8 +227,11 @@ public class PCLogFile extends AbstractObjectCreator<LogFileModel> {
                 log.getFormName(),
                 log.getRemarks(),
                 log.getTransactionType(),
+                is_special,
                 log.getValue()};
+            return rowData;
+        }).forEachOrdered((rowData) -> {
             model.addRow(rowData);
-        }
+        });
     }
 }

@@ -250,16 +250,16 @@ public class PCSupplier extends javax.swing.JDialog {
 
                 int saveSupplier = SupplierService.getInstance().saveSupplier(supplier);
                 if (saveSupplier > 0) {
-                    JOptionPane.showMessageDialog(null, "Success");
+                    JOptionPane.showMessageDialog(null, "Success","Success Message",JOptionPane.INFORMATION_MESSAGE);
                     supplier.setIndexNo(saveSupplier);
                     grn.setSupplier(this.supplier);
                     this.dispose();
 
                 } else {
-                    JOptionPane.showMessageDialog(null, "Some Error or already exists");
+                    JOptionPane.showMessageDialog(null, "Some Error or already exists","Error Message",JOptionPane.ERROR_MESSAGE);
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Fill component to add new Supplier");
+                JOptionPane.showMessageDialog(null, "Fill components to add new Supplier","Error Message",JOptionPane.ERROR_MESSAGE);
             }
         } catch (SQLException ex) {
             Logger.getLogger(PCSupplier.class.getName()).log(Level.SEVERE, null, ex);

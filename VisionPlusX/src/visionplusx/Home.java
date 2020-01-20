@@ -27,6 +27,8 @@ import com.sv.visionplus.transaction.check_In.CheckingForm;
 import com.sv.visionplus.transaction.customer_payment.CustomerPaymentForm;
 import com.sv.visionplus.transaction.grn.GrnForm;
 import com.sv.visionplus.transaction.invoice.InvoiceForm;
+import com.sv.visionplus.transaction.invoice_detail.InvoiceDetailForm;
+import com.sv.visionplus.transaction.invoice_tab.InvoiceFormTab;
 import com.sv.visionplus.transaction.supplier_payment.SupplierPaymentForm;
 import com.sv.visionplus.util.backup.BackupRestore;
 import com.sv.visionplus.util.component.main_frame.DefaultMainframe;
@@ -68,7 +70,7 @@ public class Home extends DefaultMainframe {
     protected void createGUI() {
         createMaster();
         setTitle("Vision Plus Management System");
-        ImageIcon imageIcon = new ImageIcon(getImageUrl(TASK)); 
+        ImageIcon imageIcon = new ImageIcon(getImageUrl(TASK));
         setIconImage(imageIcon.getImage());
     }
 
@@ -90,48 +92,64 @@ public class Home extends DefaultMainframe {
     }
 
     private void createMaster() {
-        addTask("Master");
 
-        addBand("Transactors", getImageUrl(MASTER_CUSTOMER));
-        addButton("Customer", getImageUrl(MASTER_CUSTOMER), DefaultMainframe.ElementPriority.TOP, getActionListener(CustomerFormGUI.class));
+        if ("User".equals(Login.getInstance().user.getType()) || "Admin".equals(Login.getInstance().user.getType())) {
+            addTask("Master");
+            addBand("Customer", getImageUrl(MASTER_CUSTOMER));
+            addButton("Customer", getImageUrl(MASTER_CUSTOMER), DefaultMainframe.ElementPriority.TOP, getActionListener(CustomerFormGUI.class));
+            addBand("Item", getImageUrl(MASTER_ITEM));
+            addButton("Item", getImageUrl(MASTER_ITEM), DefaultMainframe.ElementPriority.TOP, getActionListener(ItemFormGUI.class));
+        }
         if ("Admin".equals(Login.getInstance().user.getType())) {
+            addBand("Supplier", getImageUrl(MASTER_SUPPLIER));
             addButton("Supplier", getImageUrl(MASTER_SUPPLIER), DefaultMainframe.ElementPriority.TOP, getActionListener(SupplierFormGUI.class));
+            addBand("User", getImageUrl(MASTER_USER));
             addButton("User", getImageUrl(MASTER_USER), DefaultMainframe.ElementPriority.TOP, getActionListener(UserFormGUI.class));
         }
-        addBand("Item", getImageUrl(MASTER_ITEM));
-        addButton("Item", getImageUrl(MASTER_ITEM), DefaultMainframe.ElementPriority.TOP, getActionListener(ItemFormGUI.class));
 
         if ("Admin".equals(Login.getInstance().user.getType())) {
             addBand("Bank", getImageUrl(MASTER_BRANCH));
             addButton("Bank Branch", getImageUrl(MASTER_BRANCH), DefaultMainframe.ElementPriority.TOP, getActionListener(BankBranchFormGUI.class));
         }
-
-        addBand("Factory", getImageUrl(MASTER_BRANCH));
-        addButton("Factory", getImageUrl(MASTER_BRANCH), DefaultMainframe.ElementPriority.TOP, getActionListener(FactoryFormGUI.class));
+        if ("User".equals(Login.getInstance().user.getType()) || "Admin".equals(Login.getInstance().user.getType())) {
+            addBand("Factory", getImageUrl(MASTER_BRANCH));
+            addButton("Factory", getImageUrl(MASTER_BRANCH), DefaultMainframe.ElementPriority.TOP, getActionListener(FactoryFormGUI.class));
+        }
 
         addTask("Transaction");
-
         addBand("Transaction", getImageUrl(TRANSACTION_INVOICE));
-        addButton("Invoice", getImageUrl(TRANSACTION_INVOICE), DefaultMainframe.ElementPriority.TOP, getActionListener(InvoiceForm.class));
-        addButton("GRN", getImageUrl(TRANSACTION_GRN), DefaultMainframe.ElementPriority.TOP, getActionListener(GrnForm.class));
+        if ("User".equals(Login.getInstance().user.getType()) || "Admin".equals(Login.getInstance().user.getType())) {
+            addButton("Invoice", getImageUrl(TRANSACTION_INVOICE), DefaultMainframe.ElementPriority.TOP, getActionListener(InvoiceForm.class));
+        }
+        addButton("Invoice Detail", getImageUrl(TRANSACTION_INVOICE_DETAIL), DefaultMainframe.ElementPriority.TOP, getActionListener(InvoiceDetailForm.class));
 
-        addBand("Payment", getImageUrl(TRANSACTION_PAYMENT));
-        addButton("Customer Payment", getImageUrl(TRANSACTION_PAYMENT), DefaultMainframe.ElementPriority.TOP, getActionListener(CustomerPaymentForm.class));
+        if ("Admin".equals(Login.getInstance().user.getType()) || "Tab".equals(Login.getInstance().user.getType())) {
+            addButton("Tab Invoice", getImageUrl(TRANSACTION_INVOICE_TAB), DefaultMainframe.ElementPriority.TOP, getActionListener(InvoiceFormTab.class));
+        }
 
+        if ("User".equals(Login.getInstance().user.getType()) || "Admin".equals(Login.getInstance().user.getType())) {
+            addButton("GRN", getImageUrl(TRANSACTION_GRN), DefaultMainframe.ElementPriority.TOP, getActionListener(GrnForm.class));
+            addBand("Payment", getImageUrl(TRANSACTION_PAYMENT));
+            addButton("Customer Payment", getImageUrl(TRANSACTION_PAYMENT), DefaultMainframe.ElementPriority.TOP, getActionListener(CustomerPaymentForm.class));
+        }
         if ("Admin".equals(Login.getInstance().user.getType())) {
             addButton("Supplier Payment", getImageUrl(SUPPLIER_PAYMENT), DefaultMainframe.ElementPriority.TOP, getActionListener(SupplierPaymentForm.class));
         }
 
-        addBand("Check in", getImageUrl(TRANSACTION_PAYMENT));
-        addButton("Check in", getImageUrl(TRANSACTION_CHECK), DefaultMainframe.ElementPriority.TOP, getActionListener(CheckingForm.class));
-
-        addTask("Account");
-
-        addBand("Account", getImageUrl(ACCOUNT_MONEY));
+        if ("User".equals(Login.getInstance().user.getType()) || "Admin".equals(Login.getInstance().user.getType())) {
+            addBand("Check in", getImageUrl(TRANSACTION_PAYMENT));
+            addButton("Check in", getImageUrl(TRANSACTION_CHECK), DefaultMainframe.ElementPriority.TOP, getActionListener(CheckingForm.class));
+        }
+        if ("User".equals(Login.getInstance().user.getType()) || "Admin".equals(Login.getInstance().user.getType())) {
+            addTask("Account");
+            addBand("Account", getImageUrl(ACCOUNT_MONEY));
+        }
         if ("Admin".equals(Login.getInstance().user.getType())) {
             addButton("Money Collection", getImageUrl(ACCOUNT_MONEY), DefaultMainframe.ElementPriority.TOP, getActionListener(MoneyCollectionForm.class));
         }
-        addButton("Payment Vouchers", getImageUrl(ACCOUNT_VOUCHER), DefaultMainframe.ElementPriority.TOP, getActionListener(PaymentVoucherForm.class));
+        if ("User".equals(Login.getInstance().user.getType()) || "Admin".equals(Login.getInstance().user.getType())) {
+            addButton("Payment Vouchers", getImageUrl(ACCOUNT_VOUCHER), DefaultMainframe.ElementPriority.TOP, getActionListener(PaymentVoucherForm.class));
+        }
         if ("Admin".equals(Login.getInstance().user.getType())) {
             addTask("Stock");
 
@@ -146,36 +164,37 @@ public class Home extends DefaultMainframe {
             addButton("Log File", getImageUrl(LOG_FILE), DefaultMainframe.ElementPriority.TOP, getActionListener(LogFileForm.class));
         }
 
-        addTask("Channel");
+        if ("User".equals(Login.getInstance().user.getType()) || "Admin".equals(Login.getInstance().user.getType())) {
+            addTask("Channel");
+        }
         if ("Admin".equals(Login.getInstance().user.getType())) {
             addBand("Doctor", getImageUrl(DOCTOR));
             addButton("Doctor", getImageUrl(DOCTOR), DefaultMainframe.ElementPriority.TOP, getActionListener(DoctorFormGUI.class));
         }
-        addBand("Channel Registration", getImageUrl(CHANNEL));
-        addButton("Channel", getImageUrl(CHANNEL), DefaultMainframe.ElementPriority.TOP, getActionListener(ChannelFormGUI.class));
+        if ("User".equals(Login.getInstance().user.getType()) || "Admin".equals(Login.getInstance().user.getType())) {
+            addBand("Channel Registration", getImageUrl(CHANNEL));
+            addButton("Channel", getImageUrl(CHANNEL), DefaultMainframe.ElementPriority.TOP, getActionListener(ChannelFormGUI.class));
 
-        addTask("Backup");
+            addTask("Backup");
 
-        addBand("Save Data", getImageUrl(BACKUP_EXPORT));
-        addButton("Backup", getImageUrl(BACKUP_EXPORT), DefaultMainframe.ElementPriority.TOP, getActionListener(BackupRestore.class));
+            addBand("Save Data", getImageUrl(BACKUP_EXPORT));
+            addButton("Backup", getImageUrl(BACKUP_EXPORT), DefaultMainframe.ElementPriority.TOP, getActionListener(BackupRestore.class));
 
-        addTask("Log Out");
+            addTask("Log Out");
 
-        addBand("Logout", getImageUrl(LOG_OUT));
-        addButton("Logout", getImageUrl(LOG_OUT), DefaultMainframe.ElementPriority.TOP, getActionListener(LogOutForm.class));
+            addBand("Logout", getImageUrl(LOG_OUT));
+            addButton("Logout", getImageUrl(LOG_OUT), DefaultMainframe.ElementPriority.TOP, getActionListener(LogOutForm.class));
 
-//        if ("Admin".equals(Login.getInstance().user.getType())) {
             addTask("Reports");
 
             addBand("Reports", getImageUrl(REPORT_VIEWER));
             addButton("reports", getImageUrl(REPORT_VIEWER), DefaultMainframe.ElementPriority.TOP, getActionListener(report_panel.class));
-//        }
 
-        addTask("Messanger");
+            addTask("Messanger");
 
-        addBand("Messanger", getImageUrl(MESSANGER));
-        addButton("Messanger", getImageUrl(MESSANGER), DefaultMainframe.ElementPriority.TOP, getActionListener(Messanger.class));
-
+            addBand("Messanger", getImageUrl(MESSANGER));
+            addButton("Messanger", getImageUrl(MESSANGER), DefaultMainframe.ElementPriority.TOP, getActionListener(Messanger.class));
+        }
     }
 
     private ContentPanel contentPanel;

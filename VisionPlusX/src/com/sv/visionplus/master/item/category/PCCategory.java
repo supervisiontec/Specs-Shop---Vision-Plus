@@ -115,7 +115,7 @@ public class PCCategory extends javax.swing.JDialog {
             int save = CategoryService.getInstance().save(category);
             if (save > 0) {
                 getAllCategory();
-                JOptionPane.showMessageDialog(this, "Successfully Saved..!!!");
+                JOptionPane.showMessageDialog(this, "Successfully Saved","Success Message",JOptionPane.INFORMATION_MESSAGE);
                 category.setIndexNo(1);
                 pcItem.setCategory(category);
                 this.dispose();

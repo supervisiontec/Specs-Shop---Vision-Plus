@@ -158,7 +158,7 @@ public class PCItem extends javax.swing.JDialog {
             setTableValue();
             this.dispose();
         } else {
-            JOptionPane.showMessageDialog(this, "Select a row.");
+            JOptionPane.showMessageDialog(this, "Select a row.","Error Message",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnSelectActionPerformed
 

@@ -12,6 +12,7 @@ import com.sv.visionplus.transaction.invoice.SearchItemBulkDAO;
 import com.sv.visionplus.transaction.invoice.SearchItemFrontDAO;
 import com.sv.visionplus.transaction.invoice.model.SearchItemBulk;
 import com.sv.visionplus.transaction.invoice.model.SearchItemFront;
+import java.util.Comparator;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -280,7 +281,7 @@ public final class ItemDialog extends javax.swing.JDialog {
             this.dispose();
 
         } else {
-            JOptionPane.showMessageDialog(this, "Select a Row");
+            JOptionPane.showMessageDialog(this, "Select a Row","Error Message",JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -368,7 +369,7 @@ public final class ItemDialog extends javax.swing.JDialog {
             txtSalesPrice.setText(salePrice + "");
             txtQtyOnHand.setText(qtyOnHand + "");
         } else {
-            JOptionPane.showMessageDialog(this, "Select a Row");
+            JOptionPane.showMessageDialog(this, "Select a Row","Error Message",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_tblItemMouseClicked
 
@@ -478,14 +479,17 @@ public final class ItemDialog extends javax.swing.JDialog {
     private void setDataToRadio() {
         if (rdoFrontStock.isSelected()) {
             List<SearchItemFront> item = SearchItemFrontDAO.getInstance().getItem();
+            item.sort(Comparator.comparing(SearchItemFront::getName));
             addItemFront(item);
 
         } else if (rdoBulkStock.isSelected()) {
             List<SearchItemBulk> item = SearchItemBulkDAO.getInstance().getItem();
+            item.sort(Comparator.comparing(SearchItemBulk::getName));
             addItemBulk(item);
 
         } else if (rdoNonStock.isSelected()) {
             List<SearchItemBulk> item = SearchItemBulkDAO.getInstance().getItem();
+            item.sort(Comparator.comparing(SearchItemBulk::getName));
             addItemNon(item);
         }
     }

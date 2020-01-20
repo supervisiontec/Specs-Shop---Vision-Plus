@@ -4,10 +4,6 @@ import com.sv.visionplus.util.database.annotation.VPId;
 import com.sv.visionplus.util.database.annotation.VPTable;
 
 
-
-
-
-
 @VPTable("m_account")
 public class MAccount
 {

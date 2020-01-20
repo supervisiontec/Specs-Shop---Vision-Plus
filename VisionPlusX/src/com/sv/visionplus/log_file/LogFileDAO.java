@@ -51,12 +51,21 @@ public class LogFileDAO {
         return list;
     }
 
-    List<LogFileModel> searchUser(String date, String user) {
+    List<LogFileModel> searchUser(String date, String user, Boolean special) {
         List<LogFileModel> list = new ArrayList();
-        try {
-            list = queryUtil.executeSelect(connection, "date=? or name=? ", new Object[]{date, user});
-        } catch (SQLException ex) {
-            Logger.getLogger(LogFileDAO.class.getName()).log(Level.SEVERE, null, ex);
+
+        if (special) {
+            try {
+                list = queryUtil.executeSelect(connection, "(date=? or name=?) and type=? ", new Object[]{date, user,"SPECIAL"});
+            } catch (SQLException ex) {
+                Logger.getLogger(LogFileDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            try {
+                list = queryUtil.executeSelect(connection, "date=? or name=?", new Object[]{date, user});
+            } catch (SQLException ex) {
+                Logger.getLogger(LogFileDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         return list;
     }

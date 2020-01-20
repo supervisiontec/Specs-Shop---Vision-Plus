@@ -14,11 +14,12 @@ public class ChannelModelMix {
     private String patientName;
     private String mobile;
     private double amount;
+    private double payAmount;
 
     public ChannelModelMix() {
     }
 
-    public ChannelModelMix(Integer indexNo, Integer doctorId, String doctorName, Date date, Date channelDate, String channelId, String time, String patientName, String mobile, double amount) {
+    public ChannelModelMix(Integer indexNo, Integer doctorId, String doctorName, Date date, Date channelDate, String channelId, String time, String patientName, String mobile, double amount, double payAmount) {
         this.indexNo = indexNo;
         this.doctorId = doctorId;
         this.doctorName = doctorName;
@@ -29,6 +30,15 @@ public class ChannelModelMix {
         this.patientName = patientName;
         this.mobile = mobile;
         this.amount = amount;
+        this.payAmount = payAmount;
+    }
+
+    public double getPayAmount() {
+        return payAmount;
+    }
+
+    public void setPayAmount(double payAmount) {
+        this.payAmount = payAmount;
     }
 
     public Integer getIndexNo() {

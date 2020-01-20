@@ -21,23 +21,27 @@ public class InvoiceService
         if (invoiceMix != null) {
             if (invoiceMix.getInvoice().getStatus2().equals("EDITED INVOICE")) {
                 InvoiceDAO.getInstance().saveInvoice(invoiceMix);
-            } else {
+            } 
+            else if (invoiceMix.getInvoice().getStatus2().equals("DELETED INVOICE")) {
+                InvoiceDAO.getInstance().saveInvoice(invoiceMix);
+            } 
+            else {
                 InvoicePayment payment = new InvoicePayment(null, true);
                 payment.setValue(invoiceMix);
                 payment.setModal(true);
                 payment.setVisible(true);
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Transaction password is worng..");
+            JOptionPane.showMessageDialog(null, "Transaction password is worng..","Error Message",JOptionPane.ERROR_MESSAGE);
         }
     }
 
     protected void update(InvoiceMix object)
             throws VPException {
-        JOptionPane.showMessageDialog(null, "click new button > select Invoice > change > select edit invoice checkbox > click save button");
+        JOptionPane.showMessageDialog(null, "click new button > select Invoice > change > select edit invoice checkbox > click save button","Error Message",JOptionPane.ERROR_MESSAGE);
     }
 
     protected void delete(InvoiceMix mix) throws VPException {
-        JOptionPane.showMessageDialog(null, "sorry , anyone no permission to delete Invoice");
+        JOptionPane.showMessageDialog(null, "sorry , anyone no permission to delete Invoice","Error Message",JOptionPane.ERROR_MESSAGE);
     }
 }

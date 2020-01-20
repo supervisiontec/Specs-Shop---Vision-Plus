@@ -695,7 +695,7 @@ public class PCGrn extends AbstractObjectCreator<GrnMix> {
             }
             grnMix.setLedger(ledgers);
         } else {
-            javax.swing.JOptionPane.showMessageDialog(this, "Transaction Password is wrong...");
+            javax.swing.JOptionPane.showMessageDialog(this, "Transaction Password is wrong...","Error Message",JOptionPane.ERROR_MESSAGE);
         }
     }
 

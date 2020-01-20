@@ -7,38 +7,29 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+class MAccountDAO {
 
+    private static MAccountDAO INSTANCE;
+    private final QueryUtil<MAccount> Query;
 
+    public static MAccountDAO getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new MAccountDAO();
+        }
 
-
-
-
-
-class MAccountDAO
-{
-  private static MAccountDAO INSTANCE;
-  private final QueryUtil<MAccount> Query;
-  
-  public static MAccountDAO getInstance()
-  {
-    if (INSTANCE == null) {
-      INSTANCE = new MAccountDAO();
+        return INSTANCE;
     }
-    
-    return INSTANCE;
-  }
-  
-  public MAccountDAO() {
-    Query = QueryUtil.getInstance(MAccount.class);
-  }
-  
-  int saveAccount(Connection connection, MAccount account)
-  {
-    try {
-      return Query.executeInsert(connection, account);
-    } catch (SQLException ex) {
-      Logger.getLogger(MAccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+
+    public MAccountDAO() {
+        Query = QueryUtil.getInstance(MAccount.class);
     }
-    return 0;
-  }
+
+    int saveAccount(Connection connection, MAccount account) {
+        try {
+            return Query.executeInsert(connection, account);
+        } catch (SQLException ex) {
+            Logger.getLogger(MAccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
 }

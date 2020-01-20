@@ -20,6 +20,8 @@ public class VPResources {
     public static final String MASTER_BRANCH = "icons/master/branch.png";
 
     public static final String TRANSACTION_INVOICE = "icons/transaction/invoice.png";
+    public static final String TRANSACTION_INVOICE_DETAIL = "icons/transaction/detail.png";
+    public static final String TRANSACTION_INVOICE_TAB = "icons/transaction/tab.png";
     public static final String TRANSACTION_PAYMENT = "icons/transaction/payment.png";
     public static final String SUPPLIER_PAYMENT = "icons/transaction/supplier_payment.png";
     public static final String TRANSACTION_GRN = "icons/transaction/grn.png";

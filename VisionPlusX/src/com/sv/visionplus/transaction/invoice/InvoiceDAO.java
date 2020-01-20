@@ -2,10 +2,15 @@ package com.sv.visionplus.transaction.invoice;
 
 import static com.sv.visionplus.report.report_file.ReportFiles.*;
 import com.sv.visionplus.report.report_panel;
-import com.sv.visionplus.transaction.check_In.InvoiceItemDAO;
+import com.sv.visionplus.transaction.invoice.InvoiceItemDAO;
+import com.sv.visionplus.transaction.invoice.model.AccountTransaction;
 import com.sv.visionplus.transaction.invoice.model.InvoiceMix;
+import com.sv.visionplus.transaction.invoice.model.MAccount;
 import com.sv.visionplus.transaction.invoice.model.MNumberList;
 import com.sv.visionplus.transaction.invoice.model.TInvoice;
+import com.sv.visionplus.transaction.invoice.model.TInvoiceItem;
+import com.sv.visionplus.transaction.invoice.model.TStockLedger;
+import com.sv.visionplus.transaction.invoice.model.ViewInvoicePayment;
 import com.sv.visionplus.util.database.DatabaseUtil;
 import com.sv.visionplus.util.database.QueryUtil;
 import com.sv.visionplus.util.formatter.FormatterUtil;
@@ -68,7 +73,32 @@ public class InvoiceDAO {
                     fileModel.setUserId(mix.getLogFile().getUserId());
                     fileModel.setUserName(mix.getLogFile().getUserName());
                     fileModel.setValue(invoice.getAmount());
+                    fileModel.setType("SPECIAL");
                     LogFileDAO.getInstance().saveLog(connection, fileModel);
+
+                    List<TInvoiceItem> invoiceItemList = InvoiceItemDAO.getInstance().searchItems(mix.getInvoice().getIndexNo());
+                    ArrayList<TStockLedger> stockLedgerList = new ArrayList<>();
+                    for (TInvoiceItem tInvoiceItem : invoiceItemList) {
+                        TStockLedger stockLedger = new TStockLedger();
+                        stockLedger.setDate(new Date());
+                        stockLedger.setForm("Invoice");
+                        stockLedger.setItem(tInvoiceItem.getItem());
+                        stockLedger.setQty(tInvoiceItem.getQty());
+                        stockLedger.setStore(2);
+                        stockLedgerList.add(stockLedger);
+                    }
+                    StockLedgerDAO.getInstance().saveStockLedger(connection, stockLedgerList);
+
+                    InvoiceItemDAO.getInstance().delete(connection, mix.getInvoice().getIndexNo());
+
+                    InvoiceItemDAO.getInstance().saveItems(connection, mix.getInvoiceItem(), mix.getInvoice().getIndexNo());
+                    double val = 0;
+                    StockLedgerDAO.getInstance().saveStockLedger(connection, mix.getStockLedgerList());
+                    for (TInvoiceItem item : mix.getInvoiceItem()) {
+                        val += item.getNetValue();
+                    }
+                    InvoiceDAO.getInstance().editInvoiceAmount(connection, mix.getInvoice().getIndexNo(), val);
+
                     return mix.getInvoice().getNumber();
                 }
             }
@@ -370,6 +400,87 @@ public class InvoiceDAO {
                 return null;
             }
 
+        } else if (mix.getInvoice().getStatus2().equals("DELETED INVOICE")) {
+            try {
+                connection.setAutoCommit(false);
+                try {
+                    if (mix.getInvoice() != null) {
+                        System.out.println("A");
+                        double val = 0;
+                        List<ViewInvoicePayment> list = ViewInvoicePaymentDAO.getInstance().getPaymentByInvoice(connection, mix.getInvoice().getIndexNo());
+                        for (ViewInvoicePayment viewInvoicePayment : list) {
+                            val += viewInvoicePayment.getTotal();
+                        }
+                        
+                        int deleteInvoice = getInstance().deleteInvoice(connection, mix.getInvoice().getIndexNo());
+                        if (deleteInvoice > 0) {
+                            if (mix.getIsCashRefund()) {
+                                System.out.println("B");
+                                //save cash refund
+                                MAccount mAccount = new MAccount();
+                                mAccount.setDescription("Cash Refund - invoice index - " + mix.getInvoice().getIndexNo());
+                                mAccount.setMain_category(1);// INVOICE
+                                mAccount.setSub_category(4); // CASH REFUND
+                                mAccount.setType("VOUCHER");
+                                int saveAccount = MAccountDAO.getInstance().saveAccount(connection, mAccount);
+
+                                System.out.println("C");
+
+                                AccountTransaction accountTransaction = new AccountTransaction();
+                                accountTransaction.setAccount(saveAccount);
+                                accountTransaction.setDate(new Date());
+                                accountTransaction.setCredit(val);
+                                accountTransaction.setDebit(0);
+                                accountTransaction.setDescription("Cash Refund");
+//                                accountTransaction.setIndex_no(0);
+                                AccountTransactionDAO.getInstance().saveTransaction(connection, accountTransaction);
+                            }
+
+                            List<TInvoiceItem> invoiceItemList = InvoiceItemDAO.getInstance().searchItems(mix.getInvoice().getIndexNo());
+                            ArrayList<TStockLedger> stockLedgerList = new ArrayList<>();
+                            for (TInvoiceItem tInvoiceItem : invoiceItemList) {
+                                TStockLedger stockLedger = new TStockLedger();
+                                stockLedger.setDate(new Date());
+                                stockLedger.setForm("Invoice");
+                                stockLedger.setItem(tInvoiceItem.getItem());
+                                stockLedger.setQty(tInvoiceItem.getQty());
+                                stockLedger.setStore(2);
+                                stockLedgerList.add(stockLedger);
+                            }
+                            StockLedgerDAO.getInstance().saveStockLedger(connection, stockLedgerList);
+
+                            LogFileModel fileModel = new LogFileModel();
+                            fileModel.setDate(new Date());
+                            fileModel.setFormName("Invoice Form");
+                            fileModel.setRemarks("Delete Invoice - indexNo = " + mix.getInvoice().getIndexNo());
+                            if (mix.getIsCashRefund()) {
+                                fileModel.setRemarks(fileModel.getRemarks() + " with cash refund "+val);
+                            }
+                            fileModel.setTime(FormatterUtil.getInstance().getTime());
+                            fileModel.setTransactionType("Delete");
+                            fileModel.setUser(mix.getLogFile().getUser());
+                            fileModel.setUserId(mix.getLogFile().getUserId());
+                            fileModel.setUserName(mix.getLogFile().getUserName());
+                            fileModel.setValue(mix.getInvoice().getAmount());
+                            fileModel.setType("SPECIAL");
+                            LogFileDAO.getInstance().saveLog(connection, fileModel);
+                        }
+                    }
+                    return null;
+                } finally {
+                    JOptionPane.showMessageDialog(null, "Invoice Delete successfully !");
+                    connection.setAutoCommit(true);
+                    return mix.getInvoice().getNumber();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(InvoiceDAO.class.getName()).log(Level.SEVERE, null, ex);
+                try {
+                    connection.rollback();
+                } catch (SQLException ex1) {
+                    Logger.getLogger(InvoiceDAO.class.getName()).log(Level.SEVERE, null, ex1);
+                }
+                return null;
+            }
         } else {
             JOptionPane.showMessageDialog(null, "No Invoice Type to Selected  or Wrong Type !");
             return null;
@@ -389,7 +500,7 @@ public class InvoiceDAO {
     public List<TInvoice> allInvoice(String date) {
         List<TInvoice> list = new ArrayList();
         try {
-            list = Query.executeSelect(connection,"invoice_date=?",new Object[]{date});
+            list = Query.executeSelect(connection, "invoice_date=?", new Object[]{date});
         } catch (SQLException ex) {
             Logger.getLogger(InvoiceDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -426,5 +537,26 @@ public class InvoiceDAO {
             Logger.getLogger(InvoiceDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    private int deleteInvoice(Connection connection, Integer indexNo) {
+        try {
+            TInvoice inv = Query.executeUniqueSelect(connection, "index_no=?", indexNo);
+            inv.setIsdelete(Boolean.TRUE);
+            return Query.executeUpdate(connection, inv, "index_no=?", indexNo);
+        } catch (SQLException ex) {
+            Logger.getLogger(InvoiceDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+
+    private void editInvoiceAmount(Connection connection, Integer indexNo, double val) {
+        try {
+            TInvoice inv = Query.executeUniqueSelect(connection, "index_no=?", indexNo);
+            inv.setAmount(val);
+            Query.executeUpdate(connection, inv, "index_no=?", indexNo);
+        } catch (SQLException ex) {
+            Logger.getLogger(InvoiceDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

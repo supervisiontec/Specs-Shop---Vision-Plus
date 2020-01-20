@@ -121,7 +121,7 @@ public class PCBrand extends javax.swing.JDialog {
             int lastId = BrandService.getInstance().save(brand);
             if (lastId > 0) {
                 getAllBrands();
-                JOptionPane.showMessageDialog(this, "Successfully Saved..!!!");
+                JOptionPane.showMessageDialog(this, "Successfully Saved","Success Message",JOptionPane.INFORMATION_MESSAGE);
                 brand.setIndexNo(lastId);
                 pcItem.setBrand(brand);
                 this.dispose();

@@ -297,18 +297,18 @@ public class Messanger extends AbstractObjectCreator<ChannelModelMix> {
                 String mobile = txtMobile.getCValue();
                 int code = SmsSender.messageSendForOneNumber(mobile, msg);
                 if (code == 200) {
-                    JOptionPane.showMessageDialog(null, mobile + " Message Send Successfully..");
+                    JOptionPane.showMessageDialog(null, mobile + " Message Send Successfully..","Success Message",JOptionPane.INFORMATION_MESSAGE);
                 } else {
-                    JOptionPane.showMessageDialog(null, mobile + " Message Send Fail.Check ur Mobile No or Internet Connection.");
+                    JOptionPane.showMessageDialog(null, mobile + " Message Send Fail.Check ur Mobile No or Internet Connection.","Error Message",JOptionPane.ERROR_MESSAGE);
 
                 }
             } else if (rdoListNo.isSelected()) {
                 String mobile = txtnumberList.getText();
                 int code = SmsSender.messageSendForListOfNumber(mobile, msg);
                 if (code == 200) {
-                    JOptionPane.showMessageDialog(null, " Messages Send Successfully..");
+                    JOptionPane.showMessageDialog(null, " Messages Send Successfully..","Success Message",JOptionPane.INFORMATION_MESSAGE);
                 } else {
-                    JOptionPane.showMessageDialog(null, mobile + " Message Send Fail.Check ur Mobile No or Internet Connection.");
+                    JOptionPane.showMessageDialog(null, mobile + " Message Send Fail.Check ur Mobile No or Internet Connection.","Error Message",JOptionPane.ERROR_MESSAGE);
 
                 }
             } else if (rdoAllNo.isSelected()) {
@@ -338,9 +338,9 @@ public class Messanger extends AbstractObjectCreator<ChannelModelMix> {
                 }
                 int size = SmsSender.messageSendForAll(mobileList, msg);
                 if (size > 0) {
-                    JOptionPane.showMessageDialog(null, size + " Messages Send Successfully..");
+                    JOptionPane.showMessageDialog(null, size + " Messages Send Successfully..","Success Message",JOptionPane.INFORMATION_MESSAGE);
                 } else {
-                    JOptionPane.showMessageDialog(null, " Message Send Fail.Check ur Mobile No or Internet Connection.");
+                    JOptionPane.showMessageDialog(null, " Message Send Fail.Check ur Mobile No or Internet Connection.","Error Message",JOptionPane.ERROR_MESSAGE);
 
                 }
 
@@ -348,9 +348,9 @@ public class Messanger extends AbstractObjectCreator<ChannelModelMix> {
                 String mobile = txtChannelNumberList.getText();
                 int code = SmsSender.messageSendForListOfNumber(mobile, msg);
                 if (code == 200) {
-                    JOptionPane.showMessageDialog(null, " Messages Send Successfully..");
+                    JOptionPane.showMessageDialog(null, " Messages Send Successfully..","Success Message",JOptionPane.INFORMATION_MESSAGE);
                 } else {
-                    JOptionPane.showMessageDialog(null, mobile + " Message Send Fail.Check ur Mobile No or Internet Connection.");
+                    JOptionPane.showMessageDialog(null, mobile + " Message Send Fail.Check ur Mobile No or Internet Connection.","Error Message",JOptionPane.ERROR_MESSAGE);
 
                 }
             }

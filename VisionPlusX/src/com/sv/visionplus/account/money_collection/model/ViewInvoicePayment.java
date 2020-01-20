@@ -23,6 +23,7 @@ public class ViewInvoicePayment {
     private double cheque;
     private double total;
     private boolean is_advance;
+    private String number;
 
     public Integer getInvoiceNo() {
         return invoice_no;
@@ -86,6 +87,14 @@ public class ViewInvoicePayment {
 
     public void setIsAdvance(boolean isAdvance) {
         this.is_advance = isAdvance;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
     }
     
     

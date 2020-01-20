@@ -25,7 +25,8 @@ public class LogFileModel {
     private String transactionType;
     private Double value;
     private String remarks;
-
+    private String type;
+    
     public Integer getIndexNo() {
         return IndexNo;
     }
@@ -98,7 +99,13 @@ public class LogFileModel {
         this.remarks = remarks;
     }
 
-   
+    public String getType() {
+        return type;
+    }
     
+    public void setType(String type) {
+        this.type = type;
+    }
+   
     
 }

@@ -31,6 +31,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="txtUserName" min="-2" pref="135" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="chkIsPpecial" min="-2" pref="84" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnSearch" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="jButton2" min="-2" pref="68" max="-2" attributes="0"/>
@@ -59,9 +61,10 @@
                   <Component id="txtDate" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtUserName" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="chkIsPpecial" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jScrollPane2" min="-2" pref="274" max="-2" attributes="0"/>
+              <Component id="jScrollPane2" min="-2" pref="453" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -78,13 +81,14 @@
         <Component class="javax.swing.JTable" name="tblLog">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="7" rowCount="4">
+              <Table columnCount="8" rowCount="0">
                 <Column editable="false" title="Date" type="java.lang.Object"/>
                 <Column editable="false" title="Time" type="java.lang.Object"/>
                 <Column editable="false" title="User Name" type="java.lang.Object"/>
                 <Column editable="false" title="Form Name" type="java.lang.Object"/>
                 <Column editable="false" title="Remarks" type="java.lang.Object"/>
                 <Column editable="false" title="Type" type="java.lang.Object"/>
+                <Column editable="false" title="Is Special" type="java.lang.Boolean"/>
                 <Column editable="false" title="Value " type="java.lang.Object"/>
               </Table>
             </Property>
@@ -163,6 +167,11 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="chkIsPpecial">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Is Special"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

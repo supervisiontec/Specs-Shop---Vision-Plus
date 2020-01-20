@@ -33,6 +33,7 @@ public class ChannelService
   int saveItem(Connection connection, ChannelModelMix mix) {
     ChannelModel item = new ChannelModel();
     item.setAmount(mix.getAmount());
+    item.setPayAmount(mix.getPayAmount());
     item.setChannel_date(mix.getChannelDate());
     item.setChannel_id(mix.getChannelId());
     item.setDate(mix.getDate());

@@ -48,7 +48,7 @@ public class SearchInvoiceDAO {
     public List<CustomerInvoiceMix> searchInvoice(String searchText) {
         List<CustomerInvoiceMix> invoiceList = new ArrayList<>();
         try {
-            invoiceList = Query.executeSelect(connection, "nic LIKE ? OR name LIKE ? OR contact_no LIKE ?", "%" + searchText + "%", "%" + searchText + "%", "%" + searchText + "%");
+            invoiceList = Query.executeSelect(connection, "nic LIKE ? OR name LIKE ? OR contact_no LIKE ? OR barcode LIKE ? ", "%" + searchText + "%", "%" + searchText + "%", "%" + searchText + "%", "%" + searchText + "%");
         } catch (SQLException ex) {
             Logger.getLogger(SearchInvoiceDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -57,7 +57,9 @@ public class SearchInvoiceDAO {
     public List<CustomerInvoiceMix> searchInvoice(CustomerInvoiceMix invoiceMix) {
         List<CustomerInvoiceMix> invoiceList = new ArrayList<>();
         try {
-            invoiceList = Query.executeSelect(connection, "nic LIKE ? OR name LIKE ? OR contact_no LIKE ?", "%" + invoiceMix.getNic() + "%", "%" + invoiceMix.getName() + "%", "%" + invoiceMix.getContact_no()+ "%");
+            System.out.println(invoiceMix.getBarcode());
+            
+            invoiceList = Query.executeSelect(connection, "nic LIKE ? OR name LIKE ? OR contact_no LIKE ? OR barcode LIKE ? ", "%" + invoiceMix.getNic() + "%", "%" + invoiceMix.getName() + "%", "%" + invoiceMix.getContact_no()+ "%", "%" + invoiceMix.getBarcode()+ "%");
         } catch (SQLException ex) {
             Logger.getLogger(SearchInvoiceDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -68,6 +70,20 @@ public class SearchInvoiceDAO {
         if (invoiceId != null) {
 
             TInvoice invoice1 = InvoiceDAO.getInstance().searchInvoice(invoiceId);
+            if (invoice1 != null) {
+                try {
+                    return Query.executeUniqueSelect(connection, "invoice_no = ? ", invoice1.getIndexNo());
+                } catch (SQLException ex) {
+                    Logger.getLogger(SearchInvoiceDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return null;
+    }
+    public CustomerInvoiceMix searchInvoiceByBarcode(String barcode) {
+        if (barcode != null) {
+
+            TInvoice invoice1 = InvoiceDAO.getInstance().searchInvoiceByBarcode(barcode);
             if (invoice1 != null) {
                 try {
                     return Query.executeUniqueSelect(connection, "invoice_no = ? ", invoice1.getIndexNo());

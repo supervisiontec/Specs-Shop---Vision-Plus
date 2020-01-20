@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
-<!-- 2016-12-16T01:33:23 -->
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cfe759b0-9728-4589-8f90-a11ce6614510">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
@@ -34,6 +33,9 @@ and m_category.name= $P{type} and t_invoice.invoice_date= $P{date}]]>
 	</variable>
 	<variable name="net_value1" class="java.lang.Double" calculation="Sum">
 		<variableExpression><![CDATA[$F{net_value}]]></variableExpression>
+	</variable>
+	<variable name="qty1" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{qty}]]></variableExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
@@ -108,7 +110,7 @@ and m_category.name= $P{type} and t_invoice.invoice_date= $P{date}]]>
 				<text><![CDATA[#]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="30" y="0" width="80" height="20" uuid="2ce9b62f-cc88-4bdd-acf3-e173fe552228"/>
+				<reportElement x="30" y="0" width="110" height="20" uuid="2ce9b62f-cc88-4bdd-acf3-e173fe552228"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[Code]]></text>
 			</staticText>
@@ -140,7 +142,7 @@ and m_category.name= $P{type} and t_invoice.invoice_date= $P{date}]]>
 	<detail>
 		<band height="22" splitType="Stretch">
 			<textField>
-				<reportElement x="31" y="0" width="79" height="18" uuid="5a124360-147c-434f-ae45-9edf46d0981f"/>
+				<reportElement x="31" y="0" width="109" height="18" uuid="5a124360-147c-434f-ae45-9edf46d0981f"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
 			</textField>
@@ -187,7 +189,9 @@ and m_category.name= $P{type} and t_invoice.invoice_date= $P{date}]]>
 				<box>
 					<bottomPen lineWidth="1.0" lineStyle="Double"/>
 				</box>
-				<textElement textAlignment="Right"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$V{net_value1}]]></textFieldExpression>
 			</textField>
 			<line>
@@ -198,8 +202,17 @@ and m_category.name= $P{type} and t_invoice.invoice_date= $P{date}]]>
 			</line>
 			<textField>
 				<reportElement x="2" y="1" width="28" height="19" uuid="d7d41a79-f845-4bc7-b0a9-736917cebda6"/>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$V{counter}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="259" y="0" width="93" height="20" uuid="d0430894-7f1b-4888-85dc-55c738bfa406"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{qty1}]]></textFieldExpression>
 			</textField>
 		</band>
 	</summary>

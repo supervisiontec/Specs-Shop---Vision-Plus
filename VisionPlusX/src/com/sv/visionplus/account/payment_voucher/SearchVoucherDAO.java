@@ -44,10 +44,10 @@ public class SearchVoucherDAO {
         }
     }
 
-    public List<SearchVoucherMix> searchVouchers(String date,String type) {
+    public List<SearchVoucherMix> searchVouchers(String date,String type,String type2) {
             List<SearchVoucherMix> voucherList = new ArrayList<>();
         try {
-            voucherList = Query.executeSelect(connection, "date=? AND type=?", date,type);
+            voucherList = Query.executeSelect(connection, "date=? AND (type=? OR type=?)", date,type,type2);
         } catch (SQLException ex) {
             Logger.getLogger(SearchVoucherDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

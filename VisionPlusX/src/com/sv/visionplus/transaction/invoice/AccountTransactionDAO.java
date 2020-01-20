@@ -7,38 +7,35 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+class AccountTransactionDAO {
 
+    private static AccountTransactionDAO INSTANCE;
+    private final QueryUtil<AccountTransaction> Query;
 
+    public static AccountTransactionDAO getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new AccountTransactionDAO();
+        }
 
-
-
-
-
-class AccountTransactionDAO
-{
-  private static AccountTransactionDAO INSTANCE;
-  private final QueryUtil<AccountTransaction> Query;
-  
-  public static AccountTransactionDAO getInstance()
-  {
-    if (INSTANCE == null) {
-      INSTANCE = new AccountTransactionDAO();
+        return INSTANCE;
     }
-    
-    return INSTANCE;
-  }
-  
-  public AccountTransactionDAO() {
-    Query = QueryUtil.getInstance(AccountTransaction.class);
-  }
-  
-  int saveTransaction(Connection connection, AccountTransaction accountTransaction)
-  {
-    try {
-      return Query.executeInsert(connection, accountTransaction);
-    } catch (SQLException ex) {
-      Logger.getLogger(AccountTransactionDAO.class.getName()).log(Level.SEVERE, null, ex);
+
+    public AccountTransactionDAO() {
+        Query = QueryUtil.getInstance(AccountTransaction.class);
     }
-    return 0;
-  }
+
+    int saveTransaction(Connection connection, AccountTransaction accountTransaction) {
+        try {
+            System.out.println(accountTransaction.getAccount());
+            System.out.println(accountTransaction.getCredit());
+            System.out.println(accountTransaction.getDate());
+            System.out.println(accountTransaction.getDebit());
+            System.out.println(accountTransaction.getDescription());
+            System.out.println(accountTransaction.getIndex_no());
+            return Query.executeInsert(connection, accountTransaction);
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountTransactionDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
 }

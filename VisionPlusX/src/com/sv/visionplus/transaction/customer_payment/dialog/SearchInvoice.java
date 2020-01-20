@@ -60,11 +60,11 @@ public class SearchInvoice extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Invoice No", "Date", "Status", "cid", "Customer Name", "Nic", "Contact No", "amount", "index"
+                "Invoice No", "Date", "Status", "cid", "Customer Name", "Nic", "Contact No", "amount", "index", "Barcode"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, true
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -83,7 +83,7 @@ public class SearchInvoice extends javax.swing.JDialog {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Search Type"));
 
-        jLabel1.setText("Customer Name / NIC / Contact No");
+        jLabel1.setText("Customer Name / NIC / Contact No/ Barcode");
 
         btnSearch.setText("Search");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -155,7 +155,7 @@ public class SearchInvoice extends javax.swing.JDialog {
         } else if (searchInvoice.size() > 0) {
             addData(searchInvoice);
         } else {
-            JOptionPane.showMessageDialog(this, "Not found Invoice");
+            JOptionPane.showMessageDialog(this, "Not found Invoice","Error Message",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnSearchActionPerformed
 
@@ -170,10 +170,11 @@ public class SearchInvoice extends javax.swing.JDialog {
             mix.setContact_no((String) invoiceTable.getValueAt(invoiceTable.getSelectedRow(), 6));
             mix.setAmount((double) invoiceTable.getValueAt(invoiceTable.getSelectedRow(), 7));
             mix.setInvoice_no((int) invoiceTable.getValueAt(invoiceTable.getSelectedRow(), 8));
+            mix.setBarcode((String) invoiceTable.getValueAt(invoiceTable.getSelectedRow(), 9));
             form.setInvoice(mix);
             this.dispose();
         } else {
-            JOptionPane.showMessageDialog(this, "Select a Row");
+            JOptionPane.showMessageDialog(this, "Select a Row","Error Message",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -246,7 +247,8 @@ public class SearchInvoice extends javax.swing.JDialog {
                 invoice.getNic(),
                 invoice.getContact_no(),
                 invoice.getAmount(),
-                invoice.getInvoice_no()
+                invoice.getInvoice_no(),
+                invoice.getBarcode()
             };
             model.addRow(rowData);
             count++;

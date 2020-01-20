@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import org.pushingpixels.substance.api.SubstanceLookAndFeel;
+import org.pushingpixels.substance.api.skin.BusinessBlackSteelSkin;
 import org.pushingpixels.substance.api.skin.GeminiSkin;
 import visionplusx.model.MUser;
 
@@ -26,8 +27,8 @@ public class VisionPlusX implements Runnable {
         JFrame.setDefaultLookAndFeelDecorated(true);
         JDialog.setDefaultLookAndFeelDecorated(true);
 
-//        SubstanceLookAndFeel.setSkin(new BusinessBlackSteelSkin());
-        SubstanceLookAndFeel.setSkin(new GeminiSkin());
+        SubstanceLookAndFeel.setSkin(new BusinessBlackSteelSkin());
+//        SubstanceLookAndFeel.setSkin(new GeminiSkin());
 
         //check user permission
         MUser user = Login.getInstance().attemptLogin();

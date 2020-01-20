@@ -4,14 +4,6 @@ import com.sv.visionplus.util.database.annotation.VPId;
 import com.sv.visionplus.util.database.annotation.VPTable;
 import java.util.Date;
 
-
-
-
-
-
-
-
-
 @VPTable("channel")
 public class ChannelModel
 {
@@ -25,10 +17,11 @@ public class ChannelModel
   private String patient_name;
   private String mobile;
   private double amount;
+  private double payAmount;
   
   public ChannelModel() {}
 
-    public ChannelModel(Integer index_no, Integer doctor_id, Date date, Date channel_date, String channel_id, String time, String patient_name, String mobile, double amount) {
+    public ChannelModel(Integer index_no, Integer doctor_id, Date date, Date channel_date, String channel_id, String time, String patient_name, String mobile, double amount, double payAmount) {
         this.index_no = index_no;
         this.doctor_id = doctor_id;
         this.date = date;
@@ -38,6 +31,15 @@ public class ChannelModel
         this.patient_name = patient_name;
         this.mobile = mobile;
         this.amount = amount;
+        this.payAmount = payAmount;
+    }
+
+    public double getPayAmount() {
+        return payAmount;
+    }
+
+    public void setPayAmount(double payAmount) {
+        this.payAmount = payAmount;
     }
 
     public Integer getIndex_no() {

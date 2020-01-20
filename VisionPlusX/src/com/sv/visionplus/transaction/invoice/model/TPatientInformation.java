@@ -317,5 +317,4 @@ public class TPatientInformation {
         this.remarks = remarks;
     }
 
-
 }

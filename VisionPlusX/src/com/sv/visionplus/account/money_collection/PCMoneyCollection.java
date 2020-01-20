@@ -5,6 +5,7 @@
  */
 package com.sv.visionplus.account.money_collection;
 
+import com.sv.visionplus.account.money_collection.model.BeforeBalance;
 import com.sv.visionplus.account.money_collection.model.GrnSearchPayment;
 import com.sv.visionplus.account.money_collection.model.MAccount;
 import com.sv.visionplus.account.money_collection.model.ViewInvoicePayment;
@@ -20,6 +21,7 @@ import com.sv.visionplus.system.exception.VPException;
 import com.sv.visionplus.util.formatter.FormatterUtil;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -41,6 +43,14 @@ public class PCMoneyCollection extends AbstractObjectCreator<MAccount> {
         modelGrnPayment = (DefaultTableModel) tblGrnPayment.getModel();
         modelChannel = ((javax.swing.table.DefaultTableModel) tblChannel.getModel());
         this.date = txtDate.getDate();
+
+        tblInvoicePayment.getColumnModel().getColumn(0).setMinWidth(70);
+        tblInvoicePayment.getColumnModel().getColumn(0).setPreferredWidth(70);
+        tblInvoicePayment.getColumnModel().getColumn(0).setMaxWidth(70);
+
+        tblGrnPayment.getColumnModel().getColumn(0).setMinWidth(70);
+        tblGrnPayment.getColumnModel().getColumn(0).setPreferredWidth(70);
+        tblGrnPayment.getColumnModel().getColumn(0).setMaxWidth(70);
     }
 
     @SuppressWarnings("unchecked")
@@ -82,6 +92,10 @@ public class PCMoneyCollection extends AbstractObjectCreator<MAccount> {
         jLabel16 = new javax.swing.JLabel();
         txtTotalReleaseValue = new com.sv.visionplus.util.component.textfield.CDoubleField();
         jLabel1 = new javax.swing.JLabel();
+        lblBefore = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        lblTodayBalance = new javax.swing.JLabel();
         lblCashInHand = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -96,13 +110,10 @@ public class PCMoneyCollection extends AbstractObjectCreator<MAccount> {
 
         tblGrnPayment.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                " #", "Date", "Cash", "Cheque", "Total"
+                " Inv Index", "Date", "Cash", "Cheque", "Total"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -194,7 +205,7 @@ public class PCMoneyCollection extends AbstractObjectCreator<MAccount> {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtvoucherAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -204,17 +215,14 @@ public class PCMoneyCollection extends AbstractObjectCreator<MAccount> {
 
         tblInvoicePayment.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "#", "Date", "Cash", "Card", "Cheque", "Total Amount", "Is Advance"
+                "Inv Index", "Number", "Date", "Cash", "Card", "Cheque", "Total Amount", "Is Advance"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false, false, false, false, true, true
+                false, true, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -281,7 +289,7 @@ public class PCMoneyCollection extends AbstractObjectCreator<MAccount> {
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtCustomerPayment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 86, Short.MAX_VALUE)))
+                        .addGap(0, 94, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTotalAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -317,7 +325,20 @@ public class PCMoneyCollection extends AbstractObjectCreator<MAccount> {
 
         jLabel1.setText("Cash In Hand :");
 
-        lblCashInHand.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblBefore.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblBefore.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblBefore.setText("0.00");
+
+        jLabel5.setText("Before Balance :");
+
+        jLabel6.setText("Today Balance :");
+
+        lblTodayBalance.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblTodayBalance.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblTodayBalance.setText("0.00");
+
+        lblCashInHand.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblCashInHand.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblCashInHand.setText("0.00");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -325,48 +346,48 @@ public class PCMoneyCollection extends AbstractObjectCreator<MAccount> {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(140, 140, 140)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtChannelAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTotalReserved, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTotalInvoicePayment, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(txtTotalInvoicePayment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtChannelAmount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtTotalReserved, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
+                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(10, 10, 10)))
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtGrnPaymentAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtVoucherAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTotalReleaseValue, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTotalReleaseValue, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtGrnPaymentAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblCashInHand)
-                .addGap(169, 169, 169))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblBefore, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTodayBalance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblCashInHand, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(8, 8, 8)
+                .addGap(0, 0, 0)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel15)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblCashInHand, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(txtGrnPaymentAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -377,6 +398,19 @@ public class PCMoneyCollection extends AbstractObjectCreator<MAccount> {
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtTotalReleaseValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel16)))
+                    .addComponent(jLabel15)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblBefore, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(lblTodayBalance))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(lblCashInHand)))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtTotalInvoicePayment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -389,17 +423,14 @@ public class PCMoneyCollection extends AbstractObjectCreator<MAccount> {
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtTotalReserved, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel12))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Channel Information"));
 
         tblChannel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 " #", "Date", "Channel Date", "Amount"
@@ -438,7 +469,7 @@ public class PCMoneyCollection extends AbstractObjectCreator<MAccount> {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(193, Short.MAX_VALUE)
                 .addComponent(txtChanelAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -486,10 +517,9 @@ public class PCMoneyCollection extends AbstractObjectCreator<MAccount> {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -514,7 +544,7 @@ public class PCMoneyCollection extends AbstractObjectCreator<MAccount> {
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(0, 0, 0)
                 .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -538,11 +568,16 @@ public class PCMoneyCollection extends AbstractObjectCreator<MAccount> {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         resetFields();
         date = txtDate.getDate();
-        allVouchers();
-        setChannelDetail();
-        allInvoicePayment();
-        allGrnPayment();
-        setCashInHand();
+        if (date == null) {
+            JOptionPane.showMessageDialog(this, "Select a date to view money collection ", "Error Message", JOptionPane.ERROR_MESSAGE);
+        } else {
+            allVouchers();
+            setChannelDetail();
+            allInvoicePayment();
+//            allGrnPayment();
+            setCashInHand();
+            beforeBalance();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtAdvancePaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAdvancePaymentActionPerformed
@@ -561,11 +596,11 @@ public class PCMoneyCollection extends AbstractObjectCreator<MAccount> {
     @Override
     public void setNewMode() {
 
-        allVouchers();
-        allInvoicePayment();
-        allGrnPayment();
-        setChannelDetail();
-        setCashInHand();
+//        allVouchers();
+//        allInvoicePayment();
+//        allGrnPayment();
+//        setChannelDetail();
+//        setCashInHand();
     }
 
     @Override
@@ -576,42 +611,42 @@ public class PCMoneyCollection extends AbstractObjectCreator<MAccount> {
     @Override
     public void resetFields() {
         modelChannel.setRowCount(0);
-    modelGrnPayment.setRowCount(0);
-    modelInvoicePayment.setRowCount(0);
-    modelVoucher.setRowCount(0);
-    txtCash.resetCValue();
-    txtCash.setCValueEditable(false);
-    txtCardAmount.resetCValue();
-    txtCardAmount.setCValueEditable(false);
-    txtChequeAmount.resetCValue();
-    txtChequeAmount.setCValueEditable(false);
-    txtTotalAmount.resetCValue();
-    txtTotalAmount.setCValueEditable(false);
-    txtGrnCash.resetCValue();
-    txtGrnCash.setCValueEditable(false);
-    txtGrnCheque.resetCValue();
-    txtGrnCheque.setCValueEditable(false);
-    txtGrnPaymentAmount.resetCValue();
-    txtGrnPaymentAmount.setCValueEditable(false);
-    txtGrnTotalAmount.resetCValue();
-    txtGrnTotalAmount.setCValueEditable(false);
-    txtVoucherAmount.resetCValue();
-    txtVoucherAmount.setCValueEditable(false);
-    txtvoucherAmount.resetCValue();
-    txtvoucherAmount.setCValueEditable(false);
-    txtChanelAmount.resetCValue();
-    txtChanelAmount.setCValueEditable(false);
-    txtChanelAmount.resetCValue();
-    txtChanelAmount.setCValueEditable(false);
-    txtChannelAmount.resetCValue();
-    txtChannelAmount.setCValueEditable(false);
-    txtTotalInvoicePayment.resetCValue();
-    txtTotalInvoicePayment.setCValueEditable(false);
-    txtTotalReserved.resetCValue();
-    txtTotalReserved.setCValueEditable(false);
-    txtTotalReleaseValue.resetCValue();
-    txtTotalReleaseValue.setCValueEditable(false);
-    lblCashInHand.setText("0.00");
+        modelGrnPayment.setRowCount(0);
+        modelInvoicePayment.setRowCount(0);
+        modelVoucher.setRowCount(0);
+        txtCash.resetCValue();
+        txtCash.setCValueEditable(false);
+        txtCardAmount.resetCValue();
+        txtCardAmount.setCValueEditable(false);
+        txtChequeAmount.resetCValue();
+        txtChequeAmount.setCValueEditable(false);
+        txtTotalAmount.resetCValue();
+        txtTotalAmount.setCValueEditable(false);
+        txtGrnCash.resetCValue();
+        txtGrnCash.setCValueEditable(false);
+        txtGrnCheque.resetCValue();
+        txtGrnCheque.setCValueEditable(false);
+        txtGrnPaymentAmount.resetCValue();
+        txtGrnPaymentAmount.setCValueEditable(false);
+        txtGrnTotalAmount.resetCValue();
+        txtGrnTotalAmount.setCValueEditable(false);
+        txtVoucherAmount.resetCValue();
+        txtVoucherAmount.setCValueEditable(false);
+        txtvoucherAmount.resetCValue();
+        txtvoucherAmount.setCValueEditable(false);
+        txtChanelAmount.resetCValue();
+        txtChanelAmount.setCValueEditable(false);
+        txtChanelAmount.resetCValue();
+        txtChanelAmount.setCValueEditable(false);
+        txtChannelAmount.resetCValue();
+        txtChannelAmount.setCValueEditable(false);
+        txtTotalInvoicePayment.resetCValue();
+        txtTotalInvoicePayment.setCValueEditable(false);
+        txtTotalReserved.resetCValue();
+        txtTotalReserved.setCValueEditable(false);
+        txtTotalReleaseValue.resetCValue();
+        txtTotalReleaseValue.setCValueEditable(false);
+        lblBefore.setText("0.00");
     }
 
     @Override
@@ -645,6 +680,8 @@ public class PCMoneyCollection extends AbstractObjectCreator<MAccount> {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -655,7 +692,9 @@ public class PCMoneyCollection extends AbstractObjectCreator<MAccount> {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JLabel lblBefore;
     private javax.swing.JLabel lblCashInHand;
+    private javax.swing.JLabel lblTodayBalance;
     private javax.swing.JTable tblChannel;
     private javax.swing.JTable tblGrnPayment;
     private javax.swing.JTable tblInvoicePayment;
@@ -687,7 +726,7 @@ public class PCMoneyCollection extends AbstractObjectCreator<MAccount> {
     private DefaultTableModel modelChannel;
 
     private void allVouchers() {
-        List<SearchVoucherMix> allVouchers = SearchVoucherDAO.getInstance().searchVouchers(FormatterUtil.getInstance().formatDate(date), AccountType.VOUCHER);
+        List<SearchVoucherMix> allVouchers = SearchVoucherDAO.getInstance().searchVouchers(FormatterUtil.getInstance().formatDate(date), AccountType.VOUCHER,AccountType.VOUCHER);
         addData(allVouchers);
     }
 
@@ -728,10 +767,10 @@ public class PCMoneyCollection extends AbstractObjectCreator<MAccount> {
             double cheque = 0;
             double card = 0;
             for (int i = 0; i < modelInvoicePayment.getRowCount(); i++) {
-                cash += Double.parseDouble(modelInvoicePayment.getValueAt(i, 2).toString());
-                card += Double.parseDouble(modelInvoicePayment.getValueAt(i, 3).toString());
-                cheque += Double.parseDouble(modelInvoicePayment.getValueAt(i, 4).toString());
-                totalValue += Double.parseDouble(modelInvoicePayment.getValueAt(i, 5).toString());
+                cash += Double.parseDouble(modelInvoicePayment.getValueAt(i, 3).toString());
+                card += Double.parseDouble(modelInvoicePayment.getValueAt(i, 4).toString());
+                cheque += Double.parseDouble(modelInvoicePayment.getValueAt(i, 5).toString());
+                totalValue += Double.parseDouble(modelInvoicePayment.getValueAt(i, 6).toString());
             }
             txtCash.setCValue(cash);
             txtCardAmount.setCValue(card);
@@ -743,22 +782,23 @@ public class PCMoneyCollection extends AbstractObjectCreator<MAccount> {
 
     private void addInvoicePayment(List<ViewInvoicePayment> list) {
         modelInvoicePayment.setRowCount(0);
-        double advancePayment=0.00;
-        double customerPayment=0.00;
+        double advancePayment = 0.00;
+        double customerPayment = 0.00;
         for (ViewInvoicePayment invoice : list) {
             if (invoice.getIsAdvance()) {
-                advancePayment+=invoice.getTotal();
-            }else{
-                customerPayment+=invoice.getTotal();
+                advancePayment += invoice.getTotal();
+            } else {
+                customerPayment += invoice.getTotal();
             }
             Object[] rowdata = {
                 invoice.getInvoiceNo(),
+                invoice.getNumber(),
                 invoice.getDate(),
                 invoice.getCash(),
                 invoice.getCard(),
                 invoice.getCheque(),
                 invoice.getTotal(),
-                invoice.getIsAdvance()?"YES":"NO"
+                invoice.getIsAdvance() ? "YES" : "NO"
 
             };
             modelInvoicePayment.addRow(rowdata);
@@ -797,7 +837,7 @@ public class PCMoneyCollection extends AbstractObjectCreator<MAccount> {
         txtTotalReserved.setCValue(txtChannelAmount.getCValue() + txtTotalInvoicePayment.getCValue());
         txtTotalReleaseValue.setCValue(txtGrnPaymentAmount.getCValue() + txtVoucherAmount.getCValue());
 
-        lblCashInHand.setText(txtTotalReserved.getCValue() - txtTotalReleaseValue.getCValue() + "");
+        lblTodayBalance.setText(txtTotalReserved.getCValue() - txtTotalReleaseValue.getCValue() + "");
     }
 
     private void setChannelDetail() {
@@ -826,6 +866,19 @@ public class PCMoneyCollection extends AbstractObjectCreator<MAccount> {
         };
 
         modelChannel.addRow(rowData);
+    }
+
+    private void beforeBalance() {
+        List<BeforeBalance> list = BeforeBalanceDAO.getInstance().getBeforeBalance(date);
+        double val=0;
+        for (BeforeBalance beforeBalance : list) {
+            val+=beforeBalance.getBalance();
+        }
+        lblBefore.setText(val+"");
+        lblCashInHand.setText((val+Double.parseDouble(lblTodayBalance.getText()))+"");
+        
+        
+        
     }
 
 }

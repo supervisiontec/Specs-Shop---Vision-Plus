@@ -187,54 +187,62 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" attributes="0">
                   <Component id="jScrollPane1" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="txtInvoiceNo" min="-2" pref="143" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="lblCount" min="-2" pref="172" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txtCount" min="-2" pref="99" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jButton5" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="chxBoxAllSelect" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="txtInvoiceNo" min="-2" pref="137" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="txtCount" min="-2" pref="99" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jButton5" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="lblCount" min="-2" pref="132" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
+                          <Component id="chxBoxAllSelect" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="2" attributes="0">
-                      <Component id="txtInvoiceNo" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton5" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtCount" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel5" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblCount" alignment="2" min="-2" pref="23" max="-2" attributes="0"/>
-                      <Component id="jButton1" alignment="2" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
               <Group type="102" attributes="0">
-                  <EmptySpace min="32" pref="32" max="-2" attributes="0"/>
-                  <Component id="chxBoxAllSelect" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="399" pref="399" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="2" attributes="0">
+                              <Component id="jButton5" alignment="2" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtCount" alignment="2" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel5" alignment="2" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCount" alignment="2" min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="jButton1" alignment="2" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtInvoiceNo" alignment="2" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" pref="337" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="32" pref="32" max="-2" attributes="0"/>
+                          <Component id="chxBoxAllSelect" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -242,10 +250,8 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Invoice No :"/>
+            <Property name="text" type="java.lang.String" value="Invoice No /  Barcode "/>
           </Properties>
-        </Component>
-        <Component class="com.sv.visionplus.util.component.textfield.CIntegerField" name="txtInvoiceNo">
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
@@ -285,7 +291,7 @@
             <Component class="javax.swing.JTable" name="tblItem">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="12" rowCount="0">
+                  <Table columnCount="13" rowCount="0">
                     <Column editable="false" title="#" type="java.lang.Object"/>
                     <Column editable="false" title="InvoiceNo" type="java.lang.Object"/>
                     <Column editable="false" title="Customer Name" type="java.lang.Object"/>
@@ -298,6 +304,7 @@
                     <Column editable="true" title=" " type="java.lang.Boolean"/>
                     <Column editable="false" title="Factory" type="java.lang.Object"/>
                     <Column editable="false" title="invoice No" type="java.lang.Object"/>
+                    <Column editable="false" title="Barcode" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -380,6 +387,8 @@
           </Events>
         </Component>
         <Component class="com.sv.visionplus.util.component.textfield.CIntegerField" name="txtCount">
+        </Component>
+        <Component class="com.sv.visionplus.util.component.textfield.CStringField" name="txtInvoiceNo">
         </Component>
       </SubComponents>
     </Container>

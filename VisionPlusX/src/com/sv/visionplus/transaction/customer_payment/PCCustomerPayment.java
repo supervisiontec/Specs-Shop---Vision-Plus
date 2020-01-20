@@ -70,6 +70,8 @@ public class PCCustomerPayment extends AbstractObjectCreator<CustomerPaymentMix>
         txtInvoiceNo = new com.sv.visionplus.util.component.textfield.CStringField();
         jLabel19 = new javax.swing.JLabel();
         txtRefNo = new com.sv.visionplus.util.component.textfield.CIntegerField();
+        jLabel20 = new javax.swing.JLabel();
+        txtBarcode = new com.sv.visionplus.util.component.textfield.CStringField();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         tblStatus = new javax.swing.JTable();
@@ -131,7 +133,13 @@ public class PCCustomerPayment extends AbstractObjectCreator<CustomerPaymentMix>
             }
         });
 
-        jLabel3.setText("Invoice No .:");
+        jLabel3.setText("Invoice No :");
+
+        txtNic.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNicActionPerformed(evt);
+            }
+        });
 
         txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,37 +157,49 @@ public class PCCustomerPayment extends AbstractObjectCreator<CustomerPaymentMix>
 
         jLabel19.setText("ref no:");
 
+        jLabel20.setText("Barcode :");
+
+        txtBarcode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBarcodeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtInvoiceNo, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtInvoiceNo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtRefNo, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtBarcode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNic, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtRefNo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(datePicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
+                .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtMobile, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
-                .addGap(26, 26, 26)
-                .addComponent(jButton1)
+                .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtMobile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -199,7 +219,9 @@ public class PCCustomerPayment extends AbstractObjectCreator<CustomerPaymentMix>
                     .addComponent(datePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtInvoiceNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel19)
-                    .addComponent(txtRefNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtRefNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel20)
+                    .addComponent(txtBarcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -397,7 +419,7 @@ public class PCCustomerPayment extends AbstractObjectCreator<CustomerPaymentMix>
                 .addContainerGap()
                 .addGroup(cardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(cardPanelLayout.createSequentialGroup()
-                        .addComponent(rdoCardPayment, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
+                        .addComponent(rdoCardPayment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(106, 106, 106))
                     .addGroup(cardPanelLayout.createSequentialGroup()
                         .addGroup(cardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -413,7 +435,7 @@ public class PCCustomerPayment extends AbstractObjectCreator<CustomerPaymentMix>
                                 .addGap(29, 29, 29))
                             .addGroup(cardPanelLayout.createSequentialGroup()
                                 .addComponent(cmboCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(26, Short.MAX_VALUE))))))
+                                .addContainerGap(19, Short.MAX_VALUE))))))
         );
         cardPanelLayout.setVerticalGroup(
             cardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -475,7 +497,7 @@ public class PCCustomerPayment extends AbstractObjectCreator<CustomerPaymentMix>
                             .addComponent(txtChequeAmount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(chequePanelLayout.createSequentialGroup()
                                 .addComponent(cmboCheque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                .addGap(0, 7, Short.MAX_VALUE))))
                     .addGroup(chequePanelLayout.createSequentialGroup()
                         .addComponent(rdoCheque, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(93, 93, 93)))
@@ -602,10 +624,13 @@ public class PCCustomerPayment extends AbstractObjectCreator<CustomerPaymentMix>
         invoiceMix.setInvoice_no(txtRefNo.getCValue());
         invoiceMix.setName(txtName.getCValue());
         invoiceMix.setNic(txtNic.getCValue());
+        invoiceMix.setBarcode(txtBarcode.getCValue());
         CustomerInvoiceMix searchInvoice = SearchInvoiceDAO.getInstance().searchInvoiceById(txtInvoiceNo.getCValue());
-
+        CustomerInvoiceMix searchBarcode = SearchInvoiceDAO.getInstance().searchInvoiceByBarcode(txtBarcode.getCValue());
         if (null != searchInvoice) {
             setInvoice(searchInvoice);
+        } else if (null != searchBarcode) {
+            setInvoice(searchBarcode);
         } else {
             List<CustomerInvoiceMix> invoiceList = SearchInvoiceDAO.getInstance().searchInvoice(invoiceMix);
             if (invoiceList.size() == 1) {
@@ -645,6 +670,14 @@ public class PCCustomerPayment extends AbstractObjectCreator<CustomerPaymentMix>
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameActionPerformed
+
+    private void txtNicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNicActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNicActionPerformed
+
+    private void txtBarcodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBarcodeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBarcodeActionPerformed
 
     @Override
     public void setIdealMode() {
@@ -690,6 +723,8 @@ public class PCCustomerPayment extends AbstractObjectCreator<CustomerPaymentMix>
         txtChequeAmount.resetCValue();
         txtChequeNo.setCValueEditable(false);
         txtChequeNo.resetCValue();
+        txtBarcode.setCValueEditable(false);
+        txtBarcode.resetCValue();
         value = 2;
 
     }
@@ -705,6 +740,7 @@ public class PCCustomerPayment extends AbstractObjectCreator<CustomerPaymentMix>
         txtName.setCValueEditable(true);
         txtMobile.setCValueEditable(true);
         txtCashAmount.setCValueEditable(true);
+        txtBarcode.setCValueEditable(true);
 
         rdoCardPayment.setEnabled(true);
         rdoCheque.setEnabled(true);
@@ -760,10 +796,12 @@ public class PCCustomerPayment extends AbstractObjectCreator<CustomerPaymentMix>
         txtChequeAmount.resetCValue();
         txtChequeNo.setCValueEditable(false);
         txtChequeNo.resetCValue();
-        
+        txtBarcode.setCValueEditable(false);
+        txtBarcode.resetCValue();
+
         paymentModel.setRowCount(0);
         statusModel.setRowCount(0);
-        
+
     }
 
     @Override
@@ -813,25 +851,24 @@ public class PCCustomerPayment extends AbstractObjectCreator<CustomerPaymentMix>
         TInvoice invoice = new TInvoice();
         invoice.setIndexNo(txtRefNo.getCValue());
         invoice.setNumber(txtInvoiceNo.getCValue());
-         if (rdoIssueGoods.isSelected()) {
-             invoice.setStatus(InvoiceStatus.ISSUED_TO_CUSTOMER);
-         }
+        if (rdoIssueGoods.isSelected()) {
+            invoice.setStatus(InvoiceStatus.ISSUED_TO_CUSTOMER);
+        }
 
         mix.setInvoice(invoice);
         mix.setGoodIssue(rdoIssueGoods.isSelected());
-        
+
         //MAccount
-        MAccount account=new MAccount();
+        MAccount account = new MAccount();
         account.setDescription("Customer Payment");
 //        account.setIndexNo(0);//auto
         account.setMainCategory(1);
         account.setSubCategory(2);
         account.setType(AccountType.INVOICE);
         mix.setAccount(account);
-        
-        
+
         //account Transaction
-        TAccountTransaction accountTransaction=new TAccountTransaction();
+        TAccountTransaction accountTransaction = new TAccountTransaction();
 //        accountTransaction.setAccount(0);//dont know yet
         accountTransaction.setCredit(0.00);
         accountTransaction.setDate(new Date());
@@ -839,7 +876,6 @@ public class PCCustomerPayment extends AbstractObjectCreator<CustomerPaymentMix>
         accountTransaction.setDescription("Customer Payment");
 //        accountTransaction.setIndexNo(0);//auto
         mix.setAccountTransaction(accountTransaction);
-        
 
     }
 
@@ -881,6 +917,7 @@ public class PCCustomerPayment extends AbstractObjectCreator<CustomerPaymentMix>
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -901,6 +938,7 @@ public class PCCustomerPayment extends AbstractObjectCreator<CustomerPaymentMix>
     private javax.swing.JRadioButton rdoIssueGoods;
     private javax.swing.JTable tblPayment;
     private javax.swing.JTable tblStatus;
+    private com.sv.visionplus.util.component.textfield.CStringField txtBarcode;
     private com.sv.visionplus.util.component.textfield.CDoubleField txtCardAmount;
     private com.sv.visionplus.util.component.textfield.CStringField txtCardNo;
     private com.sv.visionplus.util.component.textfield.CDoubleField txtCashAmount;
@@ -937,7 +975,10 @@ public class PCCustomerPayment extends AbstractObjectCreator<CustomerPaymentMix>
             txtInvoiceNo.setCValue(invoice.getNumber());
 //        datePicker.setDate(searchInvoice.getInvoice_date());
             txtInvoiceVlaue.setCValue(searchInvoice.getAmount());
-
+            txtBarcode.setCValue(searchInvoice.getBarcode());
+            if (searchInvoice.getIsdelete()) {
+               JOptionPane.showMessageDialog(this, "This Invoice is deleted - "+invoice.getNumber(),"Error Message",JOptionPane.ERROR_MESSAGE); 
+            }
             setPayment(searchInvoice.getInvoice_no());
             setStatus(searchInvoice.getInvoice_no());
         }
@@ -948,8 +989,8 @@ public class PCCustomerPayment extends AbstractObjectCreator<CustomerPaymentMix>
         List<CustomerPaymentView> paymentList = CustomerPaymentViewDAO.getInstance().searchInvoicePayment(invoice_no);
         if (!paymentList.isEmpty()) {
             addDataToPaymentTable(paymentList);
-        }else{
-        setPaidValue(0.00);
+        } else {
+            setPaidValue(0.00);
         }
     }
 
@@ -976,8 +1017,8 @@ public class PCCustomerPayment extends AbstractObjectCreator<CustomerPaymentMix>
                 };
                 paymentModel.addRow(rowData);
                 setPaidValue(payAmount);
-            }else{
-            setPaidValue(0.00);
+            } else {
+                setPaidValue(0.00);
             }
         }
     }
@@ -1016,7 +1057,7 @@ public class PCCustomerPayment extends AbstractObjectCreator<CustomerPaymentMix>
         txtTotalAmount.setCValue(tot);
         txtNewBalance.setCValue(txtHaveToPay.getCValue() - txtTotalAmount.getCValue());
         if (0.00 > txtNewBalance.getCValue()) {
-            JOptionPane.showMessageDialog(this, "Over Payment");
+            JOptionPane.showMessageDialog(this, "Over Payment","Error Message",JOptionPane.ERROR_MESSAGE);
         }
     }
 

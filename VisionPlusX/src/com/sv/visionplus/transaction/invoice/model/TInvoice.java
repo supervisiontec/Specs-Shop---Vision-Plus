@@ -17,8 +17,26 @@ public class TInvoice {
     private Boolean isdelete;
     private String number;
     private String status2;
+    private String barcode;
+    private Integer user;
 
     public TInvoice() {
+    }
+
+    public Integer getUser() {
+        return user;
+    }
+
+    public void setUser(Integer user) {
+        this.user = user;
+    }
+
+    public String getBarcode() {
+        return barcode;
+    }
+
+    public void setBarcode(String barcode) {
+        this.barcode = barcode;
     }
 
     public Integer getIndexNo() {
@@ -67,14 +85,6 @@ public class TInvoice {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public Boolean getIsDelete() {
-        return isdelete;
-    }
-
-    public void setIsDelete(Boolean isDelete) {
-        isdelete = isDelete;
     }
 
     public Boolean getIsdelete() {

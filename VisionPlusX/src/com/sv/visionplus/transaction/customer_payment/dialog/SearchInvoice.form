@@ -49,7 +49,7 @@
         <Component class="javax.swing.JTable" name="invoiceTable">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="9" rowCount="0">
+              <Table columnCount="10" rowCount="0">
                 <Column editable="false" title="Invoice No" type="java.lang.Object"/>
                 <Column editable="false" title="Date" type="java.lang.Object"/>
                 <Column editable="false" title="Status" type="java.lang.Object"/>
@@ -58,7 +58,8 @@
                 <Column editable="false" title="Nic" type="java.lang.Object"/>
                 <Column editable="false" title="Contact No" type="java.lang.Object"/>
                 <Column editable="false" title="amount" type="java.lang.Object"/>
-                <Column editable="true" title="index" type="java.lang.Object"/>
+                <Column editable="false" title="index" type="java.lang.Object"/>
+                <Column editable="false" title="Barcode" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -162,7 +163,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Customer Name / NIC / Contact No"/>
+            <Property name="text" type="java.lang.String" value="Customer Name / NIC / Contact No/ Barcode"/>
           </Properties>
         </Component>
         <Component class="com.sv.visionplus.util.component.textfield.CStringField" name="txtSearch">

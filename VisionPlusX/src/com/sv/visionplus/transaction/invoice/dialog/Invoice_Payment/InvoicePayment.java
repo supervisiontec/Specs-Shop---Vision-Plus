@@ -380,7 +380,7 @@ public class InvoicePayment extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         if (txtNewBalance.getCValue() < 0) {
-            JOptionPane.showMessageDialog(this, "Over Payment ...! Check Payment Detail and try again..");
+            JOptionPane.showMessageDialog(this, "Over Payment ...! Check Payment Detail and try again..","Error Message",JOptionPane.ERROR_MESSAGE);
         } else {
 
             //payment Model
@@ -445,11 +445,11 @@ public class InvoicePayment extends javax.swing.JDialog {
 
             String saveInvoice = InvoiceDAO.getInstance().saveInvoice(invoiceMix);
             if (saveInvoice != null) {
-                JOptionPane.showMessageDialog(this, saveInvoice + " invoice Saved Successfully..");
+                JOptionPane.showMessageDialog(this, saveInvoice + " invoice Saved Successfully..","Success Message",JOptionPane.INFORMATION_MESSAGE);
 
                 this.dispose();
             } else {
-                JOptionPane.showMessageDialog(this, "invoice Saved Fail..");
+                JOptionPane.showMessageDialog(this, "invoice Saved Fail..","Error Message",JOptionPane.ERROR_MESSAGE);
             }
         }
 
@@ -572,7 +572,7 @@ public class InvoicePayment extends javax.swing.JDialog {
 
         txtNewBalance.setCValue(txtInvoiceValue.getCValue() - txtPayAmount.getCValue());
         if (txtNewBalance.getCValue() < 0) {
-            JOptionPane.showMessageDialog(null, "Over Payment..");
+            JOptionPane.showMessageDialog(null, "Over Payment..","Error Message",JOptionPane.ERROR_MESSAGE);
         }
         if (txtNewBalance.getCValue() <= 0) {
             rdoIssueGoods.setSelected(true);

@@ -78,7 +78,7 @@ public class InvoiceDAO {
 
     List<TInvoice> searchInvoiceByStatus(String status, String status2) {
         try {
-            List<TInvoice> invoices = Query.executeSelect(connection, "status=? AND status2=?", status, status2);
+            List<TInvoice> invoices = Query.executeSelect(connection, "status=? AND status2=? and isdelete=0", status, status2);
             return invoices;
         } catch (SQLException ex) {
             Logger.getLogger(InvoiceDAO.class.getName()).log(Level.SEVERE, null, ex);

@@ -16,7 +16,7 @@ import java.util.Date;
 @VPTable("t_invoice")
 public class TInvoice {
 
-     @VPId
+    @VPId
     private Integer indexNo;
     private Integer customer;
     private Integer factory;
@@ -26,8 +26,26 @@ public class TInvoice {
     private Boolean isdelete;
     private String number;
     private String status2;
+    private String barcode;
+    private Integer user;
 
     public TInvoice() {
+    }
+
+    public String getBarcode() {
+        return barcode;
+    }
+
+    public void setBarcode(String barcode) {
+        this.barcode = barcode;
+    }
+
+    public Integer getUser() {
+        return user;
+    }
+
+    public void setUser(Integer user) {
+        this.user = user;
     }
 
     public Integer getIndexNo() {
@@ -109,6 +127,5 @@ public class TInvoice {
     public void setStatus2(String status2) {
         this.status2 = status2;
     }
-    
-    
+
 }

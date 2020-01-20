@@ -13,6 +13,7 @@ import com.sv.visionplus.transaction.invoice.dialog.Item.ItemDialog;
 import com.sv.visionplus.transaction.invoice.dialog.Item.SearchItemMixModel;
 import com.sv.visionplus.transaction.invoice.dialog.confirm.Confirm_Password;
 import com.sv.visionplus.transaction.invoice.dialog.customer.CustomerDialog;
+import com.sv.visionplus.transaction.invoice.dialog.patient_details.PatientDetail;
 import com.sv.visionplus.transaction.invoice.dialog.search_invoice.searchInvoice;
 import com.sv.visionplus.transaction.invoice.model.InvoiceMix;
 import com.sv.visionplus.transaction.invoice.model.Status;
@@ -23,6 +24,7 @@ import com.sv.visionplus.transaction.invoice.model.TStockLedger;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import visionplusx.logFile.LogFileModel;
 import visionplusx.model.MUser;
@@ -49,13 +51,17 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
         lblStar3.setVisible(false);
         lblStar4.setVisible(false);
         lblStar5.setVisible(false);
+        lblDelete.setVisible(false);
+        lblInvoiceIndex.setVisible(false);
+
+        chxCashRefund.setVisible(false);
+        chxNonRefund.setVisible(false);
     }
 
 //    action
     private void doView() {
 //        AbstractMasterFormGUI form = new AbstractMasterFormGUI(){};
 //        form.setVisible(true);
-
     }
 
     @SuppressWarnings("unchecked")
@@ -78,6 +84,7 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
         jSplitPane3 = new javax.swing.JSplitPane();
         jPanel5 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -91,6 +98,10 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
         chxEditInvoice = new javax.swing.JRadioButton();
         txtInvoiceNo = new com.sv.visionplus.util.component.textfield.CStringField();
         jLabel20 = new javax.swing.JLabel();
+        chxDeleteInvoice = new javax.swing.JRadioButton();
+        lblDelete = new javax.swing.JLabel();
+        chxCashRefund = new javax.swing.JRadioButton();
+        chxNonRefund = new javax.swing.JRadioButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -110,6 +121,7 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
         lblStar3 = new javax.swing.JLabel();
         lblStar4 = new javax.swing.JLabel();
         lblStar5 = new javax.swing.JLabel();
+        lblInvoiceIndex = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         lstItem = new javax.swing.JList();
@@ -149,6 +161,7 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
         txtHbRxSubLeft = new com.sv.visionplus.util.component.textfield.CStringField();
         txtHbRxRight = new com.sv.visionplus.util.component.textfield.CStringField();
         txtHbRxSubRight = new com.sv.visionplus.util.component.textfield.CStringField();
+        btnDetail = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblInfo = new javax.swing.JTable();
@@ -159,12 +172,15 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
         txtLenseBrand = new com.sv.visionplus.util.component.textfield.CStringField();
         jLabel19 = new javax.swing.JLabel();
         txtLenseType = new com.sv.visionplus.util.component.textfield.CStringField();
+        jLabel21 = new javax.swing.JLabel();
+        txtBarcode = new com.sv.visionplus.util.component.textfield.CStringField();
         myopiaRadio = new javax.swing.JRadioButton();
         presbyopiaRadio = new javax.swing.JRadioButton();
         hypermtropiaRadio = new javax.swing.JRadioButton();
         astimatismRadio = new javax.swing.JRadioButton();
         jLabel14 = new javax.swing.JLabel();
-        txtRemarks = new com.sv.visionplus.util.component.textfield.CStringField();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        txtRemarks1 = new javax.swing.JTextArea();
 
         jSplitPane3.setDividerLocation(512);
         jSplitPane3.setResizeWeight(0.5);
@@ -190,6 +206,11 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
 
         buttonGroup2.add(chxFactoryInvoice);
         chxFactoryInvoice.setText("Factory Invoice");
+        chxFactoryInvoice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chxFactoryInvoiceActionPerformed(evt);
+            }
+        });
 
         buttonGroup2.add(chxOldInvoice);
         chxOldInvoice.setText("Old Invoice");
@@ -209,58 +230,102 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
 
         jLabel20.setText("Invoice No :");
 
+        buttonGroup2.add(chxDeleteInvoice);
+        chxDeleteInvoice.setText("Delete Invoice");
+        chxDeleteInvoice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chxDeleteInvoiceActionPerformed(evt);
+            }
+        });
+
+        lblDelete.setBackground(new java.awt.Color(153, 0, 0));
+        lblDelete.setForeground(new java.awt.Color(255, 255, 255));
+        lblDelete.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDelete.setText("Deleted");
+        lblDelete.setOpaque(true);
+
+        buttonGroup3.add(chxCashRefund);
+        chxCashRefund.setText("Cash Refund");
+
+        buttonGroup3.add(chxNonRefund);
+        chxNonRefund.setText("Cash Non Refund");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel20))
-                .addGap(39, 39, 39)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtInvoiceNo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(chxOldInvoice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(chxNormalInvoice, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(chxOldInvoice, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(9, 9, 9)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chxNormalInvoice, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chxEditInvoice, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chxCashRefund))
+                        .addGap(2, 2, 2)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chxDeleteInvoice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(chxFactoryInvoice)
+                                    .addComponent(chxNonRefund))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(chxFactoryInvoice, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(chxEditInvoice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton10)
-                .addGap(19, 19, 19))
+                            .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtInvoiceNo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtDate, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton10))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGap(11, 11, 11)
+                        .addComponent(jButton10)
+                        .addGap(8, 8, 8))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(chxNormalInvoice)
-                            .addComponent(chxFactoryInvoice))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(chxOldInvoice)
-                            .addComponent(chxEditInvoice))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtInvoiceNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel20))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                            .addGap(0, 0, 0)
+                            .addComponent(chxEditInvoice))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(chxFactoryInvoice)
+                            .addGap(0, 0, 0)
+                            .addComponent(chxDeleteInvoice))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(2, 2, 2)
+                            .addComponent(chxOldInvoice))))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(chxCashRefund)
+                    .addComponent(chxNonRefund))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblDelete, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(jLabel20))
+                            .addComponent(txtInvoiceNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(jLabel2))
+                            .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 0, 0))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Customer Information"));
@@ -308,6 +373,8 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
 
         lblStar5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sv/visionplus/resource/icons/transaction/star.png"))); // NOI18N
 
+        lblInvoiceIndex.setText(" ");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -327,11 +394,13 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtNic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1)
                             .addComponent(txtContactNo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtAge, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAddCustomer)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnAddCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblInvoiceIndex, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(20, 20, 20))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(lblStar1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -353,21 +422,24 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
                     .addComponent(btnAddCustomer)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtNic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(txtContactNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(txtNic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(txtContactNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lblInvoiceIndex))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
@@ -414,7 +486,7 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
                         .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel11)
                         .addGap(18, 18, 18)
                         .addComponent(lblAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -429,31 +501,30 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
                     .addComponent(jButton11)
                     .addComponent(lblAmount))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -549,6 +620,13 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
                 .addContainerGap())
         );
 
+        btnDetail.setText("Details");
+        btnDetail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDetailActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
@@ -566,7 +644,7 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
                             .addComponent(jLabel10))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtVaWithPhLeft, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtVaWithPhLeft, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
                             .addComponent(txtVaWithGlassLeft, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtAutoRefLeft, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtNtcLeft, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -575,21 +653,29 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
                             .addComponent(txtHbRxSubLeft, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtHbRxSubRight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtHbRxSubRight, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
                             .addComponent(txtVaWithoutGlassRight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtVaWithPhRight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtAutoRefRight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtNtcRight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtHbRxRight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtVaWithGlassRight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDetail)))
                 .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(btnDetail)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel10Layout.createSequentialGroup()
@@ -601,12 +687,12 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
                             .addComponent(txtHbRxSubLeft, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtHbRxSubRight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAutoRefLeft, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtAutoRefRight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
-                .addGap(7, 7, 7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNtcLeft, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNtcRight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -654,38 +740,51 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
 
         jLabel18.setText("Lens Brand :");
 
-        jLabel19.setText("Frame Type :");
+        jLabel19.setText(" Frame Type :");
+
+        jLabel21.setText("Barcode :");
+
+        txtBarcode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBarcodeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtLenseType, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtLenseType, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtLenseName, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtLenseName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtLenseBrand, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtLenseBrand, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addComponent(txtBarcode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(19, 19, 19))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
                     .addComponent(txtLenseName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18)
                     .addComponent(txtLenseBrand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel19)
-                    .addComponent(txtLenseType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtLenseType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel21)
+                    .addComponent(txtBarcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 8, Short.MAX_VALUE))
         );
 
         buttonGroup1.add(myopiaRadio);
@@ -720,7 +819,11 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
             }
         });
 
-        jLabel14.setText("Remark :");
+        jLabel14.setText(" Remark :");
+
+        txtRemarks1.setColumns(20);
+        txtRemarks1.setRows(5);
+        jScrollPane4.setViewportView(txtRemarks1);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -730,22 +833,27 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel14)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
                                 .addComponent(myopiaRadio, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(presbyopiaRadio, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(hypermtropiaRadio, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(astimatismRadio, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE))
-                            .addComponent(txtRemarks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE))
-                .addContainerGap())
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane4)
+                                .addContainerGap())))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -759,12 +867,14 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
                     .addComponent(hypermtropiaRadio)
                     .addComponent(astimatismRadio))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(txtRemarks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(9, 9, 9)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -779,7 +889,8 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jSplitPane3.setRightComponent(jPanel3);
@@ -798,7 +909,7 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         if (0 > lstItem.getSelectedIndex()) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Select a Item to Delete...");
+            javax.swing.JOptionPane.showMessageDialog(this, "Select a Item to Delete...", "Error Message", JOptionPane.ERROR_MESSAGE);
         } else {
             com.sv.visionplus.transaction.invoice.dialog.Item.SearchItemMixModel model = (com.sv.visionplus.transaction.invoice.dialog.Item.SearchItemMixModel) selectedItemList.get(lstItem.getSelectedIndex());
             double qty = model.getTotal_qty();
@@ -860,18 +971,65 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
     }//GEN-LAST:event_txtNicKeyPressed
 
     private void chxNormalInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chxNormalInvoiceActionPerformed
-        // TODO add your handling code here:
+        if (chxNormalInvoice.isSelected()) {
+            chxCashRefund.setVisible(false);
+            chxNonRefund.setVisible(false);
+        } else {
+            chxCashRefund.setVisible(true);
+            chxNonRefund.setVisible(true);
+        }
     }//GEN-LAST:event_chxNormalInvoiceActionPerformed
 
     private void chxEditInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chxEditInvoiceActionPerformed
-        // TODO add your handling code here:
+        if (chxEditInvoice.isSelected()) {
+            chxCashRefund.setVisible(false);
+            chxNonRefund.setVisible(false);
+        } else {
+            chxCashRefund.setVisible(true);
+            chxNonRefund.setVisible(true);
+        }
     }//GEN-LAST:event_chxEditInvoiceActionPerformed
 
     private void chxOldInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chxOldInvoiceActionPerformed
         if (chxOldInvoice.isSelected()) {
             txtInvoiceNo.setCValueEditable(true);
+            chxCashRefund.setVisible(false);
+            chxNonRefund.setVisible(false);
+        } else {
+            chxCashRefund.setVisible(true);
+            chxNonRefund.setVisible(true);
         }
     }//GEN-LAST:event_chxOldInvoiceActionPerformed
+
+    private void txtBarcodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBarcodeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBarcodeActionPerformed
+
+    private void chxDeleteInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chxDeleteInvoiceActionPerformed
+        if (chxDeleteInvoice.isSelected()) {
+            chxCashRefund.setVisible(true);
+            chxNonRefund.setVisible(true);
+        } else {
+            chxCashRefund.setVisible(false);
+            chxNonRefund.setVisible(false);
+        }
+    }//GEN-LAST:event_chxDeleteInvoiceActionPerformed
+
+    private void chxFactoryInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chxFactoryInvoiceActionPerformed
+        if (chxFactoryInvoice.isSelected()) {
+            chxCashRefund.setVisible(false);
+            chxNonRefund.setVisible(false);
+        } else {
+            chxCashRefund.setVisible(true);
+            chxNonRefund.setVisible(true);
+        }
+    }//GEN-LAST:event_chxFactoryInvoiceActionPerformed
+
+    private void btnDetailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetailActionPerformed
+        PatientDetail detail = new PatientDetail(null, true);
+        detail.setFrame(this);
+        detail.setVisible(true);
+    }//GEN-LAST:event_btnDetailActionPerformed
 
     @Override
     public void setIdealMode() {
@@ -887,7 +1045,7 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
         txtContactNo.setCValueEditable(false);
         txtAge.setCValueEditable(false);
         txtOther.setCValueEditable(false);
-        txtRemarks.setCValueEditable(false);
+        txtRemarks1.setEditable(false);
         txtHbRxLeft.setCValueEditable(false);
         txtHbRxRight.setCValueEditable(false);
         txtHbRxSubLeft.setCValueEditable(false);
@@ -908,10 +1066,16 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
         txtLenseBrand.resetCValue();
         txtLenseName.setCValueEditable(false);
         txtLenseName.resetCValue();
-        
+        txtBarcode.setCValueEditable(false);
+        txtBarcode.resetCValue();
+        lblDelete.setVisible(false);
+        btnDetail.setEnabled(false);
+
         btnAddCustomer.setEnabled(false);
         jButton10.setEnabled(false);
         jButton2.setEnabled(false);
+        invoiceItem = new com.sv.visionplus.transaction.invoice.model.TInvoiceItem();
+        lblAmount.setText("0");
     }
 
     @Override
@@ -938,7 +1102,7 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
         txtContactNo.setCValueEditable(false);
         txtAge.setCValueEditable(false);
         txtOther.setCValueEditable(false);
-        txtRemarks.setCValueEditable(true);
+        txtRemarks1.setEditable(true);
         txtHbRxLeft.setCValueEditable(true);
         txtHbRxRight.setCValueEditable(true);
         txtHbRxSubLeft.setCValueEditable(true);
@@ -971,6 +1135,10 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
         txtLenseBrand.resetCValue();
         txtLenseName.setCValueEditable(true);
         txtLenseName.resetCValue();
+        txtBarcode.setCValueEditable(true);
+        txtBarcode.resetCValue();
+        lblDelete.setVisible(false);
+        btnDetail.setEnabled(true);
 
         model.setRowCount(0);
         Object[] firstRowdata = {"DIST", "", "", "", "", "", ""};
@@ -979,16 +1147,18 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
         Object[] secondRowdata = {"NEAR", "", "", "", "", "", ""};
 
         model.addRow(secondRowdata);
-        
+        invoiceMix.setInvoiceItem(new ArrayList<>());
+        itemListModel.setSize(0);
+
         btnAddCustomer.setEnabled(true);
         jButton10.setEnabled(true);
         jButton2.setEnabled(true);
+        lblAmount.setText("0.00");
 
     }
 
     @Override
     public void setEditMode() {
-
         txtInvoiceNo.setCValueEditable(false);
         chxEditInvoice.setSelected(true);
         chxFactoryInvoice.setSelected(false);
@@ -1001,7 +1171,7 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
         txtContactNo.setCValueEditable(true);
         txtAge.setCValueEditable(true);
         txtOther.setCValueEditable(true);
-        txtRemarks.setCValueEditable(true);
+        txtRemarks1.setEditable(true);
         txtHbRxLeft.setCValueEditable(true);
         txtHbRxRight.setCValueEditable(true);
         txtHbRxSubLeft.setCValueEditable(true);
@@ -1019,6 +1189,9 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
         txtLenseType.setCValueEditable(true);
         txtLenseBrand.setCValueEditable(true);
         txtLenseName.setCValueEditable(true);
+        txtBarcode.setCValueEditable(true);
+        invoiceMix.setInvoiceItem(new ArrayList<>());
+        itemListModel.setSize(0);
     }
 
     @Override
@@ -1036,7 +1209,7 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
         txtContactNo.resetCValue();
         txtAge.resetCValue();
         txtOther.resetCValue();
-        txtRemarks.resetCValue();
+        txtRemarks1.setText("");
         txtHbRxLeft.resetCValue();
         txtHbRxRight.resetCValue();
         txtHbRxSubLeft.resetCValue();
@@ -1054,6 +1227,8 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
         txtLenseType.resetCValue();
         txtLenseBrand.resetCValue();
         txtLenseName.resetCValue();
+        txtBarcode.resetCValue();
+        lblDelete.setVisible(false);
 
         model.setRowCount(0);
         Object[] firstRowdata = {"DIST", "", "", "", "", "", ""};
@@ -1093,29 +1268,38 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
                 invoice.setAmount(Double.parseDouble(lblAmount.getText()));
                 invoice.setFactory(1);
                 invoice.setInvoiceDate(txtDate.getCValue());
-                invoice.setIsDelete(false);
+                invoice.setIsdelete(false);
                 invoice.setStatus("Reserved From Customer");
                 invoice.setNumber(txtInvoiceNo.getCValue());
                 if (chxEditInvoice.isSelected()) {
                     invoice.setStatus2("EDITED INVOICE");
-
+                    invoice.setIndexNo(Integer.parseInt(lblInvoiceIndex.getText()));
                 }
                 if (chxFactoryInvoice.isSelected()) {
                     invoice.setStatus2("FACTORY INVOICE");
-
                 }
                 if (chxNormalInvoice.isSelected()) {
                     invoice.setStatus2("NORMAL INVOICE");
-
                 }
                 if (chxOldInvoice.isSelected()) {
                     invoice.setStatus2("OLD INVOICE");
+                }
+                if (chxDeleteInvoice.isSelected()) {
+                    invoice.setStatus2("DELETED INVOICE");
+                    invoice.setIsdelete(Boolean.TRUE);
+                    invoice.setIndexNo(Integer.parseInt(lblInvoiceIndex.getText()));
+                    if (chxCashRefund.isSelected()) {
+                        invoiceMix.setIsCashRefund(true);
+                    } else {
+                        invoiceMix.setIsCashRefund(false);
+                    }
 
                 }
+                invoice.setBarcode(txtBarcode.getCValue());
+                invoice.setUser(user.getIndexNo());
 
                 invoiceMix.setInvoice(invoice);
 
-                
                 invoiceMix.setMobile(this.customer.getContactNo());
 
                 patientInformation.setAutoRefLeft(txtAutoRefLeft.getText());
@@ -1172,7 +1356,7 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
                     refractiveError = "";
                 }
                 patientInformation.setRefractiveError(refractiveError);
-                patientInformation.setRemarks(txtRemarks.getText());
+                patientInformation.setRemarks(txtRemarks1.getText());
                 patientInformation.setVaWithGlassLeft(txtVaWithGlassLeft.getText());
                 patientInformation.setVaWithGlassRight(txtVaWithGlassRight.getText());
                 patientInformation.setVaWithPhLeft(txtVaWithPhLeft.getText());
@@ -1198,9 +1382,8 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
                 patientInformation.setLensName(txtLenseName.getCValue());
 
                 invoiceMix.setPatientInformation(patientInformation);
-                
+
                 invoiceMix.setCustomer(this.customer);
-                
 
                 java.util.List<com.sv.visionplus.transaction.invoice.model.TInvoiceItem> invoiceItemList = new java.util.ArrayList();
                 for (com.sv.visionplus.transaction.invoice.dialog.Item.SearchItemMixModel item : selectedItemList) {
@@ -1240,22 +1423,19 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
                     if (item.isIsstock_item()) {
                         stockLedger.setDate(new java.util.Date());
                         stockLedger.setForm("Invoice");
-
                         stockLedger.setItem(item.getItem());
-
-                        stockLedger.setQty(item.getTotal_qty() - item.getTotal_qty() - item.getTotal_qty());
+                        stockLedger.setQty(item.getTotal_qty() * -1);
                         stockLedger.setStore(item.getStore_id());
-
                         stockLedgerList.add(stockLedger);
                         stockLedger = new com.sv.visionplus.transaction.invoice.model.TStockLedger();
                     }
                 }
                 invoiceMix.setStockLedgerList(stockLedgerList);
             } else {
-                javax.swing.JOptionPane.showMessageDialog(this, "The Invoice can't Save Again or unused Invoice");
+                javax.swing.JOptionPane.showMessageDialog(this, "The Invoice can't Save Again or unused Invoice", "Error Message", JOptionPane.ERROR_MESSAGE);
             }
         } else {
-            javax.swing.JOptionPane.showMessageDialog(this, "Transaction Password is worng...");
+            javax.swing.JOptionPane.showMessageDialog(this, "Transaction Password is worng...", "Error Message", JOptionPane.ERROR_MESSAGE);
         }
 
     }
@@ -1279,10 +1459,15 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton astimatismRadio;
     private javax.swing.JButton btnAddCustomer;
+    private javax.swing.JButton btnDetail;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.JRadioButton chxCashRefund;
+    private javax.swing.JRadioButton chxDeleteInvoice;
     private javax.swing.JRadioButton chxEditInvoice;
     private javax.swing.JRadioButton chxFactoryInvoice;
+    private javax.swing.JRadioButton chxNonRefund;
     private javax.swing.JRadioButton chxNormalInvoice;
     private javax.swing.JRadioButton chxOldInvoice;
     private javax.swing.JCheckBox dischargeCheckBox;
@@ -1305,6 +1490,7 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1325,8 +1511,11 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSplitPane jSplitPane3;
     private javax.swing.JLabel lblAmount;
+    private javax.swing.JLabel lblDelete;
+    private javax.swing.JLabel lblInvoiceIndex;
     private javax.swing.JLabel lblStar1;
     private javax.swing.JLabel lblStar2;
     private javax.swing.JLabel lblStar3;
@@ -1342,6 +1531,7 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
     private com.sv.visionplus.util.component.textfield.CIntegerField txtAge;
     private com.sv.visionplus.util.component.textfield.CStringField txtAutoRefLeft;
     private com.sv.visionplus.util.component.textfield.CStringField txtAutoRefRight;
+    private com.sv.visionplus.util.component.textfield.CStringField txtBarcode;
     private com.sv.visionplus.util.component.textfield.CIntegerField txtContactNo;
     private com.sv.visionplus.util.component.textfield.CDateField txtDate;
     private com.sv.visionplus.util.component.textfield.CStringField txtHbRxLeft;
@@ -1357,7 +1547,7 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
     private com.sv.visionplus.util.component.textfield.CStringField txtNtcLeft;
     private com.sv.visionplus.util.component.textfield.CStringField txtNtcRight;
     private com.sv.visionplus.util.component.textfield.CStringField txtOther;
-    private com.sv.visionplus.util.component.textfield.CStringField txtRemarks;
+    private javax.swing.JTextArea txtRemarks1;
     private com.sv.visionplus.util.component.textfield.CStringField txtVaWithGlassLeft;
     private com.sv.visionplus.util.component.textfield.CStringField txtVaWithGlassRight;
     private com.sv.visionplus.util.component.textfield.CStringField txtVaWithPhLeft;
@@ -1441,11 +1631,21 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
         value = 0.0D;
     }
 
+    public void setValue(int index) {
+        System.out.println(index);
+        TPatientInformation info = PatientInformationDAO.getInstance().searchInvoiceByIndex(index);
+        setInfo(info);
+    }
+
     public void setValue(com.sv.visionplus.transaction.invoice.model.TInvoice invoice, com.sv.visionplus.transaction.invoice.dialog.customer.model.MCustomer customer) {
         setNewMode();
         setCustomer(customer);
         txtDate.setCValue(invoice.getInvoiceDate());
         txtInvoiceNo.setCValue(invoice.getNumber());
+        txtBarcode.setText(invoice.getBarcode());
+        lblDelete.setVisible(invoice.getIsdelete());
+        lblInvoiceIndex.setText(invoice.getIndexNo() + "");
+
         TPatientInformation info = PatientInformationDAO.getInstance().searchInvoicePatientInfo(invoice.getIndexNo());
         setInfo(info);
 
@@ -1472,6 +1672,16 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
 
     private void setInfo(com.sv.visionplus.transaction.invoice.model.TPatientInformation info) {
         if (info != null) {
+            visionNDCheckBox.setSelected(false);
+            redCheckBox.setSelected(false);
+            headacheCheckBox.setSelected(false);
+            itchingCheckBox.setSelected(false);
+            dischargeCheckBox.setSelected(false);
+            irritationCheckBox.setSelected(false);
+            tearingCheckBox.setSelected(false);
+            otherChechBox.setSelected(false);
+            txtOther.setText("");
+
             String[] complains = info.getComplains().split("@@");
             for (String complain : complains) {
                 if ("VISION-N/D".equals(complain)) {
@@ -1587,6 +1797,10 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
             };
 
             model.addRow(secondRowdata);
+            myopiaRadio.setSelected(false);
+            presbyopiaRadio.setSelected(false);
+            hypermtropiaRadio.setSelected(false);
+            astimatismRadio.setSelected(false);
 
             if ("MYOPIA".equals(info.getRefractiveError())) {
                 myopiaRadio.setSelected(true);
@@ -1601,7 +1815,7 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
             txtLenseType.setText(info.getLenseType());
             txtLenseBrand.setText(info.getLensBrand());
             txtLenseName.setText(info.getLensName());
-            txtRemarks.setText(info.getRemarks());
+            txtRemarks1.setText(info.getRemarks());
         }
     }
 
