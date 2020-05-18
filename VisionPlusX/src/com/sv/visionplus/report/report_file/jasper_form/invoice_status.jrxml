@@ -2,9 +2,9 @@
 <!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cfe759b0-9728-4589-8f90-a11ce6614510">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="My DB"/>
 	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="541"/>
 	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="445"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="vision_plus"/>
 	<parameter name="status" class="java.lang.String"/>
 	<parameter name="from" class="java.util.Date"/>
 	<parameter name="to" class="java.util.Date"/>
@@ -27,7 +27,9 @@ from customer_payment_view
 where customer_payment_view.invoice=t_invoice.index_no and customer_payment_view.is_advance=0) as payment,
 	t_invoice.amount-(select sum(customer_payment_view.total_amount)
 from customer_payment_view
-where customer_payment_view.invoice=t_invoice.index_no) as balance
+where customer_payment_view.invoice=t_invoice.index_no) as balance,
+	(SELECT sum(customer_payment_view.total_amount) FROM customer_payment_view 
+		WHERE customer_payment_view.invoice= t_invoice.index_no AND customer_payment_view.DATE= $P{from} ) AS current_payment
 from 
 	t_invoice,
 	m_customer,
@@ -85,6 +87,9 @@ GROUP BY t_invoice.index_no]]>
 	<field name="balance" class="java.lang.Double">
 		<property name="com.jaspersoft.studio.field.label" value="balance"/>
 	</field>
+	<field name="current_payment" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="current_payment"/>
+	</field>
 	<variable name="counter" class="java.lang.Integer" calculation="Count">
 		<variableExpression><![CDATA[$F{index_no}]]></variableExpression>
 	</variable>
@@ -99,6 +104,9 @@ GROUP BY t_invoice.index_no]]>
 	</variable>
 	<variable name="payment1" class="java.lang.Double" calculation="Sum">
 		<variableExpression><![CDATA[$F{payment}]]></variableExpression>
+	</variable>
+	<variable name="current_payment1" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{current_payment}]]></variableExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
@@ -129,35 +137,35 @@ GROUP BY t_invoice.index_no]]>
 				<text><![CDATA[071-7513639]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="430" y="50" width="110" height="19" uuid="49b14958-6d04-4680-9b73-f2b8820581c2"/>
+				<reportElement x="410" y="50" width="130" height="19" uuid="49b14958-6d04-4680-9b73-f2b8820581c2"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<text><![CDATA[24, Naboda Road,]]></text>
+				<text><![CDATA[34, Aluthgama Road,]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="430" y="69" width="110" height="19" uuid="35f2c1db-254d-48ff-bd17-d29c05a88239"/>
+				<reportElement x="410" y="69" width="130" height="19" uuid="35f2c1db-254d-48ff-bd17-d29c05a88239"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<text><![CDATA[Mathugama,]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="430" y="88" width="110" height="19" uuid="b094e18f-d5c6-4dc6-8155-2c467f8dd799"/>
+				<reportElement x="410" y="88" width="130" height="19" uuid="b094e18f-d5c6-4dc6-8155-2c467f8dd799"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<text><![CDATA[Sri Lanka.]]></text>
 			</staticText>
 			<textField pattern="MMMMM dd, yyyy">
-				<reportElement x="430" y="107" width="100" height="23" uuid="1038b83a-3abe-4fb8-80c6-104dc8abbbd1"/>
+				<reportElement x="410" y="107" width="120" height="23" uuid="1038b83a-3abe-4fb8-80c6-104dc8abbbd1"/>
 				<textElement verticalAlignment="Middle">
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="22" y="100" width="388" height="30" uuid="1050581e-365b-4ed3-bf26-5845c5f49b27"/>
+				<reportElement x="22" y="100" width="358" height="30" uuid="1050581e-365b-4ed3-bf26-5845c5f49b27"/>
 				<textElement textAlignment="Left">
 					<font size="20" isBold="false" isItalic="true"/>
 				</textElement>
@@ -186,75 +194,82 @@ GROUP BY t_invoice.index_no]]>
 				<text><![CDATA[ Invoice No]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="140" y="0" width="120" height="15" uuid="7c4a40fa-e2b1-49ee-b340-8ad6ce80183d"/>
+				<reportElement x="130" y="0" width="120" height="15" uuid="7c4a40fa-e2b1-49ee-b340-8ad6ce80183d"/>
 				<textElement textAlignment="Left">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Customer Name]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="260" y="0" width="60" height="15" uuid="b0785c27-9e55-49c8-b8c2-cc5880edef9d"/>
+				<reportElement x="250" y="0" width="60" height="15" uuid="b0785c27-9e55-49c8-b8c2-cc5880edef9d"/>
 				<textElement textAlignment="Left">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Invoice Date]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="320" y="0" width="60" height="15" uuid="689e482e-d9dc-4c75-a5f2-a0e4fc45d451"/>
+				<reportElement x="310" y="0" width="50" height="15" uuid="689e482e-d9dc-4c75-a5f2-a0e4fc45d451"/>
 				<textElement textAlignment="Right">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Amount]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="90" y="0" width="50" height="15" uuid="872f0e4c-6942-4653-9c2f-1014aa6b2739"/>
+				<reportElement x="90" y="0" width="40" height="15" uuid="872f0e4c-6942-4653-9c2f-1014aa6b2739"/>
 				<textElement textAlignment="Left">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Ref No]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="380" y="0" width="60" height="15" uuid="61d6fba3-1d60-4063-a90f-05bacd44fd68"/>
+				<reportElement x="360" y="0" width="50" height="15" uuid="61d6fba3-1d60-4063-a90f-05bacd44fd68"/>
 				<textElement textAlignment="Right">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Advance]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="500" y="0" width="60" height="15" uuid="575f532a-2ee7-4f43-900e-605de2a097b8"/>
+				<reportElement x="460" y="0" width="50" height="15" uuid="575f532a-2ee7-4f43-900e-605de2a097b8"/>
 				<textElement textAlignment="Right">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Balance]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="440" y="0" width="60" height="15" uuid="fe2faca8-fcdb-4115-85fd-03cc99db6713"/>
+				<reportElement x="410" y="0" width="50" height="15" uuid="fe2faca8-fcdb-4115-85fd-03cc99db6713"/>
 				<textElement textAlignment="Right">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Payment]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="510" y="0" width="50" height="15" uuid="ef95e67e-c1b3-47b5-850c-71709d2e73b6"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Current]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="22" splitType="Stretch">
 			<textField>
-				<reportElement x="90" y="0" width="50" height="17" uuid="ea581044-f222-4753-82e7-2bb6144148f0"/>
+				<reportElement x="90" y="0" width="40" height="17" uuid="ea581044-f222-4753-82e7-2bb6144148f0"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{index_no}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="140" y="0" width="120" height="17" uuid="f9373cae-a42e-4eab-bdde-3e5e36516525"/>
+				<reportElement x="130" y="0" width="120" height="17" uuid="f9373cae-a42e-4eab-bdde-3e5e36516525"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
 			</textField>
 			<textField pattern="MMM d, yyyy">
-				<reportElement x="260" y="0" width="60" height="17" uuid="20632ba7-ab5d-4614-a8e0-3a14a034fc8a"/>
+				<reportElement x="250" y="0" width="60" height="17" uuid="20632ba7-ab5d-4614-a8e0-3a14a034fc8a"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{invoice_date}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="320" y="0" width="60" height="17" uuid="752a72e0-059b-4dc3-a174-a18bd7666ff8"/>
+				<reportElement x="310" y="0" width="50" height="17" uuid="752a72e0-059b-4dc3-a174-a18bd7666ff8"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
 			</textField>
@@ -274,25 +289,32 @@ GROUP BY t_invoice.index_no]]>
 				<textFieldExpression><![CDATA[$F{number}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="380" y="0" width="60" height="17" uuid="7eb4ad9a-4c4d-4b95-bf1e-6c09fb775b09">
+				<reportElement x="360" y="0" width="50" height="17" uuid="7eb4ad9a-4c4d-4b95-bf1e-6c09fb775b09">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e94c4ef0-d791-4b06-992c-31a6184a2528"/>
 				</reportElement>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{advance}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="500" y="0" width="60" height="17" uuid="e3d2cb1a-ad4c-45d8-9150-27f82fdad035">
+				<reportElement x="460" y="0" width="50" height="17" uuid="e3d2cb1a-ad4c-45d8-9150-27f82fdad035">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="dbec9ed4-6a33-4c71-bdab-559cbd380170"/>
 				</reportElement>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{balance}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="440" y="0" width="60" height="17" uuid="9f760ed7-7327-4d37-a46e-443742b62782">
+				<reportElement x="410" y="0" width="50" height="17" uuid="9f760ed7-7327-4d37-a46e-443742b62782">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e94c4ef0-d791-4b06-992c-31a6184a2528"/>
 				</reportElement>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{payment}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="510" y="0" width="50" height="17" uuid="5c873196-31d1-487d-ab15-6243813e89d4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="dbec9ed4-6a33-4c71-bdab-559cbd380170"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{current_payment}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
@@ -305,7 +327,7 @@ GROUP BY t_invoice.index_no]]>
 	<summary>
 		<band height="42" splitType="Stretch">
 			<textField>
-				<reportElement x="320" y="5" width="60" height="17" uuid="c15d33b6-decd-4465-84da-5c3e440c3abc"/>
+				<reportElement x="310" y="4" width="50" height="17" uuid="c15d33b6-decd-4465-84da-5c3e440c3abc"/>
 				<box>
 					<topPen lineWidth="1.0"/>
 					<bottomPen lineWidth="1.0" lineStyle="Double"/>
@@ -316,7 +338,7 @@ GROUP BY t_invoice.index_no]]>
 				<textFieldExpression><![CDATA[$V{amount1}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="0" y="2" width="551" height="1" uuid="e1c4e687-7060-41d1-a549-9d98ec2afada">
+				<reportElement x="0" y="0" width="560" height="1" uuid="e1c4e687-7060-41d1-a549-9d98ec2afada">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 			</line>
@@ -326,7 +348,7 @@ GROUP BY t_invoice.index_no]]>
 				<textFieldExpression><![CDATA[$V{counter}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="380" y="5" width="60" height="17" uuid="2efe373a-366e-4439-9c4c-93a2d7b91a8a"/>
+				<reportElement x="360" y="4" width="50" height="17" uuid="2efe373a-366e-4439-9c4c-93a2d7b91a8a"/>
 				<box>
 					<topPen lineWidth="1.0"/>
 					<bottomPen lineWidth="1.0" lineStyle="Double"/>
@@ -337,7 +359,7 @@ GROUP BY t_invoice.index_no]]>
 				<textFieldExpression><![CDATA[$V{pay_amount1}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="500" y="5" width="60" height="17" uuid="da3dbac5-736f-4ac6-8473-5be25c9e5e81"/>
+				<reportElement x="460" y="4" width="50" height="17" uuid="da3dbac5-736f-4ac6-8473-5be25c9e5e81"/>
 				<box>
 					<topPen lineWidth="1.0"/>
 					<bottomPen lineWidth="1.0" lineStyle="Double"/>
@@ -348,7 +370,7 @@ GROUP BY t_invoice.index_no]]>
 				<textFieldExpression><![CDATA[$V{balance1}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="440" y="5" width="60" height="17" uuid="e38a5ec4-bbe7-420c-a7de-ac834a1588f0"/>
+				<reportElement x="410" y="4" width="50" height="17" uuid="e38a5ec4-bbe7-420c-a7de-ac834a1588f0"/>
 				<box>
 					<topPen lineWidth="1.0"/>
 					<bottomPen lineWidth="1.0" lineStyle="Double"/>
@@ -357,6 +379,17 @@ GROUP BY t_invoice.index_no]]>
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{payment1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="510" y="4" width="50" height="17" uuid="f54841b6-20ef-48de-a469-59589971583a"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{current_payment1}]]></textFieldExpression>
 			</textField>
 		</band>
 	</summary>

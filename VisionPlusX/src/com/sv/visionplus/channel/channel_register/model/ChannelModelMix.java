@@ -15,11 +15,19 @@ public class ChannelModelMix {
     private String mobile;
     private double amount;
     private double payAmount;
+    private double overPayAmount;
+    private String overPayRemarks;
+    private double payAmount2;
+    private Date payDate2;
+    private double refundAmount;
+    private Date refundDate;
+    private String refundRemarks;
+    private boolean isPresent;
 
     public ChannelModelMix() {
     }
 
-    public ChannelModelMix(Integer indexNo, Integer doctorId, String doctorName, Date date, Date channelDate, String channelId, String time, String patientName, String mobile, double amount, double payAmount) {
+    public ChannelModelMix(Integer indexNo, Integer doctorId, String doctorName, Date date, Date channelDate, String channelId, String time, String patientName, String mobile, double amount, double payAmount, double overPayAmount, String overPayRemarks, double payAmount2, Date payDate2, double refundAmount, Date refundDate, String refundRemarks, boolean isPresent) {
         this.indexNo = indexNo;
         this.doctorId = doctorId;
         this.doctorName = doctorName;
@@ -31,14 +39,14 @@ public class ChannelModelMix {
         this.mobile = mobile;
         this.amount = amount;
         this.payAmount = payAmount;
-    }
-
-    public double getPayAmount() {
-        return payAmount;
-    }
-
-    public void setPayAmount(double payAmount) {
-        this.payAmount = payAmount;
+        this.overPayAmount = overPayAmount;
+        this.overPayRemarks = overPayRemarks;
+        this.payAmount2 = payAmount2;
+        this.payDate2 = payDate2;
+        this.refundAmount = refundAmount;
+        this.refundDate = refundDate;
+        this.refundRemarks = refundRemarks;
+        this.isPresent = isPresent;
     }
 
     public Integer getIndexNo() {
@@ -121,6 +129,77 @@ public class ChannelModelMix {
         this.amount = amount;
     }
 
+    public double getPayAmount() {
+        return payAmount;
+    }
+
+    public void setPayAmount(double payAmount) {
+        this.payAmount = payAmount;
+    }
+
+    public double getOverPayAmount() {
+        return overPayAmount;
+    }
+
+    public void setOverPayAmount(double overPayAmount) {
+        this.overPayAmount = overPayAmount;
+    }
+
+    public String getOverPayRemarks() {
+        return overPayRemarks;
+    }
+
+    public void setOverPayRemarks(String overPayRemarks) {
+        this.overPayRemarks = overPayRemarks;
+    }
+
+    public double getPayAmount2() {
+        return payAmount2;
+    }
+
+    public void setPayAmount2(double payAmount2) {
+        this.payAmount2 = payAmount2;
+    }
+
+    public Date getPayDate2() {
+        return payDate2;
+    }
+
+    public void setPayDate2(Date payDate2) {
+        this.payDate2 = payDate2;
+    }
+
+    public double getRefundAmount() {
+        return refundAmount;
+    }
+
+    public void setRefundAmount(double refundAmount) {
+        this.refundAmount = refundAmount;
+    }
+
+    public Date getRefundDate() {
+        return refundDate;
+    }
+
+    public void setRefundDate(Date refundDate) {
+        this.refundDate = refundDate;
+    }
+
+    public String getRefundRemarks() {
+        return refundRemarks;
+    }
+
+    public void setRefundRemarks(String refundRemarks) {
+        this.refundRemarks = refundRemarks;
+    }
+
+    public boolean isIsPresent() {
+        return isPresent;
+    }
+
+    public void setIsPresent(boolean isPresent) {
+        this.isPresent = isPresent;
+    }
+
     
-   
 }

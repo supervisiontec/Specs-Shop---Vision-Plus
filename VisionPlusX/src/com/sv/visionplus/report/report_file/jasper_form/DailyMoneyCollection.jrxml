@@ -32,7 +32,7 @@
 				<textElement verticalAlignment="Top">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<text><![CDATA[24, Naboda Road,]]></text>
+				<text><![CDATA[34, Aluthgama Road,]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="601" y="69" width="132" height="19" uuid="4c9752b1-9354-4461-9446-cb957e7f1a65"/>

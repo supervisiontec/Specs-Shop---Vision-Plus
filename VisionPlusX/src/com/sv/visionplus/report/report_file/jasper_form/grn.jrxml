@@ -69,7 +69,7 @@ WHERE
 				<textElement verticalAlignment="Top">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<text><![CDATA[24, Naboda Road,]]></text>
+				<text><![CDATA[34, Aluthgama Road,]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="430" y="69" width="110" height="19" uuid="098a6130-d1e4-4a42-a302-c1ab97150b53"/>

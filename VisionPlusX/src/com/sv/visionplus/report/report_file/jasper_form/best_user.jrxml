@@ -71,7 +71,7 @@ GROUP BY log_file.user]]>
 				<textElement verticalAlignment="Top">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<text><![CDATA[24, Naboda Road,]]></text>
+				<text><![CDATA[34, Aluthgama Road,]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="400" y="69" width="140" height="19" uuid="734faa52-1068-411a-92ff-02d0cbd531fb"/>

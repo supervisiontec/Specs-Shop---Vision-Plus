@@ -66,7 +66,7 @@ public class InvoiceDAO {
                     LogFileModel fileModel = new LogFileModel();
                     fileModel.setDate(new Date());
                     fileModel.setFormName("Invoice Form");
-                    fileModel.setRemarks("Update Invoice");
+                    fileModel.setRemarks("Update Invoice - number -"+mix.getInvoice().getNumber());
                     fileModel.setTime(FormatterUtil.getInstance().getTime());
                     fileModel.setTransactionType("Update");
                     fileModel.setUser(mix.getLogFile().getUser());
@@ -418,7 +418,7 @@ public class InvoiceDAO {
                                 System.out.println("B");
                                 //save cash refund
                                 MAccount mAccount = new MAccount();
-                                mAccount.setDescription("Cash Refund - invoice index - " + mix.getInvoice().getIndexNo());
+                                mAccount.setDescription("Cash Refund - invoice number - " + mix.getInvoice().getNumber());
                                 mAccount.setMain_category(1);// INVOICE
                                 mAccount.setSub_category(4); // CASH REFUND
                                 mAccount.setType("VOUCHER");
@@ -431,8 +431,8 @@ public class InvoiceDAO {
                                 accountTransaction.setDate(new Date());
                                 accountTransaction.setCredit(val);
                                 accountTransaction.setDebit(0);
-                                accountTransaction.setDescription("Cash Refund");
-//                                accountTransaction.setIndex_no(0);
+                                accountTransaction.setDescription("Cash Refund - invoice number - " + mix.getInvoice().getNumber());
+                                accountTransaction.setIs_expense(1);
                                 AccountTransactionDAO.getInstance().saveTransaction(connection, accountTransaction);
                             }
 
@@ -452,7 +452,7 @@ public class InvoiceDAO {
                             LogFileModel fileModel = new LogFileModel();
                             fileModel.setDate(new Date());
                             fileModel.setFormName("Invoice Form");
-                            fileModel.setRemarks("Delete Invoice - indexNo = " + mix.getInvoice().getIndexNo());
+                            fileModel.setRemarks("Delete Invoice - number = " + mix.getInvoice().getNumber());
                             if (mix.getIsCashRefund()) {
                                 fileModel.setRemarks(fileModel.getRemarks() + " with cash refund "+val);
                             }

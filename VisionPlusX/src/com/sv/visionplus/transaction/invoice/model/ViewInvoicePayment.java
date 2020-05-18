@@ -5,7 +5,9 @@
  */
 package com.sv.visionplus.transaction.invoice.model;
 
+import com.sv.visionplus.util.database.annotation.VPId;
 import com.sv.visionplus.util.database.annotation.VPTable;
+import java.util.Date;
 
 /**
  *
@@ -14,40 +16,56 @@ import com.sv.visionplus.util.database.annotation.VPTable;
 @VPTable("view_invoice_payment")
 public class ViewInvoicePayment {
 
+    @VPId
     private Integer invoice_no;
+    private Date date;
     private double cash;
-    private double cheque;
     private double card;
+    private double cheque;
     private double total;
     private boolean is_advance;
-     private String number;
+    private String number;
+    private String type;
+    private Boolean isdelete;
 
-    public ViewInvoicePayment() {
+    public Boolean getIsdelete() {
+        return isdelete;
     }
 
-    public ViewInvoicePayment(Integer invoice_no, double cash, double cheque, double card, double total, boolean is_advance) {
-        this.invoice_no = invoice_no;
-        this.cash = cash;
-        this.cheque = cheque;
-        this.card = card;
-        this.total = total;
+    public void setIsdelete(Boolean isdelete) {
+        this.isdelete = isdelete;
+    }
+    
+    public boolean isIs_advance() {
+        return is_advance;
+    }
+
+    public void setIs_advance(boolean is_advance) {
         this.is_advance = is_advance;
     }
 
-    public String getNumber() {
-        return number;
+    public String getType() {
+        return type;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public Integer getInvoice_no() {
+    public Integer getInvoiceNo() {
         return invoice_no;
     }
 
-    public void setInvoice_no(Integer invoice_no) {
-        this.invoice_no = invoice_no;
+    public void setInvoiceNo(Integer invoiceNo) {
+        this.invoice_no = invoiceNo;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public double getCash() {
@@ -58,20 +76,20 @@ public class ViewInvoicePayment {
         this.cash = cash;
     }
 
-    public double getCheque() {
-        return cheque;
-    }
-
-    public void setCheque(double cheque) {
-        this.cheque = cheque;
-    }
-
     public double getCard() {
         return card;
     }
 
     public void setCard(double card) {
         this.card = card;
+    }
+
+    public double getCheque() {
+        return cheque;
+    }
+
+    public void setCheque(double cheque) {
+        this.cheque = cheque;
     }
 
     public double getTotal() {
@@ -82,12 +100,28 @@ public class ViewInvoicePayment {
         this.total = total;
     }
 
-    public boolean isIs_advance() {
+    public Integer getInvoice_no() {
+        return invoice_no;
+    }
+
+    public void setInvoice_no(Integer invoice_no) {
+        this.invoice_no = invoice_no;
+    }
+
+    public boolean getIsAdvance() {
         return is_advance;
     }
 
-    public void setIs_advance(boolean is_advance) {
-        this.is_advance = is_advance;
+    public void setIsAdvance(boolean isAdvance) {
+        this.is_advance = isAdvance;
     }
-    
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
 }

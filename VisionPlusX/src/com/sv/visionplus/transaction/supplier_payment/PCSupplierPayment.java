@@ -634,7 +634,7 @@ public class PCSupplierPayment extends AbstractObjectCreator<SupplierPaymentMix>
         transaction.setDate(new Date());
         transaction.setDebit(0.00);
         transaction.setDescription("Grn Payment");
-//        transaction.setIndex_no(0);//auto
+        transaction.setIs_expense(0);
 
         mix.setTransaction(transaction);
 

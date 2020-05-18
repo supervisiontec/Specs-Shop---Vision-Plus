@@ -724,7 +724,7 @@ public class PCCustomerPayment extends AbstractObjectCreator<CustomerPaymentMix>
         txtChequeNo.setCValueEditable(false);
         txtChequeNo.resetCValue();
         txtBarcode.setCValueEditable(false);
-        txtBarcode.resetCValue();
+        txtBarcode.setText("-");
         value = 2;
 
     }
@@ -741,6 +741,7 @@ public class PCCustomerPayment extends AbstractObjectCreator<CustomerPaymentMix>
         txtMobile.setCValueEditable(true);
         txtCashAmount.setCValueEditable(true);
         txtBarcode.setCValueEditable(true);
+        txtBarcode.setText("-");
 
         rdoCardPayment.setEnabled(true);
         rdoCheque.setEnabled(true);
@@ -797,7 +798,7 @@ public class PCCustomerPayment extends AbstractObjectCreator<CustomerPaymentMix>
         txtChequeNo.setCValueEditable(false);
         txtChequeNo.resetCValue();
         txtBarcode.setCValueEditable(false);
-        txtBarcode.resetCValue();
+        txtBarcode.setText("-");
 
         paymentModel.setRowCount(0);
         statusModel.setRowCount(0);

@@ -70,7 +70,7 @@ and m_category.name= $P{type} and t_invoice.invoice_date= $P{date}]]>
 				<textElement verticalAlignment="Top">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<text><![CDATA[24, Naboda Road,]]></text>
+				<text><![CDATA[34, Aluthgama Road,]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="418" y="69" width="132" height="19" uuid="35f2c1db-254d-48ff-bd17-d29c05a88239"/>

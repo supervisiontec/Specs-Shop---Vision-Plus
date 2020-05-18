@@ -1067,7 +1067,7 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
         txtLenseName.setCValueEditable(false);
         txtLenseName.resetCValue();
         txtBarcode.setCValueEditable(false);
-        txtBarcode.resetCValue();
+        txtBarcode.setText("-");
         lblDelete.setVisible(false);
         btnDetail.setEnabled(false);
 
@@ -1136,7 +1136,7 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
         txtLenseName.setCValueEditable(true);
         txtLenseName.resetCValue();
         txtBarcode.setCValueEditable(true);
-        txtBarcode.resetCValue();
+        txtBarcode.setText("-");
         lblDelete.setVisible(false);
         btnDetail.setEnabled(true);
 
@@ -1227,7 +1227,7 @@ public class PCInvoice extends AbstractObjectCreator<InvoiceMix> {
         txtLenseType.resetCValue();
         txtLenseBrand.resetCValue();
         txtLenseName.resetCValue();
-        txtBarcode.resetCValue();
+        txtBarcode.setText("-");
         lblDelete.setVisible(false);
 
         model.setRowCount(0);

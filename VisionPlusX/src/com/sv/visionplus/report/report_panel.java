@@ -9,8 +9,10 @@ import static com.sv.visionplus.report.report_file.ReportFiles.*;
 import com.sv.visionplus.report.report_file.dialog.BestCustomer;
 import com.sv.visionplus.report.report_file.dialog.BestUser;
 import com.sv.visionplus.report.report_file.dialog.Channel;
+import com.sv.visionplus.report.report_file.dialog.ChannelClaim;
 import com.sv.visionplus.report.report_file.dialog.ChannelList;
 import com.sv.visionplus.report.report_file.dialog.Claim;
+import com.sv.visionplus.report.report_file.dialog.DailyEarn;
 import com.sv.visionplus.report.report_file.dialog.FactoryReport;
 import com.sv.visionplus.report.report_file.dialog.GrnSummary;
 import com.sv.visionplus.report.report_file.dialog.InvoiceList;
@@ -18,6 +20,7 @@ import com.sv.visionplus.report.report_file.dialog.InvoiceReceipt;
 import com.sv.visionplus.report.report_file.dialog.InvoiceStatus;
 import com.sv.visionplus.report.report_file.dialog.IssueFrameLens;
 import com.sv.visionplus.report.report_file.dialog.Stock;
+import com.sv.visionplus.report.report_file.dialog.VoucherSummary;
 import com.sv.visionplus.report.report_file.dialog.model.ClaimModel;
 import com.sv.visionplus.util.database.DatabaseUtil;
 import java.sql.Connection;
@@ -42,7 +45,6 @@ import visionplusx.model.MUser;
  */
 public class report_panel extends javax.swing.JPanel {
 
-   
     private Connection openConnection;
     private MUser user;
 
@@ -63,6 +65,8 @@ public class report_panel extends javax.swing.JPanel {
             btnInvList.setVisible(false);
             btnInvStatus.setVisible(false);
             btnIssueFrame.setVisible(false);
+            btnVoucherSummary.setVisible(false);
+            btnDailyEarn.setVisible(false);
         }
 
     }
@@ -90,6 +94,9 @@ public class report_panel extends javax.swing.JPanel {
         jButton11 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         btnStock = new javax.swing.JButton();
+        btnVoucherSummary = new javax.swing.JButton();
+        btnDailyEarn = new javax.swing.JButton();
+        btnDailyEarn1 = new javax.swing.JButton();
 
         pnlReport.setBackground(new java.awt.Color(230, 230, 238));
         pnlReport.setLayout(new javax.swing.BoxLayout(pnlReport, javax.swing.BoxLayout.LINE_AXIS));
@@ -185,6 +192,27 @@ public class report_panel extends javax.swing.JPanel {
             }
         });
 
+        btnVoucherSummary.setText("Voucher Summary");
+        btnVoucherSummary.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoucherSummaryActionPerformed(evt);
+            }
+        });
+
+        btnDailyEarn.setText("Daily Monthly Yearly Earning");
+        btnDailyEarn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDailyEarnActionPerformed(evt);
+            }
+        });
+
+        btnDailyEarn1.setText("Channel Claim");
+        btnDailyEarn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDailyEarn1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -203,40 +231,51 @@ public class report_panel extends javax.swing.JPanel {
                     .addComponent(btnInvList, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnStock, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pnlReport, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE))
+                    .addComponent(btnStock, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnVoucherSummary, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnDailyEarn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnDailyEarn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlReport, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlReport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnChannel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnChannel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnChannelList, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnChannelList, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnInvStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnInvStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnInvList, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnInvList, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBestCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnBestCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBestUser, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnBestUser, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnIssueFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnIssueFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnGrnSummary, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnGrnSummary, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnClaim, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnClaim, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnStock, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(btnStock, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnVoucherSummary, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnDailyEarn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnDailyEarn1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pnlReport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -293,19 +332,19 @@ public class report_panel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnClaimActionPerformed
 
     private void btnChannelListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChannelListActionPerformed
-        ChannelList list=new ChannelList(null, true);
+        ChannelList list = new ChannelList(null, true);
         list.setFrame(this);
         list.setVisible(true);
     }//GEN-LAST:event_btnChannelListActionPerformed
 
     private void btnInvListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvListActionPerformed
-        InvoiceList list=new InvoiceList(null, true);
+        InvoiceList list = new InvoiceList(null, true);
         list.setFrame(this);
         list.setVisible(true);
     }//GEN-LAST:event_btnInvListActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        FactoryReport report=new FactoryReport(null, true);
+        FactoryReport report = new FactoryReport(null, true);
         report.setFrame(this);
         report.setVisible(true);
     }//GEN-LAST:event_jButton11ActionPerformed
@@ -322,6 +361,24 @@ public class report_panel extends javax.swing.JPanel {
         stock.setVisible(true);
     }//GEN-LAST:event_btnStockActionPerformed
 
+    private void btnVoucherSummaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoucherSummaryActionPerformed
+        VoucherSummary voucherSummary = new VoucherSummary(null, true);
+        voucherSummary.setFrame(this);
+        voucherSummary.setVisible(true);
+    }//GEN-LAST:event_btnVoucherSummaryActionPerformed
+
+    private void btnDailyEarnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDailyEarnActionPerformed
+        DailyEarn dailyEarn = new DailyEarn(null,true);
+        dailyEarn.setFrame(this);
+        dailyEarn.setVisible(true);
+    }//GEN-LAST:event_btnDailyEarnActionPerformed
+
+    private void btnDailyEarn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDailyEarn1ActionPerformed
+        ChannelClaim channelClaim = new ChannelClaim(null,true);
+        channelClaim.setFrame(this);
+        channelClaim.setVisible(true);
+    }//GEN-LAST:event_btnDailyEarn1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBestCustomer;
@@ -329,11 +386,14 @@ public class report_panel extends javax.swing.JPanel {
     private javax.swing.JButton btnChannel;
     private javax.swing.JButton btnChannelList;
     private javax.swing.JButton btnClaim;
+    private javax.swing.JButton btnDailyEarn;
+    private javax.swing.JButton btnDailyEarn1;
     private javax.swing.JButton btnGrnSummary;
     private javax.swing.JButton btnInvList;
     private javax.swing.JButton btnInvStatus;
     private javax.swing.JButton btnIssueFrame;
     private javax.swing.JButton btnStock;
+    private javax.swing.JButton btnVoucherSummary;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton2;
@@ -351,11 +411,11 @@ public class report_panel extends javax.swing.JPanel {
             JRViewer jr = new JRViewer(jasperPrint);
             pnlReport.add(jr);
             jr.revalidate();
-            
+
         } catch (JRException ex) {
             Logger.getLogger(report_panel.class.getName()).log(Level.SEVERE, null, ex);
-        }catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(null, "No Value to Display..:(","Error Message",JOptionPane.ERROR_MESSAGE);
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, "No Value to Display..:(", "Error Message", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -373,9 +433,9 @@ public class report_panel extends javax.swing.JPanel {
             jr.revalidate();
         } catch (JRException ex) {
             Logger.getLogger(report_panel.class.getName()).log(Level.SEVERE, null, ex);
-        
+
         } catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(null, "No Value to Display..:(","Error Message",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No Value to Display..:(", "Error Message", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -394,8 +454,8 @@ public class report_panel extends javax.swing.JPanel {
             jr.revalidate();
         } catch (JRException ex) {
             Logger.getLogger(report_panel.class.getName()).log(Level.SEVERE, null, ex);
-        }catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(null, "No Value to Display..:(","Error Message",JOptionPane.ERROR_MESSAGE);
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, "No Value to Display..:(", "Error Message", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -413,17 +473,19 @@ public class report_panel extends javax.swing.JPanel {
             jr.revalidate();
         } catch (JRException ex) {
             Logger.getLogger(report_panel.class.getName()).log(Level.SEVERE, null, ex);
-        }catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(null, "No Value to Display..:(","Error Message",JOptionPane.ERROR_MESSAGE);
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, "No Value to Display..:(", "Error Message", JOptionPane.ERROR_MESSAGE);
         }
     }
-    public void setStockReport(String code,String brand,String category) {
+
+    public void setStockReport(String code, String brand, String category,String name) {
         try {
             JasperReport jasperReport = (JasperReport) JRLoader.loadObject(getReportUrl(STOCK));
             HashMap<String, Object> dataMap = new HashMap<>();
             dataMap.put("code", code);
             dataMap.put("brand", brand);
             dataMap.put("category", category);
+            dataMap.put("item_name", name);
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, dataMap, openConnection);
 
 //            JasperPrintManager.printReport(jasperPrint, true);
@@ -432,8 +494,8 @@ public class report_panel extends javax.swing.JPanel {
             jr.revalidate();
         } catch (JRException ex) {
             Logger.getLogger(report_panel.class.getName()).log(Level.SEVERE, null, ex);
-        }catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(null, "No Value to Display..:(","Error Message",JOptionPane.ERROR_MESSAGE);
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, "No Value to Display..:(", "Error Message", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -452,8 +514,8 @@ public class report_panel extends javax.swing.JPanel {
             jr.revalidate();
         } catch (JRException ex) {
             Logger.getLogger(report_panel.class.getName()).log(Level.SEVERE, null, ex);
-        }catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(null, "No Value to Display..:(","Error Message",JOptionPane.ERROR_MESSAGE);
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, "No Value to Display..:(", "Error Message", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -471,8 +533,8 @@ public class report_panel extends javax.swing.JPanel {
             jr.revalidate();
         } catch (JRException ex) {
             Logger.getLogger(report_panel.class.getName()).log(Level.SEVERE, null, ex);
-        }catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(null, "No Value to Display..:(","Error Message",JOptionPane.ERROR_MESSAGE);
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, "No Value to Display..:(", "Error Message", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -489,8 +551,8 @@ public class report_panel extends javax.swing.JPanel {
             jr.revalidate();
         } catch (JRException ex) {
             Logger.getLogger(report_panel.class.getName()).log(Level.SEVERE, null, ex);
-        }catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(null, "No Value to Display..:(","Error Message",JOptionPane.ERROR_MESSAGE);
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, "No Value to Display..:(", "Error Message", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -519,7 +581,7 @@ public class report_panel extends javax.swing.JPanel {
             dataMap.put("sph_dist_right", claimModel.getSphDistReght());
             dataMap.put("sph_near_left", claimModel.getSphNearLeft());
             dataMap.put("sph_near_right", claimModel.getSphNearReght());
-            
+
             dataMap.put("row_lens_name", claimModel.getLensName1());
             dataMap.put("row_lens_barcode", claimModel.getLensBarcode());
             dataMap.put("row_lens_category", claimModel.getLensCategory());
@@ -531,7 +593,7 @@ public class report_panel extends javax.swing.JPanel {
             dataMap.put("row_frame_brand", claimModel.getFrameBrand());
             dataMap.put("row_frame_unitprice", claimModel.getFramePrice());
             dataMap.put("date", claimModel.getDate());
-            
+
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, dataMap, openConnection);
 
             JRViewer jr = new JRViewer(jasperPrint);
@@ -539,8 +601,8 @@ public class report_panel extends javax.swing.JPanel {
             jr.revalidate();
         } catch (JRException ex) {
             Logger.getLogger(report_panel.class.getName()).log(Level.SEVERE, null, ex);
-        }catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(null, "No Value to Display..:(","Error Message",JOptionPane.ERROR_MESSAGE);
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, "No Value to Display..:(", "Error Message", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -556,12 +618,12 @@ public class report_panel extends javax.swing.JPanel {
             jr.revalidate();
         } catch (JRException ex) {
             Logger.getLogger(report_panel.class.getName()).log(Level.SEVERE, null, ex);
-        }catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(null, "No Value to Display..:(","Error Message",JOptionPane.ERROR_MESSAGE);
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, "No Value to Display..:(", "Error Message", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    public void setInvoiceList(String fromdate,String toDate, String status) {
+    public void setInvoiceList(String fromdate, String toDate, String status) {
         try {
             JasperReport jasperReport = (JasperReport) JRLoader.loadObject(getReportUrl(INVOICE_LIST));
             HashMap<String, Object> dataMap = new HashMap<>();
@@ -575,8 +637,8 @@ public class report_panel extends javax.swing.JPanel {
             jr.revalidate();
         } catch (JRException ex) {
             Logger.getLogger(report_panel.class.getName()).log(Level.SEVERE, null, ex);
-        }catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(null, "No Value to Display..:(","Error Message",JOptionPane.ERROR_MESSAGE);
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, "No Value to Display..:(", "Error Message", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -591,11 +653,85 @@ public class report_panel extends javax.swing.JPanel {
             JRViewer jr = new JRViewer(jasperPrint);
             pnlReport.add(jr);
             jr.revalidate();
-            
+
         } catch (JRException ex) {
             Logger.getLogger(report_panel.class.getName()).log(Level.SEVERE, null, ex);
-        }catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(null, "No Value to Display..:(","Error Message",JOptionPane.ERROR_MESSAGE);
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, "No Value to Display..:(", "Error Message", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void setVoucherSummary(Date fromDate, Date toDate) {
+        try {
+            JasperReport jasperReport = (JasperReport) JRLoader.loadObject(getReportUrl(VOUCHER_SUMMARY));
+            HashMap<String, Object> dataMap = new HashMap<>();
+            dataMap.put("from", fromDate);
+            dataMap.put("to", toDate);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, dataMap, openConnection);
+
+//            JasperPrintManager.printReport(jasperPrint, true);
+            JRViewer jr = new JRViewer(jasperPrint);
+            pnlReport.add(jr);
+            jr.revalidate();
+        } catch (JRException ex) {
+            Logger.getLogger(report_panel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, "No Value to Display..:(", "Error Message", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void setDailyEarn(Date fromDate, Date toDate,String type) {
+        try {
+            JasperReport jasperReport =null;
+            if (type.equals("Daily")) {
+                jasperReport = (JasperReport) JRLoader.loadObject(getReportUrl(DAILY_EARN));
+            }else if(type.equals("Monthly")){
+                jasperReport = (JasperReport) JRLoader.loadObject(getReportUrl(MONTHLY_EARN));
+            }else if(type.equals("Yearly")){
+                jasperReport = (JasperReport) JRLoader.loadObject(getReportUrl(YEARLY_EARN));
+            }else{
+                throw new RuntimeException("Type Doesnt match!");
+            }
+            HashMap<String, Object> dataMap = new HashMap<>();
+            dataMap.put("from", fromDate);
+            dataMap.put("to", toDate);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, dataMap, openConnection);
+
+//            JasperPrintManager.printReport(jasperPrint, true);
+            JRViewer jr = new JRViewer(jasperPrint);
+            pnlReport.add(jr);
+            jr.revalidate();
+        } catch (JRException ex) {
+            Logger.getLogger(report_panel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, "No Value to Display..:(", "Error Message", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void setChannelClaim(String patientName, String channelNo, Date channelDate, String channelTime, String doctorName, String consultantFee, String establishmentFee, String total, String paid, Date systemDate) {
+         try {
+            JasperReport jasperReport = (JasperReport) JRLoader.loadObject(getReportUrl(CHANNEL_CLAIM));
+            HashMap<String, Object> dataMap = new HashMap<>();
+            dataMap.put("c_no", channelNo);
+            dataMap.put("date", channelDate);
+            dataMap.put("patient_name", patientName);
+            dataMap.put("time", channelTime);
+            dataMap.put("doctor_name", doctorName);
+            dataMap.put("consultant_fee", consultantFee);
+            dataMap.put("establishment_fee", establishmentFee);
+            dataMap.put("total", total);
+            dataMap.put("paid", paid);
+            dataMap.put("system_date", systemDate);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, dataMap, openConnection);
+
+//            JasperPrintManager.printReport(jasperPrint, true);
+            JRViewer jr = new JRViewer(jasperPrint);
+            pnlReport.add(jr);
+            jr.revalidate();
+        } catch (JRException ex) {
+            Logger.getLogger(report_panel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, "No Value to Display..:(", "Error Message", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

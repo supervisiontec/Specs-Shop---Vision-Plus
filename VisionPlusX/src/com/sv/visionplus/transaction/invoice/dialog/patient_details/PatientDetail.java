@@ -213,15 +213,11 @@ public static void main(String args[]) {
     private void setAllPatientDetails() {
         java.util.List<TPatientInformation> listInvoice = InvoiceDetailDAO.getInstance().allDetailInvoiceNull();
         model.setRowCount(0);
-        Integer count = 0;
         listInvoice.sort(Comparator.comparing(TPatientInformation::getNumber).reversed());
 
         for (TPatientInformation detail : listInvoice) {
-            count++;
             addData(detail);
-            if (count == 30) {
-                break;
-            }
+            
         }
     }
 

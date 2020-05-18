@@ -26,6 +26,15 @@ public class TAccountTransaction {
     private double debit;
     private double credit;
     private Integer transaction;
+    private int is_expense;
+
+    public int getIs_expense() {
+        return is_expense;
+    }
+
+    public void setIs_expense(int is_expense) {
+        this.is_expense = is_expense;
+    }
 
     public Integer getIndexNo() {
         return indexNo;

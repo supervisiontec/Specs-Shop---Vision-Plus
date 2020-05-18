@@ -410,7 +410,7 @@ public class InvoiceDAO {
                             if (mix.getIsCashRefund()) {
                                 //save cash refund
                                 MAccount mAccount = new MAccount();
-                                mAccount.setDescription("Cash Refund - invoice index - " + mix.getInvoice().getIndexNo());
+                                mAccount.setDescription("Cash Refund - invoice number - " + mix.getInvoice().getNumber());
                                 mAccount.setMain_category(1);// INVOICE
                                 mAccount.setSub_category(4); // CASH REFUND
                                 mAccount.setType("VOUCHER");
@@ -427,8 +427,8 @@ public class InvoiceDAO {
                                 accountTransaction.setDate(new Date());
                                 accountTransaction.setCredit(val);
                                 accountTransaction.setDebit(0);
-                                accountTransaction.setDescription("Cash Refund");
-//                                accountTransaction.setIndex_no(0);
+                                accountTransaction.setDescription("Cash Refund - invoice number - " + mix.getInvoice().getNumber());
+                                accountTransaction.setIs_expense(1);
                                 AccountTransactionDAO.getInstance().saveTransaction(connection, mix.getAccountTransaction());
                             }
 

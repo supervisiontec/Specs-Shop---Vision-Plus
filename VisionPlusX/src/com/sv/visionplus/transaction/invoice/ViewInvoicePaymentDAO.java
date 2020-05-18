@@ -5,9 +5,7 @@
  */
 package com.sv.visionplus.transaction.invoice;
 
-import com.sv.visionplus.transaction.invoice.model.TInvoiceItem;
 import com.sv.visionplus.transaction.invoice.model.ViewInvoicePayment;
-import com.sv.visionplus.util.database.DatabaseUtil;
 import com.sv.visionplus.util.database.QueryUtil;
 import java.sql.Connection;
 import java.sql.SQLException;

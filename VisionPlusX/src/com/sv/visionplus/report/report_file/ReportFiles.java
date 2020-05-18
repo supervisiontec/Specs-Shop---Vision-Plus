@@ -14,6 +14,11 @@ import java.net.URL;
 public class ReportFiles {
      public static final String BEST_CUSTOMER = "jasper_form/best_customer.jasper";
      public static final String BEST_USER = "jasper_form/best_user.jasper";
+     public static final String VOUCHER_SUMMARY = "jasper_form/voucher_summary.jasper";
+     public static final String CHANNEL_CLAIM = "jasper_form/channel_claim.jasper";
+     public static final String DAILY_EARN = "jasper_form/daily_earning.jasper";
+     public static final String MONTHLY_EARN = "jasper_form/monthly_earning.jasper";
+     public static final String YEARLY_EARN = "jasper_form/yearly_earning.jasper";
      public static final String CHANNEL = "jasper_form/channel.jasper";
      public static final String FACTORY_REPORT = "jasper_form/factory_report.jasper";
      public static final String GRN = "jasper_form/grn.jasper";

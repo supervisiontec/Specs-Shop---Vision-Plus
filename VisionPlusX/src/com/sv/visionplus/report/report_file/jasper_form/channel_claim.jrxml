@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="channel " language="javascript" pageWidth="420" pageHeight="595" columnWidth="364" leftMargin="17" rightMargin="39" topMargin="2" bottomMargin="22" uuid="68ec6e47-1b31-41b0-a5e6-fdd7a200e391">
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="inch"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="inch"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="mm"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="mm"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="mm"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="mm"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="vision_plus"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="315"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="671"/>
+	<parameter name="c_no" class="java.lang.String"/>
+	<parameter name="date" class="java.util.Date"/>
+	<parameter name="patient_name" class="java.lang.String"/>
+	<parameter name="time" class="java.lang.String"/>
+	<parameter name="doctor_name" class="java.lang.String"/>
+	<parameter name="consultant_fee" class="java.lang.String"/>
+	<parameter name="establishment_fee" class="java.lang.String"/>
+	<parameter name="total" class="java.lang.String"/>
+	<parameter name="paid" class="java.lang.String"/>
+	<parameter name="system_date" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[SELECT search_voucher.index_no
+FROM search_voucher
+WHERE search_voucher.index_no='1']]>
+	</queryString>
+	<field name="index_no" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="index_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="search_voucher"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="357" splitType="Stretch">
+			<staticText>
+				<reportElement x="-17" y="0" width="420" height="30" uuid="763f9aa6-1132-48df-bf65-53e21adb4f7b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VISION PLUS EYE CLINIC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-17" y="30" width="420" height="20" uuid="fd327e65-63ae-4778-b3c6-5a56bb9317f6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[(CHANNELED CONSULTATIONS SERVICE)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-17" y="50" width="420" height="20" uuid="c4465f1c-3a32-4326-83c5-2b6b24f67ded"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[34, Aluthgama Road,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-17" y="70" width="420" height="20" uuid="0e10e35f-9743-4d3b-889e-a15ca2c71ec8"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Mathugama]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="90" width="171" height="19" uuid="68b3dad1-3e56-404a-affe-23d9eb4ff6ee"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Tel: 034-2247466 / 071-7513639]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="120" width="78" height="19" uuid="86452dc5-da92-4621-9b1a-2817fedfd03a"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Name of Patient :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="143" width="171" height="18" uuid="9ae63c66-4994-48b0-bc54-5c02021b8c62"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[No & Date & Time of appointment :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="166" width="79" height="19" uuid="99386ddf-3e4a-4cf2-81c6-302b657bf302"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Name of Doctor :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="179" y="190" width="98" height="19" uuid="dadec74c-724e-4301-9551-880ff2b7f70d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[ Consultant Fee :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="179" y="211" width="98" height="19" uuid="092240bb-07ba-45f5-88df-317b7c6902b8"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[Establishment Fee :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="179" y="230" width="98" height="19" uuid="fd20d500-909d-451a-93dd-a635fad7429e"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[Total :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="276" width="150" height="19" uuid="805b69e3-4709-4b54-8974-bc27bd8452ab"/>
+				<textElement>
+					<font fontName="Arial" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Received payment with thanks]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="260" y="307" width="110" height="17" uuid="f78a9d32-0542-4849-8e53-06f9cfa8575f"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<text><![CDATA[For Authoriced Officer]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="259" y="143" width="12" height="18" uuid="6d444694-d8c9-4a07-8814-dd923d9d8f2d"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[&]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="190" y="143" width="10" height="18" uuid="b437924b-c757-42fa-baf2-e9c1fdff6abf"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[&]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="179" y="249" width="98" height="19" uuid="cba48b0a-1217-45c0-a2ef-a188b641f12f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[Paid:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="296" width="151" height="30" uuid="18387077-2131-401a-85c2-87f8ad39a824"/>
+				<text><![CDATA[no refund no cancelation]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="171" y="143" width="19" height="18" uuid="efdbfc15-bd85-4661-a555-d190281cc42c"/>
+				<box>
+					<bottomPen lineWidth="1.0" lineStyle="Dashed"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{c_no}]]></textFieldExpression>
+			</textField>
+			<textField pattern="yyyy-MM-dd">
+				<reportElement x="202" y="143" width="57" height="18" uuid="d5f91510-e351-4884-bfef-1e335311a40d"/>
+				<box>
+					<bottomPen lineWidth="1.0" lineStyle="Dashed"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="271" y="143" width="69" height="18" uuid="42522b31-5be5-405d-b86a-55d76c67ebf3"/>
+				<box>
+					<bottomPen lineWidth="1.0" lineStyle="Dashed"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{time}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="82" y="120" width="258" height="19" uuid="6165bd96-dc5c-4d5e-a97b-39f914409968"/>
+				<box>
+					<bottomPen lineWidth="1.0" lineStyle="Dashed"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{patient_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="190" width="90" height="19" uuid="6f23e07e-3833-4dea-a601-ee5bd3224b4e"/>
+				<box rightPadding="5"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{consultant_fee}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="281" y="211" width="89" height="19" uuid="d7ca5feb-1af4-4e8c-8ebd-71c464024d5b"/>
+				<box rightPadding="5"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{establishment_fee}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="230" width="90" height="19" uuid="8145cc80-9b2a-479b-93e4-c49cc34445f8"/>
+				<box rightPadding="5"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="249" width="90" height="19" uuid="9d613c9f-838a-4e29-b0f5-5450a2fe12b4"/>
+				<box rightPadding="5"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{paid}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="81" y="166" width="259" height="19" uuid="94332277-6f75-4aff-886c-c9e30cc57918"/>
+				<box>
+					<bottomPen lineWidth="1.0" lineStyle="Dashed"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{doctor_name}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="269" y="90" width="134" height="15" uuid="fd7b23b6-f3f0-448d-81e6-9cf958615cf8"/>
+				<textFieldExpression><![CDATA[$P{system_date}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

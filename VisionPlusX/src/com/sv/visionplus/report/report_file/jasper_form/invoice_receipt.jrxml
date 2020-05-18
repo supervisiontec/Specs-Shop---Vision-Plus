@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="invoice_receipt" pageWidth="612" pageHeight="396" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="839b5c20-8555-49fd-b9b5-c711e1be50ae">
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Visionplus"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="vision_plus"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageHeight" value="inch"/>
 	<property name="com.jaspersoft.studio.unit.pageWidth" value="inch"/>
@@ -32,7 +32,7 @@
 	t_invoice.number as invoice_no,
 	t_invoice.invoice_date,
 	t_invoice.amount as invoice_amount,
-	sum(t_payment.total_amount) as paid_amount,
+	t_payment.total_amount as paid_amount,
 	t_invoice_item1.discount as discount_amount,
 	t_invoice_item1.unit_price,
 	t_invoice_item1.qty,
@@ -53,41 +53,140 @@ where
 	and m_item.brand=m_brand.index_no
 	
 	and t_invoice.number= $P{index}
-group by m_item.code]]>
+group by m_item.name
+order by t_invoice_item1.discount]]>
 	</queryString>
-	<field name="name" class="java.lang.String"/>
-	<field name="address" class="java.lang.String"/>
-	<field name="contact_no" class="java.lang.String"/>
-	<field name="dist_sph_left" class="java.lang.String"/>
-	<field name="dist_sph_right" class="java.lang.String"/>
-	<field name="dist_cyl_left" class="java.lang.String"/>
-	<field name="dist_cyl_right" class="java.lang.String"/>
-	<field name="dist_axis_left" class="java.lang.String"/>
-	<field name="dist_axis_right" class="java.lang.String"/>
-	<field name="near_sph_left" class="java.lang.String"/>
-	<field name="near_sph_right" class="java.lang.String"/>
-	<field name="near_cyl_left" class="java.lang.String"/>
-	<field name="near_cyl_right" class="java.lang.String"/>
-	<field name="near_axis_left" class="java.lang.String"/>
-	<field name="near_axis_right" class="java.lang.String"/>
-	<field name="lense_type" class="java.lang.String"/>
-	<field name="lense_brand" class="java.lang.String"/>
-	<field name="lense_name" class="java.lang.String"/>
-	<field name="index_no" class="java.lang.Integer"/>
-	<field name="invoice_no" class="java.lang.String"/>
-	<field name="invoice_date" class="java.sql.Date"/>
-	<field name="invoice_amount" class="java.lang.Double"/>
-	<field name="paid_amount" class="java.lang.Double"/>
-	<field name="discount_amount" class="java.lang.Double"/>
-	<field name="unit_price" class="java.lang.Double"/>
-	<field name="qty" class="java.lang.Integer"/>
-	<field name="value" class="java.lang.Double"/>
-	<field name="unit_total_descount" class="java.lang.Double"/>
-	<field name="net_value" class="java.lang.Double"/>
-	<field name="barcode" class="java.lang.String"/>
-	<field name="item_name" class="java.lang.String"/>
-	<field name="caregory_name" class="java.lang.String"/>
-	<field name="brand_name" class="java.lang.String"/>
+	<field name="name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="m_customer"/>
+	</field>
+	<field name="address" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="address"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="m_customer"/>
+	</field>
+	<field name="contact_no" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="contact_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="m_customer"/>
+	</field>
+	<field name="dist_sph_left" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="dist_sph_left"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_invoice_patient_infomation"/>
+	</field>
+	<field name="dist_sph_right" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="dist_sph_right"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_invoice_patient_infomation"/>
+	</field>
+	<field name="dist_cyl_left" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="dist_cyl_left"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_invoice_patient_infomation"/>
+	</field>
+	<field name="dist_cyl_right" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="dist_cyl_right"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_invoice_patient_infomation"/>
+	</field>
+	<field name="dist_axis_left" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="dist_axis_left"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_invoice_patient_infomation"/>
+	</field>
+	<field name="dist_axis_right" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="dist_axis_right"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_invoice_patient_infomation"/>
+	</field>
+	<field name="near_sph_left" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="near_sph_left"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_invoice_patient_infomation"/>
+	</field>
+	<field name="near_sph_right" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="near_sph_right"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_invoice_patient_infomation"/>
+	</field>
+	<field name="near_cyl_left" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="near_cyl_left"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_invoice_patient_infomation"/>
+	</field>
+	<field name="near_cyl_right" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="near_cyl_right"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_invoice_patient_infomation"/>
+	</field>
+	<field name="near_axis_left" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="near_axis_left"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_invoice_patient_infomation"/>
+	</field>
+	<field name="near_axis_right" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="near_axis_right"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_invoice_patient_infomation"/>
+	</field>
+	<field name="lense_type" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="lense_type"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_invoice_patient_infomation"/>
+	</field>
+	<field name="lense_brand" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="lense_brand"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_invoice_patient_infomation"/>
+	</field>
+	<field name="lense_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="lense_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_invoice_patient_infomation"/>
+	</field>
+	<field name="index_no" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="index_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_invoice"/>
+	</field>
+	<field name="invoice_no" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="invoice_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_invoice"/>
+	</field>
+	<field name="invoice_date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="invoice_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_invoice"/>
+	</field>
+	<field name="invoice_amount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="invoice_amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_invoice"/>
+	</field>
+	<field name="paid_amount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="paid_amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_payment"/>
+	</field>
+	<field name="discount_amount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="discount_amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_invoice_item1"/>
+	</field>
+	<field name="unit_price" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="unit_price"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_invoice_item1"/>
+	</field>
+	<field name="qty" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="qty"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_invoice_item1"/>
+	</field>
+	<field name="value" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="value"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_invoice_item1"/>
+	</field>
+	<field name="unit_total_descount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="unit_total_descount"/>
+	</field>
+	<field name="net_value" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="net_value"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_invoice_item1"/>
+	</field>
+	<field name="barcode" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="barcode"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="m_item"/>
+	</field>
+	<field name="item_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="item_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="m_item"/>
+	</field>
+	<field name="caregory_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="caregory_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="m_category"/>
+	</field>
+	<field name="brand_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="brand_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="m_brand"/>
+	</field>
 	<variable name="balance" class="java.lang.Double">
 		<variableExpression><![CDATA[$F{invoice_amount}-$F{paid_amount}]]></variableExpression>
 	</variable>
@@ -171,7 +270,7 @@ group by m_item.code]]>
 				<textElement verticalAlignment="Top">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<text><![CDATA[24, Naboda Road,]]></text>
+				<text><![CDATA[34, Aluthgama Road,]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="85" width="50" height="18" uuid="6d235435-c9f8-45e5-b563-e2e776536c15"/>

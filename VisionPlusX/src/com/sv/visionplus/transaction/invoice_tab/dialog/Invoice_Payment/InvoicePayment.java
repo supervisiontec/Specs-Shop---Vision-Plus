@@ -431,7 +431,7 @@ public class InvoicePayment extends javax.swing.JDialog {
             accountTransaction.setDate(new Date());
             accountTransaction.setDebit(txtPayAmount.getCValue());
             accountTransaction.setDescription("Invoice Advance Payment");
-//            accountTransaction.setIndex_no(0);//auto increment
+            accountTransaction.setIs_expense(0);
             invoiceMix.setAccountTransaction(accountTransaction);
             
             invoiceMix.setPrintBill(false);

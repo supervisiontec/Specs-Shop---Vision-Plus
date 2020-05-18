@@ -6,7 +6,6 @@
 package com.sv.visionplus.account.money_collection;
 
 import com.sv.visionplus.account.money_collection.model.BeforeBalance;
-import com.sv.visionplus.account.money_collection.model.ViewInvoicePayment;
 import com.sv.visionplus.util.database.DatabaseUtil;
 import com.sv.visionplus.util.database.QueryUtil;
 import java.sql.Connection;

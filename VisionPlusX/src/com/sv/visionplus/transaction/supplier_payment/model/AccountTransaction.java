@@ -23,6 +23,15 @@ public class AccountTransaction {
     private String description;
     private double debit;
     private double credit;
+    private int is_expense;
+
+    public int getIs_expense() {
+        return is_expense;
+    }
+
+    public void setIs_expense(int is_expense) {
+        this.is_expense = is_expense;
+    }
     
     public Integer getIndex_no() {
         return index_no;

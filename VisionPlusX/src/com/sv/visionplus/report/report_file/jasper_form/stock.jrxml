@@ -6,6 +6,7 @@
 	<parameter name="code" class="java.lang.String"/>
 	<parameter name="brand" class="java.lang.String"/>
 	<parameter name="category" class="java.lang.String"/>
+	<parameter name="item_name" class="java.lang.String"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT m_item.index_no,
 	m_item.code,
@@ -19,8 +20,10 @@ WHERE bal_qty.item=m_item.index_no
 AND m_item.brand=m_brand.index_no
 AND m_category.index_no=m_item.category
 AND ($P{code} IS NULL OR m_item.CODE= $P{code})
+AND ( $P{item_name}  IS NULL OR m_item.NAME= $P{item_name} )
 AND ($P{brand} IS NULL OR m_brand.NAME= $P{brand})
 AND ($P{category} IS NULL OR m_category.NAME=$P{category})
+AND bal_qty.balQty > 0
 ORDER BY m_item.name]]>
 	</queryString>
 	<field name="index_no" class="java.lang.Integer">
@@ -103,36 +106,46 @@ ORDER BY m_item.name]]>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="24" splitType="Stretch">
+		<band height="25" splitType="Stretch">
 			<staticText>
-				<reportElement x="19" y="5" width="61" height="15" uuid="185582a4-3c91-4000-b21c-93dfd2945074"/>
+				<reportElement x="0" y="5" width="57" height="15" uuid="185582a4-3c91-4000-b21c-93dfd2945074"/>
 				<textElement verticalAlignment="Middle"/>
 				<text><![CDATA[Item Code :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="200" y="5" width="40" height="15" uuid="e7b43379-8c54-45c7-95ef-99f2f3738708"/>
+				<reportElement x="160" y="5" width="40" height="15" uuid="e7b43379-8c54-45c7-95ef-99f2f3738708"/>
 				<textElement verticalAlignment="Middle"/>
 				<text><![CDATA[Brand :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="400" y="5" width="50" height="15" uuid="dea938ec-3ec9-4337-9bfb-7ee198539451"/>
+				<reportElement x="410" y="5" width="50" height="15" uuid="dea938ec-3ec9-4337-9bfb-7ee198539451"/>
 				<textElement verticalAlignment="Middle"/>
 				<text><![CDATA[Category :]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="83" y="5" width="117" height="15" uuid="5003fa20-abf6-4fd6-9a31-9b5c62a3a7e1"/>
+				<reportElement x="57" y="5" width="100" height="15" uuid="5003fa20-abf6-4fd6-9a31-9b5c62a3a7e1"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$P{code}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="240" y="5" width="117" height="15" uuid="e1bbb7cb-d663-4277-af9e-3ce075201e8c"/>
+				<reportElement x="200" y="5" width="80" height="15" uuid="e1bbb7cb-d663-4277-af9e-3ce075201e8c"/>
 				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{brand}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{brand}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="450" y="5" width="117" height="15" uuid="f97240de-5938-4754-bcb5-57d40b089858"/>
+				<reportElement x="460" y="5" width="107" height="15" uuid="f97240de-5938-4754-bcb5-57d40b089858"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$P{category}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="280" y="5" width="40" height="15" uuid="4678418f-d98e-47c4-b7ab-fb5dfc71d650"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Name :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="320" y="5" width="90" height="15" uuid="f8449587-f32f-4a27-80bf-a57359d65834"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{item_name}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
@@ -154,7 +167,7 @@ ORDER BY m_item.name]]>
 				<text><![CDATA[Code]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="60" y="0" width="138" height="15" uuid="e25952b8-d88a-4092-8114-5f12d75ac19a">
+				<reportElement x="60" y="0" width="140" height="15" uuid="e25952b8-d88a-4092-8114-5f12d75ac19a">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="262be7b7-f1d0-42a1-a682-13b5d6cbe806"/>
 				</reportElement>
 				<box leftPadding="5">
@@ -169,7 +182,7 @@ ORDER BY m_item.name]]>
 				<text><![CDATA[Item Name]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="198" y="0" width="100" height="15" uuid="1c106ad2-48df-48b0-9186-26d0ea1c8dea">
+				<reportElement x="200" y="0" width="98" height="15" uuid="1c106ad2-48df-48b0-9186-26d0ea1c8dea">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6d7275b7-3996-409d-89c5-9bc94db3d07c"/>
 				</reportElement>
 				<box leftPadding="5">

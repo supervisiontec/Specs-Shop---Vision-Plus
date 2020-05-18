@@ -13,11 +13,14 @@
 	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
 	<property name="com.jaspersoft.studio.report.description" value=""/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="711"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="275"/>
 	<parameter name="fromDate" class="java.lang.String"/>
 	<parameter name="toDate" class="java.lang.String"/>
 	<parameter name="type" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select
+   1 as index_no,
 	m_customer.name,
 	m_customer.contact_no,
 	t_invoice.index_no as invoiceIndex,
@@ -36,14 +39,40 @@ where
 		t_invoice.status2= $P{type} 
 	GROUP BY t_invoice.index_no]]>
 	</queryString>
-	<field name="name" class="java.lang.String"/>
-	<field name="contact_no" class="java.lang.String"/>
-	<field name="invoiceIndex" class="java.lang.Integer"/>
-	<field name="number" class="java.lang.String"/>
-	<field name="amount" class="java.lang.Double"/>
-	<field name="invoice_date" class="java.sql.Date"/>
-	<field name="status" class="java.lang.String"/>
-	<field name="payAmount" class="java.lang.Double"/>
+	<field name="index_no" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="index_no"/>
+	</field>
+	<field name="name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="m_customer"/>
+	</field>
+	<field name="contact_no" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="contact_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="m_customer"/>
+	</field>
+	<field name="invoiceIndex" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="invoiceIndex"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_invoice"/>
+	</field>
+	<field name="number" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="number"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_invoice"/>
+	</field>
+	<field name="amount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_invoice"/>
+	</field>
+	<field name="invoice_date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="invoice_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_invoice"/>
+	</field>
+	<field name="status" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="status"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_invoice"/>
+	</field>
+	<field name="payAmount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="payAmount"/>
+	</field>
 	<variable name="balance" class="java.lang.Double" resetType="None">
 		<variableExpression><![CDATA[$F{amount}-$F{payAmount}]]></variableExpression>
 	</variable>
@@ -53,8 +82,8 @@ where
 	<variable name="payAmount1" class="java.lang.Double" calculation="Sum">
 		<variableExpression><![CDATA[$F{payAmount}]]></variableExpression>
 	</variable>
-	<variable name="counter" class="java.lang.Integer" resetType="None" calculation="Count">
-		<variableExpression><![CDATA[$V{counter}]]></variableExpression>
+	<variable name="counter" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{index_no}]]></variableExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
@@ -89,7 +118,7 @@ where
 				<textElement verticalAlignment="Top">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<text><![CDATA[24, Naboda Road,]]></text>
+				<text><![CDATA[34, Aluthgama Road,]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="690" y="69" width="110" height="19" uuid="35f2c1db-254d-48ff-bd17-d29c05a88239"/>
@@ -285,8 +314,8 @@ where
 				<reportElement x="138" y="0" width="82" height="19" uuid="695d2815-6655-4db6-9149-b9ad9e111558"/>
 				<textFieldExpression><![CDATA[$F{invoice_date}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="2" y="0" width="40" height="19" uuid="673fc938-a8c7-4cc2-b5c3-a8291d556743"/>
+			<textField>
+				<reportElement x="3" y="1" width="39" height="18" uuid="9858e402-bdb5-4824-9f13-6a4622c08a2a"/>
 				<textFieldExpression><![CDATA[$V{counter}]]></textFieldExpression>
 			</textField>
 		</band>

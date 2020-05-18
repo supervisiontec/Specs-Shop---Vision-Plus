@@ -5,14 +5,12 @@
  */
 package visionplusx.controller;
 
-import com.sv.visionplus.master.item.brand.model.MBrand;
 import com.sv.visionplus.util.database.DatabaseUtil;
 import com.sv.visionplus.util.formatter.FormatterUtil;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -49,6 +47,9 @@ public class SystemService {
         try {
 
             Connection connection = DatabaseUtil.getInstance().openConnection();
+            String sql="SET GLOBAL max_connections = 5000;";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.executeQuery();
 
             MUser user = systemDAO.login(connection, username, password);
 

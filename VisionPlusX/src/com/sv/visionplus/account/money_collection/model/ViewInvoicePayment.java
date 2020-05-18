@@ -15,6 +15,7 @@ import java.util.Date;
  */
 @VPTable("view_invoice_payment")
 public class ViewInvoicePayment {
+
     @VPId
     private Integer invoice_no;
     private Date date;
@@ -24,6 +25,32 @@ public class ViewInvoicePayment {
     private double total;
     private boolean is_advance;
     private String number;
+    private String type;
+    private Boolean isdelete;
+
+    public Boolean getIsdelete() {
+        return isdelete;
+    }
+
+    public void setIsdelete(Boolean isdelete) {
+        this.isdelete = isdelete;
+    }
+    
+    public boolean isIs_advance() {
+        return is_advance;
+    }
+
+    public void setIs_advance(boolean is_advance) {
+        this.is_advance = is_advance;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public Integer getInvoiceNo() {
         return invoice_no;
@@ -96,6 +123,5 @@ public class ViewInvoicePayment {
     public void setNumber(String number) {
         this.number = number;
     }
-    
-    
+
 }

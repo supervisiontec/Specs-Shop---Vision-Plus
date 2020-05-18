@@ -23,8 +23,13 @@ public class ChannelFormGUI
             new CTableColumn("Channel Date", "channelDate"),
             new CTableColumn("Channel Id", "channelId"),
             new CTableColumn("Time", "time"),
-            new CTableColumn("Amount", "amount")}
-        );
+            new CTableColumn("Amount", "amount"),
+            new CTableColumn("Pay 1", "payAmount"),
+            new CTableColumn("Pay 2", "payAmount2"),
+            new CTableColumn("Over Pay", "overPayAmount"),
+            new CTableColumn("Refund", "refundAmount"),
+            new CTableColumn("Is Present", "isPresent")
+        });
     }
 
     @Override

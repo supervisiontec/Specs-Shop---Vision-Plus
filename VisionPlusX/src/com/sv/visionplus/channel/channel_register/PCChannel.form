@@ -18,31 +18,69 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                  <Component id="jLabel8" max="32767" attributes="0"/>
-                  <Component id="jLabel3" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
-                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel16" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jLabel7" alignment="0" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jLabel11" max="32767" attributes="0"/>
+                          <Component id="jLabel17" pref="98" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel5" min="-2" pref="99" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="jLabel19" max="32767" attributes="0"/>
+                          <Component id="jLabel18" alignment="1" max="32767" attributes="0"/>
+                          <Component id="jLabel12" alignment="1" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jLabel8" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jLabel3" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
+                                      <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel16" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jLabel7" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="jLabel9" alignment="0" min="-2" pref="98" max="-2" attributes="0"/>
+                                  <Component id="jLabel10" alignment="0" min="-2" pref="98" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="txtTime" alignment="0" max="32767" attributes="0"/>
-                  <Component id="txtChannelId" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jButton1" alignment="0" pref="201" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="txtOverPayAmount" alignment="0" max="32767" attributes="0"/>
                   <Component id="txtChannelDate" alignment="0" max="32767" attributes="0"/>
-                  <Component id="txtDate" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jButton1" alignment="0" pref="222" max="32767" attributes="0"/>
+                  <Component id="txtOverPayRemarks" alignment="0" max="32767" attributes="0"/>
+                  <Component id="txtChannelId" alignment="0" max="32767" attributes="0"/>
+                  <Component id="txtTime" alignment="0" max="32767" attributes="0"/>
+                  <Component id="txtRefundDate" alignment="0" max="32767" attributes="0"/>
+                  <Component id="txtAmount" alignment="0" max="32767" attributes="0"/>
+                  <Component id="txtRefundRemarks" alignment="0" max="32767" attributes="0"/>
                   <Component id="txtPatientName" alignment="0" max="32767" attributes="0"/>
-                  <Component id="cmboDoctor" alignment="0" max="32767" attributes="0"/>
-                  <Component id="txtIndexNo" alignment="0" max="32767" attributes="0"/>
-                  <Component id="txtAmount" max="32767" attributes="0"/>
-                  <Component id="txtMobileNo" max="32767" attributes="0"/>
+                  <Component id="txtMobileNo" alignment="0" max="32767" attributes="0"/>
                   <Component id="txtPayAmount" alignment="0" max="32767" attributes="0"/>
+                  <Component id="txtPayAmount2" alignment="0" max="32767" attributes="0"/>
+                  <Component id="txtIndexNo" alignment="0" max="32767" attributes="0"/>
+                  <Component id="txtDate" alignment="0" max="32767" attributes="0"/>
+                  <Component id="txtPayDate2" alignment="0" max="32767" attributes="0"/>
+                  <Component id="cmboDoctor" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="chkPresent" min="-2" pref="21" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="txtRefundAmount" alignment="1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -94,16 +132,55 @@
                   <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel7" alignment="0" min="-2" pref="16" max="-2" attributes="0"/>
-                  <Component id="txtAmount" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtAmount" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel8" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
                   <Component id="txtPayAmount" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="17" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel11" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                  <Component id="txtOverPayAmount" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="txtOverPayRemarks" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel9" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                  <Component id="txtPayAmount2" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel10" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                  <Component id="txtPayDate2" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel12" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                  <Component id="txtRefundAmount" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel18" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                  <Component id="txtRefundDate" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="txtRefundRemarks" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="chkPresent" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -193,13 +270,78 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Pay Amount :"/>
+        <Property name="text" type="java.lang.String" value="1 st Pay Amount :"/>
       </Properties>
     </Component>
     <Component class="com.sv.visionplus.util.component.textfield.CDoubleField" name="txtPayAmount">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="4"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel9">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="2nd Pay Amount :"/>
+      </Properties>
+    </Component>
+    <Component class="com.sv.visionplus.util.component.textfield.CDoubleField" name="txtPayAmount2">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="4"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel10">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="2nd Pay Date :"/>
+      </Properties>
+    </Component>
+    <Component class="com.sv.visionplus.util.component.textfield.CDateField" name="txtPayDate2">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel11">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Over Pay Amount :"/>
+      </Properties>
+    </Component>
+    <Component class="com.sv.visionplus.util.component.textfield.CDoubleField" name="txtOverPayAmount">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="4"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel17">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Over Pay Remarks :"/>
+      </Properties>
+    </Component>
+    <Component class="com.sv.visionplus.util.component.textfield.CStringField" name="txtOverPayRemarks">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel12">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Refund Amount :"/>
+      </Properties>
+    </Component>
+    <Component class="com.sv.visionplus.util.component.textfield.CDoubleField" name="txtRefundAmount">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="4"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel18">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Refund Date :"/>
+      </Properties>
+    </Component>
+    <Component class="com.sv.visionplus.util.component.textfield.CDateField" name="txtRefundDate">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel19">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Refund Remarks :"/>
+      </Properties>
+    </Component>
+    <Component class="com.sv.visionplus.util.component.textfield.CStringField" name="txtRefundRemarks">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel5">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Is Present :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="chkPresent">
     </Component>
   </SubComponents>
 </Form>

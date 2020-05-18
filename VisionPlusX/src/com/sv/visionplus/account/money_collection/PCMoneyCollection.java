@@ -13,8 +13,8 @@ import com.sv.visionplus.account.payment_voucher.SearchVoucherDAO;
 import com.sv.visionplus.account.payment_voucher.model.SearchVoucherMix;
 import com.sv.visionplus.base.AbstractObjectCreator;
 import com.sv.visionplus.base.transaction.AbstractTransactionForm;
-import com.sv.visionplus.channel.channel_register.ChannelFormDAO;
-import com.sv.visionplus.channel.channel_register.model.ChannelModel;
+import com.sv.visionplus.channel.channel_register.ChannelPaymentDAO;
+import com.sv.visionplus.channel.channel_register.model.ChannelPayment;
 import com.sv.visionplus.master.item.model.MItem;
 import com.sv.visionplus.resource.accountType.AccountType;
 import com.sv.visionplus.system.exception.VPException;
@@ -158,7 +158,7 @@ public class PCMoneyCollection extends AbstractObjectCreator<MAccount> {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtGrnTotalAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -289,7 +289,7 @@ public class PCMoneyCollection extends AbstractObjectCreator<MAccount> {
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtCustomerPayment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 94, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTotalAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -433,7 +433,7 @@ public class PCMoneyCollection extends AbstractObjectCreator<MAccount> {
 
             },
             new String [] {
-                " #", "Date", "Channel Date", "Amount"
+                " Channel ID", "Channel Date", "Description", "Amount"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -543,7 +543,7 @@ public class PCMoneyCollection extends AbstractObjectCreator<MAccount> {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, 0)
                 .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -841,27 +841,27 @@ public class PCMoneyCollection extends AbstractObjectCreator<MAccount> {
     }
 
     private void setChannelDetail() {
-        java.util.List<ChannelModel> list = ChannelFormDAO.getInstance().searchChannel(txtDate.getDate());
-
+        List<ChannelPayment> list = ChannelPaymentDAO.getInstance().getChannelPayment(txtDate.getDate());
+//        java.util.List<ChannelModel> list = ChannelFormDAO.getInstance().searchChannel(txtDate.getDate());
         addChannel(list);
     }
 
-    private void addChannel(java.util.List<ChannelModel> list) {
+    private void addChannel(java.util.List<ChannelPayment> list) {
         modelChannel.setRowCount(0);
         double channelAmount = 0.0D;
-        for (ChannelModel channel : list) {
-            channelAmount += channel.getAmount();
-            addChannel(channel);
+        for (ChannelPayment channelPayment : list) {
+            channelAmount += channelPayment.getAmount();
+            addChannel(channelPayment);
         }
         txtChanelAmount.setCValue(channelAmount);
         txtChannelAmount.setCValue(txtChanelAmount.getCValue());
     }
 
-    private void addChannel(ChannelModel channel) {
+    private void addChannel(ChannelPayment channel) {
         Object[] rowData = {
-            channel.getIndex_no(),
-            channel.getDate(),
+            channel.getChannel_id(),
             channel.getChannel_date(),
+            channel.getType(),
             channel.getAmount()
         };
 
@@ -874,6 +874,7 @@ public class PCMoneyCollection extends AbstractObjectCreator<MAccount> {
         for (BeforeBalance beforeBalance : list) {
             val+=beforeBalance.getBalance();
         }
+        System.out.println("before balance "+val);
         lblBefore.setText(val+"");
         lblCashInHand.setText((val+Double.parseDouble(lblTodayBalance.getText()))+"");
         

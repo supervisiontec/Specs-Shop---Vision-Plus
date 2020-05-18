@@ -42,6 +42,8 @@ public class Stock extends javax.swing.JDialog {
         txtBrand = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtCategory = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtName = new javax.swing.JTextField();
 
         jButton1.setText("jButton1");
 
@@ -67,6 +69,8 @@ public class Stock extends javax.swing.JDialog {
 
         jLabel3.setText("Category");
 
+        jLabel4.setText("Item Name");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -81,7 +85,9 @@ public class Stock extends javax.swing.JDialog {
                             .addComponent(jLabel2)
                             .addComponent(txtBrand)
                             .addComponent(jLabel3)
-                            .addComponent(txtCategory)))
+                            .addComponent(txtCategory)
+                            .addComponent(jLabel4)
+                            .addComponent(txtName)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(93, Short.MAX_VALUE)
                         .addComponent(jButton3)
@@ -97,6 +103,10 @@ public class Stock extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtBrand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -104,7 +114,7 @@ public class Stock extends javax.swing.JDialog {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 9, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
@@ -122,7 +132,8 @@ public class Stock extends javax.swing.JDialog {
         String code = "".equals(txtCode.getText())?null:txtCode.getText();
         String brand = "".equals(txtBrand.getText())?null:txtBrand.getText();
         String category = "".equals(txtCategory.getText())?null:txtCategory.getText();
-        reportPanel.setStockReport(code,brand,category);
+        String name = "".equals(txtName.getText())?null:txtName.getText();
+        reportPanel.setStockReport(code,brand,category,name);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -182,9 +193,11 @@ public class Stock extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField txtBrand;
     private javax.swing.JTextField txtCategory;
     private javax.swing.JTextField txtCode;
+    private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
 
    

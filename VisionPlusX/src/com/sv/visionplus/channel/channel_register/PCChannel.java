@@ -55,6 +55,22 @@ public class PCChannel extends AbstractObjectCreator<ChannelModelMix> {
         txtMobileNo = new com.sv.visionplus.util.component.textfield.CStringField();
         jLabel8 = new javax.swing.JLabel();
         txtPayAmount = new com.sv.visionplus.util.component.textfield.CDoubleField();
+        jLabel9 = new javax.swing.JLabel();
+        txtPayAmount2 = new com.sv.visionplus.util.component.textfield.CDoubleField();
+        jLabel10 = new javax.swing.JLabel();
+        txtPayDate2 = new com.sv.visionplus.util.component.textfield.CDateField();
+        jLabel11 = new javax.swing.JLabel();
+        txtOverPayAmount = new com.sv.visionplus.util.component.textfield.CDoubleField();
+        jLabel17 = new javax.swing.JLabel();
+        txtOverPayRemarks = new com.sv.visionplus.util.component.textfield.CStringField();
+        jLabel12 = new javax.swing.JLabel();
+        txtRefundAmount = new com.sv.visionplus.util.component.textfield.CDoubleField();
+        jLabel18 = new javax.swing.JLabel();
+        txtRefundDate = new com.sv.visionplus.util.component.textfield.CDateField();
+        jLabel19 = new javax.swing.JLabel();
+        txtRefundRemarks = new com.sv.visionplus.util.component.textfield.CStringField();
+        jLabel5 = new javax.swing.JLabel();
+        chkPresent = new javax.swing.JCheckBox();
 
         jLabel1.setText("Invoice No.:");
 
@@ -83,9 +99,31 @@ public class PCChannel extends AbstractObjectCreator<ChannelModelMix> {
 
         jLabel16.setText("Patient Contact No :");
 
-        jLabel8.setText("Pay Amount :");
+        jLabel8.setText("1 st Pay Amount :");
 
         txtPayAmount.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+
+        jLabel9.setText("2nd Pay Amount :");
+
+        txtPayAmount2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+
+        jLabel10.setText("2nd Pay Date :");
+
+        jLabel11.setText("Over Pay Amount :");
+
+        txtOverPayAmount.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+
+        jLabel17.setText("Over Pay Remarks :");
+
+        jLabel12.setText("Refund Amount :");
+
+        txtRefundAmount.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+
+        jLabel18.setText("Refund Date :");
+
+        jLabel19.setText("Refund Remarks :");
+
+        jLabel5.setText("Is Present :");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -93,30 +131,59 @@ public class PCChannel extends AbstractObjectCreator<ChannelModelMix> {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtTime, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtChannelId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
-                    .addComponent(txtChannelDate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtDate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtPatientName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cmboDoctor, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtIndexNo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))
+                        .addGap(4, 4, 4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel1)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel4)
+                                        .addComponent(jLabel13)
+                                        .addComponent(jLabel14)
+                                        .addComponent(jLabel15)
+                                        .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtOverPayAmount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtChannelDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                    .addComponent(txtOverPayRemarks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtChannelId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtRefundDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtAmount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtRefundRemarks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtPatientName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtMobileNo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtPayAmount, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtPayAmount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtPayAmount2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtIndexNo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtPayDate2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmboDoctor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(chkPresent, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(txtRefundAmount, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -157,14 +224,45 @@ public class PCChannel extends AbstractObjectCreator<ChannelModelMix> {
                     .addComponent(txtTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPayAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtOverPayAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtOverPayRemarks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPayAmount2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPayDate2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtRefundAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtRefundDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtRefundRemarks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel19))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(chkPresent)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -176,26 +274,42 @@ public class PCChannel extends AbstractObjectCreator<ChannelModelMix> {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox chkPresent;
     private javax.swing.JComboBox<String> cmboDoctor;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private com.sv.visionplus.util.component.textfield.CDoubleField txtAmount;
     private com.sv.visionplus.util.component.textfield.CDateField txtChannelDate;
     private com.sv.visionplus.util.component.textfield.CStringField txtChannelId;
     private com.sv.visionplus.util.component.textfield.CDateField txtDate;
     private com.sv.visionplus.util.component.textfield.CIntegerField txtIndexNo;
     private com.sv.visionplus.util.component.textfield.CStringField txtMobileNo;
+    private com.sv.visionplus.util.component.textfield.CDoubleField txtOverPayAmount;
+    private com.sv.visionplus.util.component.textfield.CStringField txtOverPayRemarks;
     private com.sv.visionplus.util.component.textfield.CStringField txtPatientName;
     private com.sv.visionplus.util.component.textfield.CDoubleField txtPayAmount;
+    private com.sv.visionplus.util.component.textfield.CDoubleField txtPayAmount2;
+    private com.sv.visionplus.util.component.textfield.CDateField txtPayDate2;
+    private com.sv.visionplus.util.component.textfield.CDoubleField txtRefundAmount;
+    private com.sv.visionplus.util.component.textfield.CDateField txtRefundDate;
+    private com.sv.visionplus.util.component.textfield.CStringField txtRefundRemarks;
     private com.sv.visionplus.util.component.textfield.CStringField txtTime;
     // End of variables declaration//GEN-END:variables
     private void getDoctors() {
@@ -204,7 +318,7 @@ public class PCChannel extends AbstractObjectCreator<ChannelModelMix> {
             com.sv.visionplus.channel.doctor.DoctorFormDao dao = new com.sv.visionplus.channel.doctor.DoctorFormDao();
             java.util.List<com.sv.visionplus.channel.doctor.model.DoctorModel> searchResult = dao.AllDoctor(connection);
             for (com.sv.visionplus.channel.doctor.model.DoctorModel channel : searchResult) {
-                cmboDoctor.addItem(channel.getIndexNo() + " " + channel.getdoctor_name());
+                cmboDoctor.addItem(channel.getIndexNo() + " - " + channel.getdoctor_name());
             }
         } catch (java.sql.SQLException ex) {
             java.util.logging.Logger.getLogger(PCChannel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
@@ -231,9 +345,18 @@ public class PCChannel extends AbstractObjectCreator<ChannelModelMix> {
         txtChannelDate.setCValueEditable(false);
         txtChannelId.setCValueEditable(false);
         txtAmount.setCValueEditable(false);
+        txtTime.setCValueEditable(false);
         txtPayAmount.setCValueEditable(false);
         txtPatientName.setCValueEditable(false);
         txtMobileNo.setCValueEditable(false);
+        txtOverPayAmount.setCValueEditable(false);
+        txtOverPayRemarks.setCValueEditable(false);
+        txtPayAmount2.setCValueEditable(false);
+        txtPayDate2.setCValueEditable(false);
+        txtRefundAmount.setCValueEditable(false);
+        txtRefundDate.setCValueEditable(false);
+        txtRefundRemarks.setCValueEditable(false);
+        chkPresent.setEnabled(false);
     }
 
     @Override
@@ -255,8 +378,26 @@ public class PCChannel extends AbstractObjectCreator<ChannelModelMix> {
         txtChannelId.resetCValue();
         txtAmount.setCValueEditable(true);
         txtAmount.resetCValue();
+        txtTime.setCValueEditable(true);
+        txtTime.resetCValue();
         txtPayAmount.setCValueEditable(true);
         txtPayAmount.resetCValue();
+        txtOverPayAmount.setCValueEditable(true);
+        txtOverPayAmount.resetCValue();
+        txtOverPayRemarks.setCValueEditable(true);
+        txtOverPayRemarks.resetCValue();
+        txtPayAmount2.setCValueEditable(false);
+        txtPayAmount2.resetCValue();
+        txtPayDate2.setCValueEditable(false);
+        txtPayDate2.resetCValue();
+        txtRefundAmount.setCValueEditable(false);
+        txtRefundAmount.resetCValue();
+        txtRefundDate.setCValueEditable(false);
+        txtRefundDate.resetCValue();
+        txtRefundRemarks.setCValueEditable(false);
+        txtRefundRemarks.resetCValue();
+        chkPresent.setEnabled(true);
+        chkPresent.setSelected(false);
         int channelId = getChannelId();
         txtChannelId.setCValue(com.sv.visionplus.util.formatter.FormatterUtil.getInstance().formatDate(txtChannelDate.getCValue()) + "_" + (channelId + 1));
     }
@@ -272,6 +413,15 @@ public class PCChannel extends AbstractObjectCreator<ChannelModelMix> {
         txtPatientName.setCValueEditable(true);
         txtChannelDate.setCValueEditable(true);
         txtMobileNo.setCValueEditable(true);
+        txtOverPayAmount.setCValueEditable(true);
+        txtOverPayRemarks.setCValueEditable(true);
+        txtPayAmount2.setCValueEditable(true);
+        txtPayDate2.setCValueEditable(true);
+        txtRefundAmount.setCValueEditable(true);
+        txtRefundDate.setCValueEditable(true);
+        txtRefundRemarks.setCValueEditable(true);
+        txtTime.setCValueEditable(true);
+        chkPresent.setEnabled(true);
     }
 
     @Override
@@ -281,9 +431,19 @@ public class PCChannel extends AbstractObjectCreator<ChannelModelMix> {
         txtAmount.resetCValue();
         txtPayAmount.resetCValue();
         txtDate.resetCValue();
+        txtTime.resetCValue();
         txtPatientName.resetCValue();
         txtChannelDate.resetCValue();
         txtMobileNo.resetCValue();
+        txtOverPayAmount.resetCValue();
+        txtOverPayRemarks.resetCValue();
+        txtPayAmount2.resetCValue();
+        txtPayDate2.resetCValue();
+        txtRefundAmount.resetCValue();
+        txtRefundDate.resetCValue();
+        txtRefundRemarks.resetCValue();
+        chkPresent.setEnabled(false);
+        chkPresent.setSelected(false);
     }
 
     @Override
@@ -299,12 +459,21 @@ public class PCChannel extends AbstractObjectCreator<ChannelModelMix> {
         item.setMobile(txtMobileNo.getCValue());
         item.setTime(txtTime.getCValue());
 
-        String[] split = cmboDoctor.getSelectedItem().toString().split(" ");
+        String[] split = cmboDoctor.getSelectedItem().toString().split(" - ");
         String docId = split[0];
         String docName = split[1];
         
         item.setDoctorId(Integer.parseInt(docId));
         item.setDoctorName(docName);
+        
+        item.setOverPayAmount(txtOverPayAmount.getCValue());
+        item.setOverPayRemarks(txtOverPayRemarks.getCValue());
+        item.setPayAmount2(txtPayAmount2.getCValue());
+        item.setPayDate2(txtPayDate2.getCValue());
+        item.setRefundAmount(txtRefundAmount.getCValue());
+        item.setRefundDate(txtRefundDate.getCValue());
+        item.setRefundRemarks(txtRefundRemarks.getCValue());
+        item.setIsPresent(chkPresent.isSelected());
     }
 
     @Override
@@ -319,6 +488,14 @@ public class PCChannel extends AbstractObjectCreator<ChannelModelMix> {
         txtTime.setCValue(this.item.getTime());
         txtPatientName.setCValue(this.item.getPatientName());
         txtMobileNo.setCValue(this.item.getMobile());
+        txtOverPayAmount.setCValue(this.item.getOverPayAmount());
+        txtOverPayRemarks.setCValue(this.item.getOverPayRemarks());
+        txtPayAmount2.setCValue(this.item.getPayAmount2());
+        txtPayDate2.setCValue(this.item.getPayDate2());
+        txtRefundAmount.setCValue(this.item.getRefundAmount());
+        txtRefundDate.setCValue(this.item.getRefundDate());
+        txtRefundRemarks.setCValue(this.item.getRefundRemarks());
+        chkPresent.setSelected(this.item.isIsPresent());
     }
 
     @Override

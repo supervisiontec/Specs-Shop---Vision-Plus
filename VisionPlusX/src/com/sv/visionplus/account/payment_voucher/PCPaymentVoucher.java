@@ -75,6 +75,8 @@ public class PCPaymentVoucher extends AbstractObjectCreator<PaymentVoucherMix> {
             }
 
         };
+        jLabel7 = new javax.swing.JLabel();
+        chkIsExpense = new javax.swing.JCheckBox();
 
         jLabel6.setText("Daily Voucher Amount:");
 
@@ -120,18 +122,21 @@ public class PCPaymentVoucher extends AbstractObjectCreator<PaymentVoucherMix> {
 
         jLabel3.setText("Sub Category :");
 
+        jLabel7.setText("Is Expense");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtDescription, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -140,8 +145,10 @@ public class PCPaymentVoucher extends AbstractObjectCreator<PaymentVoucherMix> {
                     .addComponent(txtMainHidden, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtSubHidden, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(comboMainCategory, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
-                    .addComponent(comboSubCategory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, 0))
+                    .addComponent(comboSubCategory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(chkIsExpense)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,7 +177,11 @@ public class PCPaymentVoucher extends AbstractObjectCreator<PaymentVoucherMix> {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(chkIsExpense))
+                .addContainerGap(226, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel3);
@@ -210,6 +221,8 @@ public class PCPaymentVoucher extends AbstractObjectCreator<PaymentVoucherMix> {
         txtAmount.setCValueEditable(false);
         txtTotalAmount.setCValueEditable(false);
         model.setRowCount(0);
+        chkIsExpense.setSelected(true);
+        chkIsExpense.setEnabled(false);
     }
 
     @Override
@@ -224,6 +237,8 @@ public class PCPaymentVoucher extends AbstractObjectCreator<PaymentVoucherMix> {
         txtTotalAmount.setCValueEditable(false);
         model.setRowCount(0);
         setAllVouchers();
+        chkIsExpense.setSelected(true);
+        chkIsExpense.setEnabled(true);
     }
 
     @Override
@@ -236,6 +251,8 @@ public class PCPaymentVoucher extends AbstractObjectCreator<PaymentVoucherMix> {
         txtSubHidden.setCValueEditable(true);
         txtAmount.setCValueEditable(true);
         txtTotalAmount.setCValueEditable(false);
+//        chkIsExpense.setSelected(true);
+        chkIsExpense.setEnabled(true);
     }
 
     @Override
@@ -250,6 +267,8 @@ public class PCPaymentVoucher extends AbstractObjectCreator<PaymentVoucherMix> {
         txtTotalAmount.resetCValue();
         model.setRowCount(0);
         setAllVouchers();
+        chkIsExpense.setSelected(true);
+        chkIsExpense.setEnabled(false);
     }
 
     @Override
@@ -304,6 +323,7 @@ public class PCPaymentVoucher extends AbstractObjectCreator<PaymentVoucherMix> {
         transaction.setCredit(txtAmount.getCValue());
         transaction.setDate(new Date());
         transaction.setDebit(0.00);
+        transaction.setIs_expense(chkIsExpense.isSelected()?1:0);
         transaction.setDescription(txtDescription.getCValue());
 //        transaction.setIndexNo();auto increment
         mix.setAccountTransaction(transaction);
@@ -339,6 +359,7 @@ public class PCPaymentVoucher extends AbstractObjectCreator<PaymentVoucherMix> {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox chkIsExpense;
     private com.sv.visionplus.util.component.combobox.CComboBox comboMainCategory;
     private com.sv.visionplus.util.component.combobox.CComboBox comboSubCategory;
     private javax.swing.JLabel jLabel1;
@@ -347,6 +368,7 @@ public class PCPaymentVoucher extends AbstractObjectCreator<PaymentVoucherMix> {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSplitPane jSplitPane1;

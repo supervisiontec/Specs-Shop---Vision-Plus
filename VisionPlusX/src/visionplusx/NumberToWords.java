@@ -1,29 +1,30 @@
 package visionplusx;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class NumberToWords {
 
     static public class ScaleUnit {
+
         private int exponent;
         private String[] names;
-        private ScaleUnit(int exponent, String...names) {
+
+        private ScaleUnit(int exponent, String... names) {
             this.exponent = exponent;
             this.names = names;
         }
+
         public int getExponent() {
             return exponent;
         }
+
         public String getName(int index) {
             return names[index];
         }
     }
 
-    /**
-     * See http://www.wordiq.com/definition/Names_of_large_numbers
-     */
-    static private ScaleUnit[] SCALE_UNITS = new ScaleUnit[] {
-        
+    static private ScaleUnit[] SCALE_UNITS = new ScaleUnit[]{
         new ScaleUnit(12, "trillion", "billion"),
         new ScaleUnit(9, "billion", "milliard"),
         new ScaleUnit(6, "million", "million"),
@@ -45,11 +46,11 @@ public class NumberToWords {
                     return unit.getName(this.ordinal());
                 }
             }
-            return ""; 
+            return "";
         }
     }
 
-    static public Scale SCALE = Scale.SHORT; 
+    static public Scale SCALE = Scale.SHORT;
 
     static abstract public class AbstractProcessor {
 
@@ -82,7 +83,7 @@ public class NumberToWords {
 
     static public class UnitProcessor extends AbstractProcessor {
 
-        static private final String[] TOKENS = new String[] {
+        static private final String[] TOKENS = new String[]{
             "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
             "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"
         };
@@ -118,7 +119,7 @@ public class NumberToWords {
 
     static public class TensProcessor extends AbstractProcessor {
 
-        static private final String[] TOKENS = new String[] {
+        static private final String[] TOKENS = new String[]{
             "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"
         };
 
@@ -290,13 +291,13 @@ public class NumberToWords {
             if (name.isEmpty()) {
                 name = ZERO_TOKEN;
             } else if (negative) {
-                name = MINUS.concat(SEPARATOR).concat(name); 
+                name = MINUS.concat(SEPARATOR).concat(name);
             }
 
             if (!(null == decimalValue || decimalValue.isEmpty())) {
                 name = name.concat(SEPARATOR).concat(UNION_AND).concat(SEPARATOR)
-                    .concat(processor.getName(decimalValue))
-                    .concat(SEPARATOR).concat(SCALE.getName(-decimalValue.length()));
+                        .concat(processor.getName(decimalValue))
+                        .concat(SEPARATOR).concat(SCALE.getName(-decimalValue.length()));
             }
 
             return name;
@@ -306,18 +307,10 @@ public class NumberToWords {
 
     static public AbstractProcessor processor;
 
-
-    public static void main(String...args) {
-
+    public static void main(String... args) {
         processor = new DefaultProcessor();
+        System.out.println("10" + " = " + ("**"+processor.getName(10)+" only**").toUpperCase() );
 
-        String[] strValues = new String[] {
-            "145999.50"
-        };
-
-        for (String strVal : strValues) {
-            System.out.println(strVal + " = " + ("**"+processor.getName(strVal)+" only**").toUpperCase() );
-        }
-
+       
     }
 }

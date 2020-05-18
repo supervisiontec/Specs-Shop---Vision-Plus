@@ -52,7 +52,7 @@ public class BrandDAO {
         } catch (SQLException ex) {
             Logger.getLogger(BrandDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        if (brandList.size() == 0) {
+        if (brandList.isEmpty()) {
             return null;
         }
         return brandList;

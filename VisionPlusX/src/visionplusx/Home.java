@@ -155,7 +155,7 @@ public class Home extends DefaultMainframe {
 
             addBand("Stock", getImageUrl(STOCK_TRANSFER));
             addButton("stock Adjustmant", getImageUrl(STOCK_ADJUST), DefaultMainframe.ElementPriority.TOP, getActionListener(StockAdjustmentForm.class));
-            addButton("stock transfer", getImageUrl(STOCK_TRANSFER), DefaultMainframe.ElementPriority.TOP, getActionListener(StockTransferForm.class));
+//            addButton("stock transfer", getImageUrl(STOCK_TRANSFER), DefaultMainframe.ElementPriority.TOP, getActionListener(StockTransferForm.class));
         }
 
         if ("Admin".equals(Login.getInstance().user.getType())) {

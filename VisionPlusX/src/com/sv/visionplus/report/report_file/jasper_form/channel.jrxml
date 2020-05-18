@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
-<!-- 2017-01-16T16:03:52 -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="channel " language="javascript" pageWidth="612" pageHeight="396" columnWidth="556" leftMargin="17" rightMargin="39" topMargin="2" bottomMargin="22" uuid="68ec6e47-1b31-41b0-a5e6-fdd7a200e391">
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="channel " language="javascript" pageWidth="420" pageHeight="595" columnWidth="364" leftMargin="17" rightMargin="39" topMargin="2" bottomMargin="22" uuid="68ec6e47-1b31-41b0-a5e6-fdd7a200e391">
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageHeight" value="inch"/>
 	<property name="com.jaspersoft.studio.unit.pageWidth" value="inch"/>
@@ -9,10 +8,8 @@
 	<property name="com.jaspersoft.studio.unit.bottomMargin" value="mm"/>
 	<property name="com.jaspersoft.studio.unit.leftMargin" value="mm"/>
 	<property name="com.jaspersoft.studio.unit.rightMargin" value="mm"/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="vision_plus"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
 	<parameter name="channel_id" class="java.lang.String"/>
 	<parameter name="channel_date" class="java.util.Date"/>
 	<queryString>
@@ -25,21 +22,87 @@ where
 	doctor.index_no=channel.doctor_id
 	and channel.channel_id= $P{channel_id}  and channel.channel_date= $P{channel_date}]]>
 	</queryString>
-	<field name="index_no" class="java.lang.Integer"/>
-	<field name="doctor_id" class="java.lang.Integer"/>
-	<field name="date" class="java.sql.Date"/>
-	<field name="channel_date" class="java.sql.Date"/>
-	<field name="channel_id" class="java.lang.String"/>
-	<field name="time" class="java.lang.String"/>
-	<field name="amount" class="java.lang.Double"/>
-	<field name="patient_name" class="java.lang.String"/>
-	<field name="mobile" class="java.lang.String"/>
-	<field name="doctor_name" class="java.lang.String"/>
+	<field name="index_no" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="index_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="channel"/>
+	</field>
+	<field name="doctor_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="doctor_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="channel"/>
+	</field>
+	<field name="patient_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="patient_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="channel"/>
+	</field>
+	<field name="mobile" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="mobile"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="channel"/>
+	</field>
+	<field name="date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="channel"/>
+	</field>
+	<field name="channel_date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="channel_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="channel"/>
+	</field>
+	<field name="channel_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="channel_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="channel"/>
+	</field>
+	<field name="time" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="time"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="channel"/>
+	</field>
+	<field name="amount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="channel"/>
+	</field>
+	<field name="pay_amount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="pay_amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="channel"/>
+	</field>
+	<field name="over_pay_amount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="over_pay_amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="channel"/>
+	</field>
+	<field name="over_pay_remarks" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="over_pay_remarks"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="channel"/>
+	</field>
+	<field name="pay_amount2" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="pay_amount2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="channel"/>
+	</field>
+	<field name="date2" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="date2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="channel"/>
+	</field>
+	<field name="refund_amount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="refund_amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="channel"/>
+	</field>
+	<field name="refund_date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="refund_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="channel"/>
+	</field>
+	<field name="refund_remarks" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="refund_remarks"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="channel"/>
+	</field>
+	<field name="is_present" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="is_present"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="channel"/>
+	</field>
+	<field name="doctor_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="doctor_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="doctor"/>
+	</field>
 	<variable name="consultant" class="java.lang.Double">
 		<variableExpression><![CDATA[1000.0]]></variableExpression>
 	</variable>
 	<variable name="establishment" class="java.lang.Double">
-		<variableExpression><![CDATA[$F{amount}-1000.0]]></variableExpression>
+		<variableExpression><![CDATA[300.00]]></variableExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
@@ -54,30 +117,30 @@ where
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="357" splitType="Stretch">
+		<band height="354" splitType="Stretch">
 			<staticText>
-				<reportElement x="-17" y="0" width="607" height="30" uuid="763f9aa6-1132-48df-bf65-53e21adb4f7b"/>
+				<reportElement x="-17" y="0" width="420" height="30" uuid="763f9aa6-1132-48df-bf65-53e21adb4f7b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Serif" size="16" isBold="true"/>
 				</textElement>
 				<text><![CDATA[VISION PLUS EYE CLINIC]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="-17" y="30" width="607" height="20" uuid="fd327e65-63ae-4778-b3c6-5a56bb9317f6"/>
+				<reportElement x="-17" y="30" width="420" height="20" uuid="fd327e65-63ae-4778-b3c6-5a56bb9317f6"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="11"/>
 				</textElement>
 				<text><![CDATA[(CHANNELED CONSULTATIONS SERVICE)]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="-17" y="50" width="607" height="20" uuid="c4465f1c-3a32-4326-83c5-2b6b24f67ded"/>
+				<reportElement x="-17" y="50" width="420" height="20" uuid="c4465f1c-3a32-4326-83c5-2b6b24f67ded"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10"/>
 				</textElement>
-				<text><![CDATA[No. 24, Neboda Road,]]></text>
+				<text><![CDATA[34, Aluthgama Road,]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="-17" y="70" width="607" height="20" uuid="0e10e35f-9743-4d3b-889e-a15ca2c71ec8"/>
+				<reportElement x="-17" y="70" width="420" height="20" uuid="0e10e35f-9743-4d3b-889e-a15ca2c71ec8"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font size="10"/>
 				</textElement>
@@ -91,7 +154,7 @@ where
 				<text><![CDATA[Tel: 034-2247466 / 071-7513639]]></text>
 			</staticText>
 			<textField pattern="MMMMM dd, yyyy">
-				<reportElement x="469" y="91" width="100" height="18" uuid="a3f67fe9-8c3e-42a5-8187-de2d39d7e249"/>
+				<reportElement x="280" y="90" width="100" height="18" uuid="a3f67fe9-8c3e-42a5-8187-de2d39d7e249"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -110,17 +173,17 @@ where
 				<text><![CDATA[Name of Doctor :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="369" y="192" width="98" height="19" uuid="dadec74c-724e-4301-9551-880ff2b7f70d"/>
+				<reportElement x="182" y="189" width="98" height="19" uuid="dadec74c-724e-4301-9551-880ff2b7f70d"/>
 				<textElement textAlignment="Right"/>
-				<text><![CDATA[ Consultant Free :]]></text>
+				<text><![CDATA[ Consultant Fee :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="369" y="214" width="98" height="19" uuid="092240bb-07ba-45f5-88df-317b7c6902b8"/>
+				<reportElement x="182" y="210" width="98" height="19" uuid="092240bb-07ba-45f5-88df-317b7c6902b8"/>
 				<textElement textAlignment="Right"/>
-				<text><![CDATA[Establishment Free :]]></text>
+				<text><![CDATA[Establishment Fee :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="369" y="236" width="98" height="19" uuid="fd20d500-909d-451a-93dd-a635fad7429e"/>
+				<reportElement x="182" y="229" width="98" height="19" uuid="fd20d500-909d-451a-93dd-a635fad7429e"/>
 				<textElement textAlignment="Right"/>
 				<text><![CDATA[Total :]]></text>
 			</staticText>
@@ -132,7 +195,7 @@ where
 				<text><![CDATA[Received payment with thanks]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="460" y="280" width="110" height="17" uuid="f78a9d32-0542-4849-8e53-06f9cfa8575f"/>
+				<reportElement x="273" y="309" width="110" height="17" uuid="f78a9d32-0542-4849-8e53-06f9cfa8575f"/>
 				<box>
 					<pen lineWidth="0.5" lineStyle="Dashed"/>
 					<topPen lineWidth="0.5" lineStyle="Dashed"/>
@@ -148,6 +211,7 @@ where
 					<pen lineWidth="0.5" lineStyle="Dashed"/>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0" lineStyle="Dashed"/>
 					<rightPen lineWidth="0.0"/>
 				</box>
 				<textElement verticalAlignment="Middle"/>
@@ -161,13 +225,14 @@ where
 					<pen lineWidth="0.5" lineStyle="Dashed"/>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0" lineStyle="Dashed"/>
 					<rightPen lineWidth="0.0"/>
 				</box>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{channel_date}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement positionType="FixRelativeToBottom" x="467" y="236" width="100" height="19" uuid="2007cf9e-f856-4742-9ced-90c8c8735168">
+				<reportElement positionType="FixRelativeToBottom" x="280" y="229" width="100" height="19" uuid="2007cf9e-f856-4742-9ced-90c8c8735168">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textElement textAlignment="Right" verticalAlignment="Top"/>
@@ -179,17 +244,11 @@ where
 					<pen lineWidth="0.5" lineStyle="Dashed"/>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0" lineStyle="Dashed"/>
 					<rightPen lineWidth="0.0"/>
 				</box>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{patient_name}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement positionType="FixRelativeToBottom" x="467" y="214" width="100" height="19" uuid="3036fa38-4da1-4374-97e5-54d064efb730">
-					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
-				</reportElement>
-				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA[$V{establishment}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="271" y="142" width="49" height="19" uuid="0edfa1aa-5438-483b-aa17-87a5af9b43b8">
@@ -199,6 +258,7 @@ where
 					<pen lineWidth="0.5" lineStyle="Dashed"/>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0" lineStyle="Dashed"/>
 					<rightPen lineWidth="0.0"/>
 				</box>
 				<textElement verticalAlignment="Middle"/>
@@ -210,6 +270,7 @@ where
 					<pen lineWidth="0.5" lineStyle="Dashed"/>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0" lineStyle="Dashed"/>
 					<rightPen lineWidth="0.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
@@ -221,17 +282,17 @@ where
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				</reportElement>
 				<box>
-					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="1.0" lineStyle="Dashed"/>
 				</box>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{channel_id}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="467" y="192" width="100" height="19" uuid="6e4d59ae-6092-498d-ab7c-c92fc5cefa53"/>
+				<reportElement x="280" y="189" width="100" height="19" uuid="6e4d59ae-6092-498d-ab7c-c92fc5cefa53"/>
 				<textElement textAlignment="Right">
 					<font fontName="Arial" isItalic="true"/>
 				</textElement>
-				<text><![CDATA[1000.0]]></text>
+				<text><![CDATA[1200.00]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="190" y="142" width="10" height="19" uuid="b437924b-c757-42fa-baf2-e9c1fdff6abf"/>
@@ -239,10 +300,34 @@ where
 					<pen lineWidth="0.5" lineStyle="Dashed"/>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0" lineStyle="Dashed"/>
 					<rightPen lineWidth="0.0"/>
 				</box>
 				<textElement verticalAlignment="Middle"/>
 				<text><![CDATA[&]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="210" width="100" height="19" uuid="9ecae0ff-e7fe-467e-a24a-4a122bace542"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[300.00]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="182" y="248" width="98" height="19" uuid="cba48b0a-1217-45c0-a2ef-a188b641f12f"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Paid:]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="FixRelativeToBottom" x="280" y="248" width="100" height="19" uuid="44fde573-c863-48a7-9a19-a228f7d0b835">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{pay_amount}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="296" width="151" height="30" uuid="18387077-2131-401a-85c2-87f8ad39a824"/>
+				<text><![CDATA[no refund no cancelation]]></text>
 			</staticText>
 		</band>
 	</detail>

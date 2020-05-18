@@ -3,7 +3,7 @@
 <properties>
 <comment>database connection information</comment>
 <entry key="HOST">localhost</entry>
-<entry key="DATABASE">mydb</entry>
+<entry key="DATABASE">mydb_new</entry>
 <entry key="USERNAME">root</entry>
 <entry key="PASSWORD">mysql</entry>
 </properties>

@@ -45,21 +45,21 @@ public class ChannelFormDAO extends AbstractMasterFormDAO<ChannelModelMix> {
         queryUtil = QueryUtil.getInstance(ChannelModelMix.class);
     }
 
-    public void save(Connection connection, ChannelModelMix mix)
-            throws SQLException {
+    public void save(Connection connection, ChannelModelMix mix) throws SQLException {
         int indexNo = ChannelService.getInstance().saveItem(connection, mix);
         if (indexNo > 0) {
             LogFileModel logFile = new LogFileModel();
             logFile.setDate(mix.getDate());
             logFile.setFormName("Channel Form");
 
-            logFile.setRemarks("New Channel");
+            logFile.setRemarks("Save new channel Rs:" + mix.getAmount() + " with over payment " + mix.getOverPayAmount());
             logFile.setTime(FormatterUtil.getInstance().getTime());
             logFile.setTransactionType("Save");
             logFile.setUser(Home.getInstance().getUser().getIndexNo());
             logFile.setUserId(Home.getInstance().getUser().getIndexNo());
             logFile.setUserName(Home.getInstance().getUser().getName());
-            logFile.setValue(Double.valueOf(mix.getAmount()));
+            logFile.setValue(mix.getAmount());
+            logFile.setType("NORMAL");
             int saveLog = LogFileDAO.getInstance().saveLog(connection, logFile);
 
             try {
@@ -76,7 +76,7 @@ public class ChannelFormDAO extends AbstractMasterFormDAO<ChannelModelMix> {
             }
 
             if (saveLog > 0) {
-                JOptionPane.showMessageDialog(null, indexNo + " Channel Save SuccessFully..");
+                JOptionPane.showMessageDialog(null, mix.getChannelId() + " Channel Save SuccessFully..");
             }
 
             //sms sender
@@ -90,7 +90,26 @@ public class ChannelFormDAO extends AbstractMasterFormDAO<ChannelModelMix> {
 
     public void update(Connection connection, ChannelModelMix mix)
             throws SQLException {
-        int indexNo = ChannelService.getInstance().updateItem(connection, mix);
+        ChannelService.getInstance().updateItem(connection, mix);
+        LogFileModel logFile = new LogFileModel();
+        
+        logFile.setDate(mix.getDate());
+        logFile.setFormName("Channel Form");
+        logFile.setType("NORMAL");
+
+        logFile.setRemarks("Update channel "+mix.getDate()+" "+mix.getChannelId()+" with "+mix.getPayAmount2());
+        if (mix.getRefundAmount()>0) {
+            logFile.setType("SPECIAL");
+            logFile.setRemarks("Update channel "+mix.getDate()+" "+mix.getChannelId()+" with refund "+mix.getRefundAmount());
+            
+        }
+        logFile.setTime(FormatterUtil.getInstance().getTime());
+        logFile.setTransactionType("Save");
+        logFile.setUser(Home.getInstance().getUser().getIndexNo());
+        logFile.setUserId(Home.getInstance().getUser().getIndexNo());
+        logFile.setUserName(Home.getInstance().getUser().getName());
+        logFile.setValue(mix.getAmount());
+        LogFileDAO.getInstance().saveLog(connection, logFile);
     }
 
     public void delete(Connection connection, ChannelModelMix mix)
@@ -117,6 +136,15 @@ public class ChannelFormDAO extends AbstractMasterFormDAO<ChannelModelMix> {
             mix.setTime(item.getTime());
             mix.setPatientName(item.getPatient_name());
             mix.setMobile(item.getMobile());
+            mix.setOverPayAmount(item.getOverPayAmount());
+            mix.setOverPayRemarks(item.getOverPayRemarks());
+            mix.setPayAmount(item.getPayAmount());
+            mix.setPayAmount2(item.getPayAmount2());
+            mix.setPayDate2(item.getDate2());
+            mix.setRefundAmount(item.getRefundAmount());
+            mix.setRefundDate(item.getRefundDate());
+            mix.setRefundRemarks(item.getRefundRemarks());
+            mix.setIsPresent(item.isIsPresent()>0);
 
             list.add(mix);
         }

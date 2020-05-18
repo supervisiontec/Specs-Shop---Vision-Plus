@@ -61,7 +61,7 @@ public class InvoiceDetailDAO {
     public List<TPatientInformation> allDetailInvoiceNull() {
         List<TPatientInformation> list = new ArrayList<>();
         try {
-            list = Query.executeSelect(connection, "number>? order by index_no desc limit 50", new Object[]{0});
+            list = Query.executeSelect(connection, "number>? order by index_no desc limit 500", new Object[]{0});
         } catch (SQLException ex) {
             Logger.getLogger(InvoiceDetailDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

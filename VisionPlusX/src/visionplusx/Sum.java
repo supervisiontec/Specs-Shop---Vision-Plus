@@ -14,19 +14,14 @@ import java.util.Scanner;
 public class Sum {
 
     public static void main(String[] args) {
-        int noOne, noTwo, noThree;
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Enter first number : ");
-        noOne = scanner.nextInt();
-
-        System.out.print("Enter second number : ");
-        noTwo = scanner.nextInt();
-
-        System.out.print("Enter threed number : ");
-        noThree = scanner.nextInt();
-
-        System.out.println("The result is " + ((noOne + noTwo) == noThree));
-
+        
     }
+//    public static String getName(String strAmount) {
+//        System.out.println(strAmount);
+//        System.out.println(strAmount);
+//        String text = processor.getName(strAmount);
+//        return ("**" + text + " only**");
+//        return ("**"+processor.getName(strAmount)+" only**").toUpperCase();
+
+//    }
 }

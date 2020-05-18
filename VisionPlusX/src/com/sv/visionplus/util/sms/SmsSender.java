@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,7 +22,10 @@ import java.util.logging.Logger;
 public class SmsSender {
 
     public static int messageSendForInvoice(String name, String mobile) {
-        String message = name + "...Thank you for being our valued customer.vision plus opticians,No 24,NebodaRoad,Mathugama.TP 0342247466";
+        System.out.println("SMS Patient Name ");
+        System.out.println(name);
+        System.out.println(mobile);
+        String message = name + "...Thank you for being our valued customer. vision plus opticians,No 34,Aluthgama Road,Mathugama. TP 0342247466";
 //            String APIKEY = "585bc4616167e";
         String correctMessage = message.replace(" ", "%20");
         if (mobile.length() == 11) {
@@ -94,7 +98,7 @@ public class SmsSender {
             connection.setRequestMethod("GET");
             connection.connect();
             int code = connection.getResponseCode();
-            if (code==0) {
+            if (code == 0) {
                 return 200;
             }
             return code;
@@ -109,7 +113,9 @@ public class SmsSender {
     }
 
     public static int messageSendForChannel(ChannelModelMix mix) {
-        String message = "Thank you for payment received." + mix.getPatientName() + ",Time:" + mix.getTime() + "," + mix.getChannelDate() + ",Vision Plus Eye Clinic Dr.Chameera Bandara,Channel No:" + mix.getChannelId() + "No refund,No Cancellation.";
+        String date=new SimpleDateFormat("yyyy-MM-dd").format(mix.getChannelDate());
+//        String message = "Thank you for payment received." + mix.getPatientName() + ",Time:" + mix.getTime() + "," + mix.getChannelDate() + ",Vision Plus Eye Clinic Dr.Chameera Bandara,Channel No:" + mix.getChannelId() + "No refund,No Cancellation.";
+        String message = "WELCOME TO VISIONPLUS EYE CLINIC! YOU APPOIMENT NUMBER IS " + mix.getChannelId() + " ON " + date + " " + mix.getTime() + " FOR " + mix.getDoctorName() + ". THANK YOU.";
 //            String APIKEY = "585bc4616167e";
         String correctMessage = message.replace(" ", "%20");
         String mobile = mix.getMobile();
@@ -124,7 +130,7 @@ public class SmsSender {
     }
 
     public static int messageSendForChecking(String name, String mobile) {
-        String message = name + "...The Order you Placed with Vision Plus Opticians Matugama, is ready for Collection.Thanks";
+        String message = name + "...The Order you Placed with Vision Plus Opticians Matugama, is ready for Collection. Thanks";
 //            String APIKEY = "585bc4616167e";
         String correctMessage = message.replace(" ", "%20");
         if (mobile.length() == 11) {
