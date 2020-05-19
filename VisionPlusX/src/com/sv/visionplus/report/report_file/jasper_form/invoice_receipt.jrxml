@@ -32,7 +32,7 @@
 	t_invoice.number as invoice_no,
 	t_invoice.invoice_date,
 	t_invoice.amount as invoice_amount,
-	t_payment.total_amount as paid_amount,
+	(SELECT sum(view_invoice_payment.total) FROM view_invoice_payment WHERE view_invoice_payment.NUMBER=t_invoice.number AND view_invoice_payment.isdelete=0) as paid_amount,
 	t_invoice_item1.discount as discount_amount,
 	t_invoice_item1.unit_price,
 	t_invoice_item1.qty,
@@ -45,16 +45,15 @@
 	m_brand.name as brand_name
 	
 from 
-	m_customer,m_item,t_invoice_patient_infomation,t_invoice,t_payment,customer_payment,t_invoice_item1,m_category,m_brand
-where
-	m_customer.index_no=t_invoice.customer and t_invoice.index_no=t_invoice_patient_infomation.invoice
-	and t_invoice.index_no=customer_payment.invoice and customer_payment.payment=t_payment.index_no and 
-	t_invoice.index_no=t_invoice_item1.invoice and m_item.index_no=t_invoice_item1.item and m_item.category=m_category.index_no
-	and m_item.brand=m_brand.index_no
-	
-	and t_invoice.number= $P{index}
-group by m_item.name
-order by t_invoice_item1.discount]]>
+	t_invoice_item1
+	INNER JOIN t_invoice ON t_invoice.index_no=t_invoice_item1.invoice
+	INNER JOIN m_customer ON m_customer.index_no=t_invoice.customer
+	INNER JOIN t_invoice_patient_infomation ON t_invoice_patient_infomation.invoice=t_invoice.index_no
+	INNER JOIN m_item ON m_item.index_no=t_invoice_item1.item
+	INNER JOIN m_category ON m_category.index_no=m_item.category
+	INNER JOIN m_brand ON m_brand.index_no=m_item.brand
+WHERE t_invoice.NUMBER= $P{index} AND t_invoice_item1.net_value<>0 
+order by t_invoice_item1.index_no]]>
 	</queryString>
 	<field name="name" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="name"/>
