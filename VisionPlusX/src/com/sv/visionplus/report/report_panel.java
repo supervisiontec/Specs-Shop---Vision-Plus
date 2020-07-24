@@ -59,7 +59,7 @@ public class report_panel extends javax.swing.JPanel {
         if ("User".equals(user.getType())) {
             btnBestCustomer.setVisible(false);
             btnBestUser.setVisible(false);
-            btnChannel.setVisible(false);
+//            btnChannel.setVisible(false);
             btnChannelList.setVisible(false);
             btnGrnSummary.setVisible(false);
             btnInvList.setVisible(false);

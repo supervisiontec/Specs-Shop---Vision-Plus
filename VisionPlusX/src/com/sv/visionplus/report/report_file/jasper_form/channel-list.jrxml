@@ -21,7 +21,7 @@
  from 
  	channel
  where channel.channel_date= $P{channelDate} 
- ORDER BY CONVERT(SUBSTRING(channel.channel_id, 6), SIGNED INTEGER)]]>
+ ORDER BY CONVERT(SUBSTRING_INDEX(channel.channel_id,'-',-1),UNSIGNED INTEGER)]]>
 	</queryString>
 	<field name="index_no" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.label" value="index_no"/>
@@ -47,7 +47,7 @@
 		<property name="com.jaspersoft.studio.field.label" value="channel_date"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="channel"/>
 	</field>
-	<field name="channel_id" class="java.lang.Integer">
+	<field name="channel_id" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="channel_id"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="channel"/>
 	</field>

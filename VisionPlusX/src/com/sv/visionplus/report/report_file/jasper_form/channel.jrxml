@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="channel " language="javascript" pageWidth="420" pageHeight="595" columnWidth="364" leftMargin="17" rightMargin="39" topMargin="2" bottomMargin="22" uuid="68ec6e47-1b31-41b0-a5e6-fdd7a200e391">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="channel " language="javascript" pageWidth="324" pageHeight="396" columnWidth="268" leftMargin="17" rightMargin="39" topMargin="2" bottomMargin="22" uuid="68ec6e47-1b31-41b0-a5e6-fdd7a200e391">
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageHeight" value="inch"/>
 	<property name="com.jaspersoft.studio.unit.pageWidth" value="inch"/>
@@ -10,17 +10,21 @@
 	<property name="com.jaspersoft.studio.unit.rightMargin" value="mm"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="vision_plus"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
 	<parameter name="channel_id" class="java.lang.String"/>
 	<parameter name="channel_date" class="java.util.Date"/>
 	<queryString>
 		<![CDATA[select 
 	channel.* ,
-	doctor.doctor_name
+	doctor.doctor_name,
+	SUM(channel.pay_amount + channel.pay_amount2 + channel.over_pay_amount - channel.refund_amount) AS tot_paid
 from 
 	channel,doctor
 where 
 	doctor.index_no=channel.doctor_id
-	and channel.channel_id= $P{channel_id}  and channel.channel_date= $P{channel_date}]]>
+	and channel.channel_id= $P{channel_id}  
+	and channel.channel_date=  $P{channel_date}]]>
 	</queryString>
 	<field name="index_no" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.label" value="index_no"/>
@@ -98,6 +102,9 @@ where
 		<property name="com.jaspersoft.studio.field.label" value="doctor_name"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="doctor"/>
 	</field>
+	<field name="tot_paid" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="tot_paid"/>
+	</field>
 	<variable name="consultant" class="java.lang.Double">
 		<variableExpression><![CDATA[1000.0]]></variableExpression>
 	</variable>
@@ -119,28 +126,28 @@ where
 	<detail>
 		<band height="354" splitType="Stretch">
 			<staticText>
-				<reportElement x="-17" y="0" width="420" height="30" uuid="763f9aa6-1132-48df-bf65-53e21adb4f7b"/>
+				<reportElement x="-17" y="0" width="324" height="30" uuid="763f9aa6-1132-48df-bf65-53e21adb4f7b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Serif" size="16" isBold="true"/>
 				</textElement>
 				<text><![CDATA[VISION PLUS EYE CLINIC]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="-17" y="30" width="420" height="20" uuid="fd327e65-63ae-4778-b3c6-5a56bb9317f6"/>
+				<reportElement x="-17" y="30" width="324" height="20" uuid="fd327e65-63ae-4778-b3c6-5a56bb9317f6"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="11"/>
 				</textElement>
 				<text><![CDATA[(CHANNELED CONSULTATIONS SERVICE)]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="-17" y="50" width="420" height="20" uuid="c4465f1c-3a32-4326-83c5-2b6b24f67ded"/>
+				<reportElement x="-17" y="50" width="324" height="20" uuid="c4465f1c-3a32-4326-83c5-2b6b24f67ded"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10"/>
 				</textElement>
 				<text><![CDATA[34, Aluthgama Road,]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="-17" y="70" width="420" height="20" uuid="0e10e35f-9743-4d3b-889e-a15ca2c71ec8"/>
+				<reportElement x="-17" y="70" width="324" height="20" uuid="0e10e35f-9743-4d3b-889e-a15ca2c71ec8"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font size="10"/>
 				</textElement>
@@ -154,7 +161,9 @@ where
 				<text><![CDATA[Tel: 034-2247466 / 071-7513639]]></text>
 			</staticText>
 			<textField pattern="MMMMM dd, yyyy">
-				<reportElement x="280" y="90" width="100" height="18" uuid="a3f67fe9-8c3e-42a5-8187-de2d39d7e249"/>
+				<reportElement x="200" y="90" width="100" height="18" uuid="a3f67fe9-8c3e-42a5-8187-de2d39d7e249"/>
+				<box rightPadding="5"/>
+				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -163,7 +172,7 @@ where
 				<text><![CDATA[Name of Patient :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="142" width="171" height="19" uuid="9ae63c66-4994-48b0-bc54-5c02021b8c62"/>
+				<reportElement x="0" y="142" width="160" height="19" uuid="9ae63c66-4994-48b0-bc54-5c02021b8c62"/>
 				<textElement verticalAlignment="Middle"/>
 				<text><![CDATA[No & Date & Time of appointment :]]></text>
 			</staticText>
@@ -173,17 +182,17 @@ where
 				<text><![CDATA[Name of Doctor :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="182" y="189" width="98" height="19" uuid="dadec74c-724e-4301-9551-880ff2b7f70d"/>
+				<reportElement x="100" y="189" width="98" height="19" uuid="dadec74c-724e-4301-9551-880ff2b7f70d"/>
 				<textElement textAlignment="Right"/>
 				<text><![CDATA[ Consultant Fee :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="182" y="210" width="98" height="19" uuid="092240bb-07ba-45f5-88df-317b7c6902b8"/>
+				<reportElement x="100" y="210" width="98" height="19" uuid="092240bb-07ba-45f5-88df-317b7c6902b8"/>
 				<textElement textAlignment="Right"/>
 				<text><![CDATA[Establishment Fee :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="182" y="229" width="98" height="19" uuid="fd20d500-909d-451a-93dd-a635fad7429e"/>
+				<reportElement x="100" y="229" width="98" height="19" uuid="fd20d500-909d-451a-93dd-a635fad7429e"/>
 				<textElement textAlignment="Right"/>
 				<text><![CDATA[Total :]]></text>
 			</staticText>
@@ -195,7 +204,7 @@ where
 				<text><![CDATA[Received payment with thanks]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="273" y="309" width="110" height="17" uuid="f78a9d32-0542-4849-8e53-06f9cfa8575f"/>
+				<reportElement x="188" y="308" width="110" height="17" uuid="f78a9d32-0542-4849-8e53-06f9cfa8575f"/>
 				<box>
 					<pen lineWidth="0.5" lineStyle="Dashed"/>
 					<topPen lineWidth="0.5" lineStyle="Dashed"/>
@@ -218,7 +227,7 @@ where
 				<textFieldExpression><![CDATA[$F{doctor_name}]]></textFieldExpression>
 			</textField>
 			<textField pattern="yyyy-MM-dd">
-				<reportElement x="200" y="142" width="59" height="19" uuid="8930bbc9-61ea-4f7f-9a0b-fcb4afe8958f">
+				<reportElement x="189" y="142" width="51" height="19" uuid="8930bbc9-61ea-4f7f-9a0b-fcb4afe8958f">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				</reportElement>
 				<box leftPadding="4">
@@ -228,18 +237,21 @@ where
 					<bottomPen lineWidth="1.0" lineStyle="Dashed"/>
 					<rightPen lineWidth="0.0"/>
 				</box>
-				<textElement verticalAlignment="Middle"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{channel_date}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement positionType="FixRelativeToBottom" x="280" y="229" width="100" height="19" uuid="2007cf9e-f856-4742-9ced-90c8c8735168">
+				<reportElement positionType="FixRelativeToBottom" x="198" y="229" width="100" height="19" uuid="2007cf9e-f856-4742-9ced-90c8c8735168">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
+				<box rightPadding="5"/>
 				<textElement textAlignment="Right" verticalAlignment="Top"/>
 				<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="90" y="120" width="190" height="19" uuid="49151ea7-5a6c-4aa8-b61e-806e690ecc9d"/>
+				<reportElement x="79" y="120" width="220" height="19" uuid="49151ea7-5a6c-4aa8-b61e-806e690ecc9d"/>
 				<box>
 					<pen lineWidth="0.5" lineStyle="Dashed"/>
 					<topPen lineWidth="0.0"/>
@@ -251,7 +263,7 @@ where
 				<textFieldExpression><![CDATA[$F{patient_name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="271" y="142" width="49" height="19" uuid="0edfa1aa-5438-483b-aa17-87a5af9b43b8">
+				<reportElement x="252" y="142" width="47" height="19" uuid="0edfa1aa-5438-483b-aa17-87a5af9b43b8">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<box leftPadding="5">
@@ -261,11 +273,13 @@ where
 					<bottomPen lineWidth="1.0" lineStyle="Dashed"/>
 					<rightPen lineWidth="0.0"/>
 				</box>
-				<textElement verticalAlignment="Middle"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{time}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="259" y="142" width="12" height="19" uuid="6d444694-d8c9-4a07-8814-dd923d9d8f2d"/>
+				<reportElement x="240" y="142" width="12" height="19" uuid="6d444694-d8c9-4a07-8814-dd923d9d8f2d"/>
 				<box>
 					<pen lineWidth="0.5" lineStyle="Dashed"/>
 					<topPen lineWidth="0.0"/>
@@ -273,29 +287,34 @@ where
 					<bottomPen lineWidth="1.0" lineStyle="Dashed"/>
 					<rightPen lineWidth="0.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
 				<text><![CDATA[&]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="171" y="142" width="19" height="19" uuid="fb5681fe-37d5-4aa6-ae27-ec99dcc5439c">
+				<reportElement x="160" y="142" width="19" height="19" uuid="fb5681fe-37d5-4aa6-ae27-ec99dcc5439c">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				</reportElement>
 				<box>
 					<bottomPen lineWidth="1.0" lineStyle="Dashed"/>
 				</box>
-				<textElement verticalAlignment="Middle"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{channel_id}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="280" y="189" width="100" height="19" uuid="6e4d59ae-6092-498d-ab7c-c92fc5cefa53"/>
+				<reportElement x="198" y="189" width="100" height="19" uuid="6e4d59ae-6092-498d-ab7c-c92fc5cefa53"/>
+				<box rightPadding="5"/>
 				<textElement textAlignment="Right">
 					<font fontName="Arial" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[1200.00]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="190" y="142" width="10" height="19" uuid="b437924b-c757-42fa-baf2-e9c1fdff6abf"/>
+				<reportElement x="179" y="142" width="10" height="19" uuid="b437924b-c757-42fa-baf2-e9c1fdff6abf"/>
 				<box>
 					<pen lineWidth="0.5" lineStyle="Dashed"/>
 					<topPen lineWidth="0.0"/>
@@ -303,27 +322,31 @@ where
 					<bottomPen lineWidth="1.0" lineStyle="Dashed"/>
 					<rightPen lineWidth="0.0"/>
 				</box>
-				<textElement verticalAlignment="Middle"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
 				<text><![CDATA[&]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="280" y="210" width="100" height="19" uuid="9ecae0ff-e7fe-467e-a24a-4a122bace542"/>
+				<reportElement x="198" y="210" width="100" height="19" uuid="9ecae0ff-e7fe-467e-a24a-4a122bace542"/>
+				<box rightPadding="5"/>
 				<textElement textAlignment="Right">
 					<font fontName="Arial" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[300.00]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="182" y="248" width="98" height="19" uuid="cba48b0a-1217-45c0-a2ef-a188b641f12f"/>
+				<reportElement x="101" y="248" width="98" height="19" uuid="cba48b0a-1217-45c0-a2ef-a188b641f12f"/>
 				<textElement textAlignment="Right"/>
-				<text><![CDATA[Paid:]]></text>
+				<text><![CDATA[Paid :]]></text>
 			</staticText>
-			<textField>
-				<reportElement positionType="FixRelativeToBottom" x="280" y="248" width="100" height="19" uuid="44fde573-c863-48a7-9a19-a228f7d0b835">
+			<textField pattern="#,##0.00">
+				<reportElement positionType="FixRelativeToBottom" x="198" y="248" width="100" height="19" uuid="44fde573-c863-48a7-9a19-a228f7d0b835">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
+				<box rightPadding="5"/>
 				<textElement textAlignment="Right" verticalAlignment="Top"/>
-				<textFieldExpression><![CDATA[$F{pay_amount}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tot_paid}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="296" width="151" height="30" uuid="18387077-2131-401a-85c2-87f8ad39a824"/>

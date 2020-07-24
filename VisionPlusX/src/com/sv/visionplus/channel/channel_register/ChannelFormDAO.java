@@ -13,6 +13,7 @@ import com.sv.visionplus.util.sms.SmsSender;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -121,6 +122,7 @@ public class ChannelFormDAO extends AbstractMasterFormDAO<ChannelModelMix> {
             throws SQLException {
         List<ChannelModelMix> list = new ArrayList();
         List<ChannelModel> searchItem = ChannelService.getInstance().searchItem(connection, text);
+        searchItem.sort(Comparator.comparing(ChannelModel::getIndex_no));
         for (ChannelModel item : searchItem) {
             ChannelModelMix mix = new ChannelModelMix();
             DoctorFormDao dao = new DoctorFormDao();
