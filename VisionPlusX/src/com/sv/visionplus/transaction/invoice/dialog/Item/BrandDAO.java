@@ -13,6 +13,7 @@ import com.sv.visionplus.util.database.DatabaseUtil;
 import com.sv.visionplus.util.database.QueryUtil;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -46,7 +47,7 @@ public class BrandDAO {
     }
 
     public List<MBrand> allBrand() {
-            List<MBrand> brandList = null;
+            List<MBrand> brandList = new ArrayList<>();
         try {
             brandList = Query.executeSelect(connection);
         } catch (SQLException ex) {

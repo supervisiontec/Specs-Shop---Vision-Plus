@@ -5,7 +5,6 @@
  */
 package visionplusx;
 
-import java.util.Scanner;
 
 /**
  *
@@ -14,7 +13,7 @@ import java.util.Scanner;
 public class Sum {
 
     public static void main(String[] args) {
-        
+        System.out.println("Hello World");
     }
 //    public static String getName(String strAmount) {
 //        System.out.println(strAmount);

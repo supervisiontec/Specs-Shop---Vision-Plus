@@ -91,7 +91,7 @@ public class SmsSender {
             String apikey = "2380250890";
 //            String URL = "http://smsserver.svisiontec.com/send_sms.php?api_key="+apikey+"&number="+mobile+"&message="+message;
 //            String URL = "http://139.99.148.38/supervision-sms-server/send_sms.php?api_key=" + apikey + "&number=" + mobile + "&message=" + message;
-            String URL = "http://supervision-sms.supervisionglobal.com/send_sms.php?api_key=" + apikey + "&number=" + mobile + "&message=" + message;
+            String URL = "http://supervision.lk/sms/send_sms.php?api_key=" + apikey + "&number=" + mobile + "&message=" + message;
             URL url = new URL(URL);
 
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
